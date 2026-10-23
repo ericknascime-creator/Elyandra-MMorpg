@@ -1,10 +1,10 @@
-import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage} from './combat.js?v=7';
-import {ascensionBonuses} from './ascension.js?v=7';
-import {runeValue} from './runes.js?v=7';
-import {xpNeeded} from './progression.js?v=7';
-import {attributeGains} from './attributes.js?v=7';
+import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage} from './combat.js?v=8';
+import {ascensionBonuses} from './ascension.js?v=8';
+import {runeValue} from './runes.js?v=8';
+import {xpNeeded} from './progression.js?v=8';
+import {attributeGains} from './attributes.js?v=8';
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-import {CLASSES} from './classes.js?v=7';
+import {CLASSES} from './classes.js?v=8';
 export {CLASSES};
 export function stats(p){
  const c=CLASSES[p.classId],lv=p.level-1,g=CLASS_PROFILES[p.classId].growth,growth=attributeGains(p);

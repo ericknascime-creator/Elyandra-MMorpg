@@ -1,4 +1,4 @@
-import {STYLES,ascensionTier} from './ascension.js?v=7';
+import {STYLES,ascensionTier} from './ascension.js?v=8';
 const TAU=Math.PI*2;
 export function drawAscension(g,wings,aura,t){
  if(aura?.rank&&aura.visible!==false){

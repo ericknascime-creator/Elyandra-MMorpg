@@ -54,3 +54,9 @@ Asas/aura0–50, hierarquia Comum→Ultra, componentes CSS de Asa Divina flutuan
 Inventário→peça: tentativa com cash ou terceiro slot com compra automática de faltantes e confirmação do preço. Empório lista Extensor Astral por25000cash; aplicação automática cobra500. Laboratório novo concede100000cash e recursos de teste; recarga de cash no LAB tem botão de100000. Pagamentos reais continuam indisponíveis.
 
 Combate e ficha agora separam AF/AM, AMP espada/magia, taxa crítica/limite/excedente, dano crítico, penetração e resistências. Referência oficial Cabal e adaptação por classe documentadas em [BALANCE.md](BALANCE.md). Não é emulação exata das fórmulas do servidor Cabal. São42testesautomatizados. Nenhum teste valida equilíbrio dePvP multiplayer.
+
+## Alpha0.8 — playable graphics slice
+
+Welcome→**JOGAR NOVA ÁREA GRÁFICA** enters Jardins de Hélion with a Ruptor in a level175 laboratory profile. New original character/creature/scene/equipment atlases, animated poses and circular skill controls. Three wolves awaken Fenrir. Weapon art is shared by inventory and character, with enhancement light. Classic campaign remains separate. See[GRAPHICS.md](GRAPHICS.md) for architecture, validation and limitations; exact art prompts in`dist/art-manifest.json`.
+
+Canvas scene composition now has an optional WebGL bloom/color compositor, fixed-size particles, cached terrain and optimized WebP art. Canvas compatibility target30fps; WebGL target60fps with adaptive reduction. Physical-phone performance and GPU-path execution still require device testing. Browser QA used the fallback because its WebGL context was unavailable.43automatedtests.

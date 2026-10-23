@@ -1,7 +1,7 @@
-import {ascensionCost,evolveAscension} from './ascension.js?v=7';
-import {enchantPrice,enchant} from './progression.js?v=7';
-import {extendEquipment} from './loadout.js?v=7';
-import {canExtend} from './core.js?v=7';
+import {ascensionCost,evolveAscension} from './ascension.js?v=8';
+import {enchantPrice,enchant} from './progression.js?v=8';
+import {extendEquipment} from './loadout.js?v=8';
+import {canExtend} from './core.js?v=8';
 
 // A quote buys only missing reagents. The original wallet changes once, after validation.
 export function premiumQuote(p,action,item){
