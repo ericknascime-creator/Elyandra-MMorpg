@@ -43,3 +43,7 @@ Movimento em tempo real: UV de animação dos personagens existentes; respiraç�
 ## Alpha0.12
 
 assets/commands-v6.webp: folha4×4original gerada para16sistemas, usada noHUD, central e avisos. Mantida a transparência; somente codificaçãoWebP88. As imagens de referência do jogador foram estudadas, não copiadas para os recursos distribuídos.
+
+## Alpha0.13
+
+pet-forms-v7:18formas originais,6porpet, mudança de silhueta e materiais. pressure-burst-v7:6quadros de liberação espiritual, centro transparente e corteUVtécnico4px para evitar linhas de divisão. Arte gerada comimage_gen; WebP88preserva alpha. Capturas reais do navegador emdocs/qa, sem composição com imagens geradas.

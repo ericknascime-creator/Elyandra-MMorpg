@@ -40,3 +40,7 @@ Atlases adicionais: companions/npcs/sigils/logo-v4; ground/scenery/mobs/presence
 ## Alpha0.12
 
 Referênciasmobile aplicadas à hierarquia, centro livre, ações circulares e central lateral. Ícones próprioscommands-v6; tooltip/nome deação, combo e aviso de evolução funcionais. Mantido motor2,5D. Verdist/DIRECAO-VISUAL.md para limites e decisões.
+
+## Alpha0.13
+
+Escala do herói em paisagem0,50(antes0,64), desktop0,62(antes0,80);NPC0,62do desenho e mobs0,72antes do fator de chefe. Pet acompanha o cenário a0,78do zoom. Presença ativa fora da escala do herói mantém amplitude espacial enquanto o personagem fica menor. Manto ambiente mais discreto. Efeito ativo de3,2s cresce com o núcleo e tem limite72partículas/6anéis, metade das partículas e até3anéis em economia. Validação visual real retomada em667×375e844×390, incluindo botões e impactos.

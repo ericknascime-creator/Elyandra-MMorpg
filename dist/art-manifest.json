@@ -1,5 +1,5 @@
 {
-  "version": "0.12",
+  "version": "0.13",
   "mode": "built-in image_gen",
   "postprocess": "WebP encoding quality88–90, original alpha preserved; technical UV crops only, no creative raster edits",
   "assets": [
@@ -102,6 +102,20 @@
       "generator": "built-in image_gen",
       "original": true,
       "brief": "16 símbolos originais de cristal cian e metal titânio: mochila, atributos, skills, mapa, asas, aura, pet, montaria, forja, runas, missão, chefe, loja, ranking, opções, retorno. Alpha. Biblioteca comum paraHUD e central de sistemas."
+    },
+    {
+      "path": "assets/pet-forms-v7.webp",
+      "grid": "6 columns × 3 rows",
+      "generator": "built-in image_gen",
+      "original": true,
+      "brief": "Eighteen original isometric pet forms: Lúmi grows from translucent jelly into a crystalline guardian beast; Aelys develops multiple tails and celestial armor; Nyx grows from hatchling into primordial drake. Thresholds1/20/40/60/80/100. Genuine alpha, WebP88, runtime UV cells."
+    },
+    {
+      "path": "assets/pressure-burst-v7.webp",
+      "grid": "3 columns × 2 rows",
+      "generator": "built-in image_gen",
+      "original": true,
+      "brief": "Six sequential original spiritual pressure VFX frames: concentration, ignition, upright mantle, peak dome, expanding wave, fading sparks. Transparent empty character center. WebP88; runtime UV inset4px avoids generated cell boundary marks."
     }
   ],
   "revision09": {

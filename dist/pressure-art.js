@@ -1,0 +1,10 @@
+import {visualAssets,drawCell} from './engine/visual-assets.js?v=13';
+import {pressureProfile} from './pressure-rules.js?v=13';
+// Screen-sized display, deliberately outside the smaller character transform.
+export function drawPressureRelease(g,rank,elapsed,economy=false){const p=pressureProfile(rank);if(!p.rank||elapsed<0||elapsed>=p.duration)return;const q=elapsed/p.duration,envelope=Math.sin(Math.PI*q),radius=p.radius*(.45+q*.8),color=p.stage>=4?'#b8faff':p.stage>=2?'#c5a7ff':'#83e8ff';g.save();g.globalCompositeOperation='lighter';
+ if(visualAssets.pressureBurst){const frame=Math.min(5,Math.floor(q*6));g.globalAlpha=envelope*(.34+p.stage*.035);const atlas=visualAssets.pressureBurst,cw=atlas.naturalWidth/3,ch=atlas.naturalHeight/2;g.drawImage(atlas,(frame%3)*cw+4,Math.floor(frame/3)*ch+4,cw-8,ch-8,-p.radius*.9,-p.height,p.radius*1.8,p.height+25);}
+ const glow=g.createRadialGradient(0,-p.height*.3,8,0,-p.height*.3,p.radius);glow.addColorStop(0,'#d0ffff18');glow.addColorStop(.5,'#66ceff0d');glow.addColorStop(1,'#00eaff00');g.globalAlpha=envelope;g.fillStyle=glow;g.fillRect(-p.radius,-p.height,p.radius*2,p.height+p.radius*.4);
+ const rings=economy?Math.min(3,p.rings):p.rings;for(let n=0;n<rings;n++){const phase=(q+n/rings)%1;g.globalAlpha=(1-phase)*envelope*(.3+p.stage*.035);g.strokeStyle=n%2?'#b795ff':color;g.lineWidth=1.2+(1-phase)*2;g.beginPath();g.ellipse(0,3,p.radius*(.3+phase),p.radius*(.12+phase*.3),0,0,Math.PI*2);g.stroke();}
+ const count=economy?Math.ceil(p.particles/2):p.particles;for(let n=0;n<count;n++){const a=n*2.399,spread=q*(.6+n%5*.12),x=Math.cos(a)*p.radius*spread,y=-q*p.height*(.25+n%7*.105)+Math.sin(a)*p.radius*.22*q;g.globalAlpha=envelope*(.35+n%3*.15);g.strokeStyle=n%3?'#c9faff':'#d9a2ff';g.lineWidth=1+n%2*.5;g.beginPath();g.moveTo(x*.9,y+4+q*5);g.lineTo(x,y);g.stroke();}
+ if(!economy&&p.stage>=3){g.strokeStyle='#ebffff';g.lineWidth=1.3;g.globalAlpha=envelope*.4;for(let side of [-1,1]){g.beginPath();for(let n=0;n<7;n++){const x=side*(20+n*4+Math.sin(n*2+Math.floor(elapsed*14))*8),y=-p.height*.9+n*p.height*.13;n?g.lineTo(x,y):g.moveTo(x,y);}g.stroke();}}
+ g.restore();}

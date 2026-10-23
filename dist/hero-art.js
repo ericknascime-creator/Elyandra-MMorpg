@@ -1,6 +1,6 @@
-import {drawLivingWeaponEnergy} from './engine/visual-assets.js?v=12';
-import {drawAscension} from './ascension-art.js?v=12';
-import {CLASSES} from './classes.js?v=12';
+import {drawLivingWeaponEnergy} from './engine/visual-assets.js?v=13';
+import {drawAscension} from './ascension-art.js?v=13';
+import {CLASSES} from './classes.js?v=13';
 const TAU=Math.PI*2;
 export function drawHero(g,id,moving,t,attack,a={}){const kit=CLASSES[id]||{armor:'#405a69',trim:'#b6b7a0',color:'#cbe0d5'},rank=Math.max(0,['D','C','B','A','S','SS','SS+','SSS','SSS+','ULTRA'].indexOf(a.quality||'D')),heavy=['BAS','RUP'].includes(id),mage=id==='ARC',archer=id==='VIG',assassin=id==='ESP',dual=id==='DUE',astral=id==='LAS',npc=id==='NPC';const ink='#08131c',trim=rank>=7?'#e8c78b':kit.trim,steel=rank>=6?'#7498b8':kit.armor,accent=rank>=8?'#9ff7ed':kit.color,skin='#bf977e';const stride=moving?Math.sin(t*9):0,swing=attack?Math.sin(t*22)*.8:0,bob=moving?Math.abs(stride)*1.2:Math.sin(t*1.6)*.45;
 const poly=(pts,fill,stroke=ink,w=.8)=>{g.beginPath();pts.forEach((p,n)=>n?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.closePath();if(fill){g.fillStyle=fill;g.fill();}if(stroke){g.strokeStyle=stroke;g.lineWidth=w;g.stroke();}};
