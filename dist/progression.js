@@ -1,5 +1,5 @@
 // Local campaign rules from blueprint v0.3, including later FOR/INT/DES changes.
-import {convertCatalogItem} from './equipment.js?v=5';
+import {convertCatalogItem} from './equipment.js?v=6';
 export function xpBase(level){return Math.ceil(100*Math.max(1,level)**1.55);}
 export function xpNeeded(level){return xpBase(level)*(level>=150?2:1);}
 export function advanceXP(player,amount){if(player.testMode||player.level>=250)return 0;player.xp+=Math.max(0,Math.floor(amount));let gained=0;while(player.level<250&&player.xp>=xpNeeded(player.level)){player.xp-=xpNeeded(player.level);player.level++;gained++;}if(player.level===250)player.xp=0;return gained;}
@@ -12,4 +12,4 @@ export function craftCheck(player,source){if(source.class_id!==player.classId)re
 export function craft(player,source){const check=craftCheck(player,source);if(!check.ok)return check;if(player.bag.length>=80)return {ok:false,reason:'Mochila cheia. Venda ou desmonte peças.'};for(const [key,amount] of Object.entries(source.recipe_components||{})){if(key==='gold')player.gold-=amount;else player.materials[key]-=amount;}const item=convertCatalogItem(source);player.bag.push(item);return {ok:true,item};}
 export function enchantPrice(enchant){return enchant<5?{gold:1000,crystals:1,chance:1,pity:1}:enchant<10?{gold:3000,crystals:2,chance:.65,pity:3}:enchant<15?{gold:7000,crystals:3,chance:.40,pity:5}:enchant<20?{gold:15000,crystals:5,chance:.25,pity:8}:enchant<24?{gold:30000,crystals:8,chance:.15,pity:12}:{gold:60000,crystals:12,chance:.10,pity:15};}
 export function enchant(player,item,rng=Math.random){if(item.enchant>=25)return {ok:false,reason:'Aprimoramento máximo+25.'};const price=enchantPrice(item.enchant);if(player.gold<price.gold||player.shards<price.crystals)return {ok:false,reason:'Precisa de '+price.gold+'ouro e '+price.crystals+'cristal(is).'};player.gold-=price.gold;player.shards-=price.crystals;item.attempts=(item.attempts||0)+1;const success=rng()<price.chance||item.attempts>=price.pity;if(success){item.enchant++;item.attempts=0;}return {ok:true,success,price,attempts:item.attempts};}
-export function enemyBudget(level,boss=false){return {hp:Math.round((120+5*level**1.5)*(boss?6:1)),defense:Math.round(10+.7*level**1.35),attack:Math.round((10+2.3*level**1.4)*(boss?2:1))};}
+export function enemyBudget(level,boss=false){return {hp:Math.round((135+12*level**1.7)*(boss?12:1)),defense:Math.round((10+.7*level**1.35)*(boss?1.35:1)),attack:Math.round((10+2.3*level**1.4)*(boss?2.8:1.1))};}

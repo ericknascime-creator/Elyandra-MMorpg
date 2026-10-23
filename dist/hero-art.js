@@ -1,11 +1,12 @@
-import {CLASSES} from './classes.js?v=5';
+import {drawAscension} from './ascension-art.js?v=6';
+import {CLASSES} from './classes.js?v=6';
 const TAU=Math.PI*2;
 export function drawHero(g,id,moving,t,attack,a={}){const kit=CLASSES[id]||{armor:'#405a69',trim:'#b6b7a0',color:'#cbe0d5'},rank=Math.max(0,['D','C','B','A','S','SS','SS+','SSS','SSS+','ULTRA'].indexOf(a.quality||'D')),heavy=['BAS','RUP'].includes(id),mage=id==='ARC',archer=id==='VIG',assassin=id==='ESP',dual=id==='DUE',astral=id==='LAS',npc=id==='NPC';const ink='#08131c',trim=rank>=7?'#e8c78b':kit.trim,steel=rank>=6?'#7498b8':kit.armor,accent=rank>=8?'#9ff7ed':kit.color,skin='#bf977e';const stride=moving?Math.sin(t*9):0,swing=attack?Math.sin(t*22)*.8:0,bob=moving?Math.abs(stride)*1.2:Math.sin(t*1.6)*.45;
 const poly=(pts,fill,stroke=ink,w=.8)=>{g.beginPath();pts.forEach((p,n)=>n?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.closePath();if(fill){g.fillStyle=fill;g.fill();}if(stroke){g.strokeStyle=stroke;g.lineWidth=w;g.stroke();}};
 const line=(x1,y1,x2,y2,c,w=1)=>{g.beginPath();g.moveTo(x1,y1);g.lineTo(x2,y2);g.strokeStyle=c;g.lineWidth=w;g.stroke();};
 const oval=(x,y,rx,ry,c)=>{g.beginPath();g.ellipse(x,y,rx,ry,0,0,TAU);g.fillStyle=c;g.fill();};
 const metal=(x1=-15,x2=18,c=steel)=>{const d=g.createLinearGradient(x1,-60,x2,-30);d.addColorStop(0,'#111e2c');d.addColorStop(.27,c);d.addColorStop(.48,'#bfd1d7');d.addColorStop(.56,c);d.addColorStop(1,'#152735');return d;};
-const cloth=g.createLinearGradient(-20,-60,22,0);cloth.addColorStop(0,'#111c29');cloth.addColorStop(.4,steel);cloth.addColorStop(.65,'#1d303b');cloth.addColorStop(1,'#0c1724');g.save();g.translate(0,-bob);g.lineJoin='round';g.lineCap='round';
+const cloth=g.createLinearGradient(-20,-60,22,0);cloth.addColorStop(0,'#111c29');cloth.addColorStop(.4,steel);cloth.addColorStop(.65,'#1d303b');cloth.addColorStop(1,'#0c1724');g.save();g.translate(0,-bob);drawAscension(g,a.wings,a.aura,t);g.lineJoin='round';g.lineCap='round';
 // Long cloth panels and layered capes sit behind the silhouette.
 if(a.hasArmor!==false){poly([[-9,-66],[-16,-40],[-21-stride,-2],[-8,2],[-2,-15],[6,0],[20+stride,-4],[12,-63]],cloth);line(-11,-43,-16,-4,trim,.7);line(10,-44,15,-5,trim,.6);if(mage||astral||npc)for(let n=0;n<4;n++)line(-10+n*6,-35,-14+n*9,-4,'#99adba25',1);}
 // Articulated legs: adult proportions, visible greaves and toe caps.

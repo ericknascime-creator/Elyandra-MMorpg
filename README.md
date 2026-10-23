@@ -1,4 +1,4 @@
-# Elyndra — Ascensão das Relíquias · alpha 0.5
+# Elyndra — Ascensão das Relíquias · alpha 0.6
 
 RPG de ação isométrico para navegador, com interface horizontal para toque. Código original em JavaScript/Canvas2D, sem dependências de execução. Referências de organização: inventário com personagem e peças, barra de habilidades, forja com receitas e atributos de equipamento.
 
@@ -31,3 +31,18 @@ Textura original gerada com a ferramenta nativa de imagens (atlas de grama, pedr
 A nova solicitação substitui o bônus antigo de2%relativo por uma tabela inspirada noForçaBook oficial doCabal. A correspondência dos graus com níveis é uma adaptação deElyndra, não uma regra deCabal: médio1+, alto100+, altíssimo175+, transcendente250. AMP normal7/7/7/8%; estendido8/9/10/11%. Três slotsAMP estendidos totalizam24/27/30/33%. Dano e taxa críticos possuem totais específicos ao repetir a3ªopção; o cálculo usa o delta do total sem inflar cada encaixe. Arma unificada deRuptor dobra os valores, como uma arma de duas mãos. Valores adicionais nativos e encantamento permanecem separados.
 
 Fonte: https://www.cabal.co.kr/gameInfo/forcebook/장비슬롯확장
+
+
+## Revisão0.6 — evolução, mundo e interface
+
+- `theme-relics.css`: temaCSS próprio para molduras, barras, inventário, encaixes, dinheiro/cash, ranking e ascensão. Mundo e atores permanecem emCanvas2D para manter o desempenho; esta revisão não transforma o motor em3D.
+- Asas e aura:10níveis cada,5formas, prévia e visibilidade individual. Asas abrem no10; aura no20; ápice250. Custos e bônus em `ascension.js`; efeitos em `ascension-art.js`. Plumas e essências vêm de caça/DGs/chefes. Os níveis8–10 exigem núcleos dosCataclismos.
+- Set: a mesma tabela de AMP e encaixes para cabeça, corpo, mãos, pernas e pés; a exceção de valores dobrados pertence somente à arma unificada doRuptor. Extensor consumido de forma atômica, três slots recalculados sem multiplicação acumulada.
+- Campanha exige nível, poder e umaDGda região anterior para viajar. O segundo mapa exige o capítulo inicial. Laboratório tem confirmação e faixa persistente informando os atalhos; pode ser retomado separadamente da campanha.
+- Geometrias de região e famílias de criaturas variam. São mapas procedurais, não os mapas finais desenhados individualmente. Espíritos atacam à distância. Vida, defesa e dano dos chefes aumentaram; abaixo de30%HP eles causam40%mais dano.
+- Cataclismos acessíveis175+, com temporizador **local** de24hapós a morte e recompensas de evolução. Outros chefes têm temporizador local. Duelos, competição entre servidores e respawn global ainda não existem. Grupos continuam adaptados para solo; a calibração demanda testes de jogo prolongados.
+- Ouro e cash possuem saldos distintos. Loja de materiais e aparências funciona com cash de teste no laboratório. **Pagamento real não está integrado**, não há cobrança, preço ou checkout falso. O servidor e o provedor de pagamento devem validar uma recarga antes de liberar cashreal.
+- Ranking registra personagens de campanha efetivamente salvos **neste navegador**. Laboratório fica fora. PvPnão contabiliza monstros. **Rankingglobal e PvPentrepessoas ainda dependem de multiplayer e validação no servidor**, portanto o contador permanece zero na ausência de vitórias reais. Nenhum adversário ou resultado online é inventado.
+- Avisos temporários usam dimensões explícitas e são removidos ao acabar; mensagens vazias ficam ocultas.
+
+Validação: testes das fórmulas, evolução de asas/aura, custos, cash separado, ranking local, acesso a regiões, extensão e encaixes uniformes. QAde interface em844×390 e667×375, com evolução0→10 nos dois sistemas, cash de teste e encontro de chefe final. Isto não substitui teste em aparelhos físicos.
