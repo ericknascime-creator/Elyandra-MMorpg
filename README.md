@@ -1,4 +1,4 @@
-# Elyndra — Ascensão das Relíquias · alpha 0.13
+# Elyndra — Ascensão das Relíquias · alpha 0.14
 
 RPG de ação isométrico para navegador, com interface horizontal para toque. Código original em JavaScript/Canvas2D, sem dependências de execução. Referências de organização: inventário com personagem e peças, barra de habilidades, forja com receitas e atributos de equipamento.
 
@@ -76,3 +76,11 @@ Leia [a especificação atual](dist/GUIA-DE-COMBATE.md). Inclui novas imagens de
 ## Alpha0.13 · pets, presença e validação visual concluída
 
 Três pets com seis formas distintas, liberação manual deMagículas3,2s/recarga20s, personagens/NPCs/mobs menores e painel de evolução compacto.71testes passam. Validação visual recuperada e executada no navegador em667×375e844×390: evolução repetida sem rolagem, cash com débito único, transformação19→20, forma100, presença, quarta skill e flecha contra alvo de treino. Veja[registro](dist/REVISAO-013.md) e[capturas](docs/qa). Sem benchmark em aparelhos físicos. As notas históricas sobre prévia indisponível em0.11/0.12 foram superadas por esta revisão.
+
+## Revisão 0.14
+
+Magículas são presença contínua, sem tecla T, botão de liberação ou indicador fixo no HUD. Sua evolução permanece em Companheiros → Magículas. A presença cresce até100 e mantém os bônus existentes.
+
+O inspetor coloca aprimoramento e tentativa com cash acima das opções, com arte menor. As opções nativas mostram valor/teto e classificação relativa: Fraco (<75%), Razoável (75–<90%), Bom (90–<100%) e Perfeito (teto exato). Runas mantêm os valores fixos próprios. O catálogo agora tem filtros e seis peças por página; atributos têm edição e prévia lado a lado.
+
+A revisão também separa nomes da escala dos personagens, remove backdrop blur durante a partida para reduzir artefatos de composição em Safari e responde ao pointerdown nas skills. Validação de toque real no iPhone e Android ainda necessária. Veja REVISAO-014.md.

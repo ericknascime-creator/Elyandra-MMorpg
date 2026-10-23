@@ -1,11 +1,11 @@
-import {companionBonuses,magiculaBonuses} from './companions.js?v=13';
-import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=13';
-import {ascensionBonuses} from './ascension.js?v=13';
-import {runeValue} from './runes.js?v=13';
-import {xpNeeded} from './progression.js?v=13';
-import {attributeGains} from './attributes.js?v=13';
+import {companionBonuses,magiculaBonuses} from './companions.js?v=14';
+import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=14';
+import {ascensionBonuses} from './ascension.js?v=14';
+import {runeValue} from './runes.js?v=14';
+import {xpNeeded} from './progression.js?v=14';
+import {attributeGains} from './attributes.js?v=14';
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-import {CLASSES} from './classes.js?v=13';
+import {CLASSES} from './classes.js?v=14';
 export {CLASSES};
 export function stats(p){
  const c=CLASSES[p.classId],lv=p.level-1,g=CLASS_PROFILES[p.classId].growth,growth=attributeGains(p);
@@ -27,7 +27,7 @@ export function stats(p){
 export const damage=combatDamage;
 export const maxXP=xpNeeded;
 export function rollValue(cap,rng=Math.random){const r=rng();let grade=r<.55?60+Math.floor(rng()*151)/10:r<.85?75.1+Math.floor(rng()*150)/10:r<.98?90.1+Math.floor(rng()*99)/10:100;return Math.round(cap*grade/100*10000)/10000;}
-let serial=0;export function item(classId,level,slot='weapon',quality='D',rng=Math.random){const c=CLASSES[classId];const names={weapon:c.weapons[0],secondary:c.weapons[1],armor:c.torso,head:'Elmo de '+c.name,hands:'Manoplas de '+c.name,legs:'Perneiras de '+c.name,boots:'Botas de '+c.name};const scale=1+(level-1)*.15;return {id:Date.now().toString(36)+'-'+(++serial),name:names[slot],classId,level,slot,quality,weaponBudgetVersion:2,enchant:0,slots:quality==='D'?0:1,runes:[],base:slot==='weapon'?{atk:Math.round((classId==='RUP'?50:25)*scale),acc:classId==='RUP'?120:80}:slot==='secondary'?(classId!=='BAS'?{atk:Math.round(12*scale),acc:40}:{def:Math.round(18*scale),hp:Math.round(60*scale)}):{def:Math.round((slot==='armor'?10:4)*scale),hp:Math.round((slot==='armor'?70:25)*scale)},options:quality==='D'?[]:[{type:classId==='VIG'?'critd':'crit',value:rollValue(classId==='VIG'?.10:classId==='RUP'?.08:.04,rng)}]};}
+let serial=0;export function item(classId,level,slot='weapon',quality='D',rng=Math.random){const c=CLASSES[classId];const names={weapon:c.weapons[0],secondary:c.weapons[1],armor:c.torso,head:'Elmo de '+c.name,hands:'Manoplas de '+c.name,legs:'Perneiras de '+c.name,boots:'Botas de '+c.name};const scale=1+(level-1)*.15;return {id:Date.now().toString(36)+'-'+(++serial),name:names[slot],classId,level,slot,quality,weaponBudgetVersion:2,enchant:0,slots:quality==='D'?0:1,runes:[],base:slot==='weapon'?{atk:Math.round((classId==='RUP'?50:25)*scale),acc:classId==='RUP'?120:80}:slot==='secondary'?(classId!=='BAS'?{atk:Math.round(12*scale),acc:40}:{def:Math.round(18*scale),hp:Math.round(60*scale)}):{def:Math.round((slot==='armor'?10:4)*scale),hp:Math.round((slot==='armor'?70:25)*scale)},options:quality==='D'?[]:[{type:classId==='VIG'?'critd':'crit',cap:classId==='VIG'?.10:classId==='RUP'?.08:.04,value:rollValue(classId==='VIG'?.10:classId==='RUP'?.08:.04,rng)}]};}
 export function canExtend(playerLevel,i){return playerLevel>=175&&i.level>=175&&['SS+','SSS','SSS+','ULTRA'].includes(i.quality)&&i.slots===2;}
 export function potionPulse(current,maxAtUse,maxNow,rate){return Math.min(maxNow,current+maxAtUse*rate/5);}
 export function createPlayer(classId,name){const bag=[item(classId,1),...(classId==='RUP'?[]:[item(classId,1,'secondary')]),...['armor','head','hands','legs','boots'].map(slot=>item(classId,1,slot))];return {attributes:{for:0,int:0,des:0},schema:1,name:name.trim().slice(0,18)||'Viajante',classId,level:1,xp:0,gold:5000,progressionVersion:4,materials:{L01:40,E01:10,N01:2,K01:10,P01:10},hp:CLASSES[classId].hp+170+(classId==='BAS'?60:0),mp:CLASSES[classId].mp,x:12,y:14,zone:'coast',bag,equipped:Object.fromEntries(bag.map(i=>[i.slot,i.id])),pots:{hp:6,mp:6},quest:0,kills:0,shards:3,runes:1,buffs:[],dungeonClears:0,killCount:0,playSeconds:0};}

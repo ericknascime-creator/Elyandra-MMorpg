@@ -1,0 +1,1 @@
+export function catalogPage(items,classId,{tier='',kind='',page=0}={},size=6){const rows=items.filter(i=>i.class_id===classId&&(!tier||i.tier===tier)&&(!kind||i.kind===kind)),pages=Math.max(1,Math.ceil(rows.length/size)),at=Math.max(0,Math.min(pages-1,page));return {rows:rows.slice(at*size,(at+1)*size),total:rows.length,pages,page:at};}
