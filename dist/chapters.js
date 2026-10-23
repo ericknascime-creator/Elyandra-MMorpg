@@ -1,4 +1,4 @@
-import {xpBase} from './progression.js?v=11';
+import {xpBase} from './progression.js?v=12';
 export const CHAPTERS=[
  ['O coração do farol','Ilyra','O farol voltou a brilhar, mas sua fonte foi fragmentada. Reconecte o primeiro selo para descobrir quem alterou a luz.','Selo de Lúmen','Fragmentos do farol'],
  ['Memórias sob as cinzas','Borun','As forjas foram apagadas de dentro para fora. Uma liga desconhecida está alimentando as criaturas do vale.','Forja Silenciosa','Amostras de liga viva'],

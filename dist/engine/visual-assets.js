@@ -1,4 +1,4 @@
-import {enchantVisual} from '../combat.js?v=11';
+import {enchantVisual} from '../combat.js?v=12';
 // Original art sheets. UV cropping is performed at runtime; original alpha is preserved.
 export const visualAssets={hero:null,terrain:null,wolf:null,weapon:null,ready:false,loaded:0,errors:[]};
 const entries=[['weaponEnergy','assets/weapon-energy-v5.webp'],['ground','assets/ground-v5.webp'],['scenery','assets/scenery-v5.webp'],['mobs','assets/mobs-v5.webp'],['presence','assets/presence-v5.webp'],['npcs','assets/npcs-v4.webp'],['companions','assets/companions-v4.webp'],['sigils','assets/sigils-v4.webp'],['ruptorMotion','assets/ruptor-motion-v3.webp'],['attackMotion','assets/attacks-v3.webp'],['effects','assets/effects-v3.webp'],['classes','assets/classes-atlas-v2.webp'],['relics','assets/relics-atlas-v2.webp'],['arsenal','assets/arsenal-atlas-v2.webp'],['hero','assets/warrior-atlas-v1.webp'],['terrain','assets/garden-atlas-v1.webp'],['wolf','assets/wolf-atlas-v1.webp'],['weapon','assets/weapon-atlas-v1.webp']];

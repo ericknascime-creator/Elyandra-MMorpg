@@ -1,5 +1,5 @@
 {
-  "version": "0.11",
+  "version": "0.12",
   "mode": "built-in image_gen",
   "postprocess": "WebP encoding quality88–90, original alpha preserved; technical UV crops only, no creative raster edits",
   "assets": [
@@ -95,6 +95,13 @@
       "brief": "Quatro molduras de titânio escuro futuristas, linhas finas cian/ouro/violeta/teal, cantos angulares. Interior e exterior transparentes, sem texto e sem controles desenhados. UV emui-assets.js; aplicação9slice.",
       "generator": "built-in image_gen",
       "original": true
+    },
+    {
+      "path": "assets/commands-v6.webp",
+      "grid": "4×4",
+      "generator": "built-in image_gen",
+      "original": true,
+      "brief": "16 símbolos originais de cristal cian e metal titânio: mochila, atributos, skills, mapa, asas, aura, pet, montaria, forja, runas, missão, chefe, loja, ranking, opções, retorno. Alpha. Biblioteca comum paraHUD e central de sistemas."
     }
   ],
   "revision09": {

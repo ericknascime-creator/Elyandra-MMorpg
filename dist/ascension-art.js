@@ -1,5 +1,5 @@
-import {STYLES,ascensionTier} from './ascension.js?v=11';
-import {visualAssets,drawCell} from './engine/visual-assets.js?v=11';
+import {STYLES,ascensionTier} from './ascension.js?v=12';
+import {visualAssets,drawCell} from './engine/visual-assets.js?v=12';
 const TAU=Math.PI*2,tints=new Map();
 function relicTexture(style){if(!visualAssets.relics)return null;if(style==='mystic'||!style)return visualAssets.relics;if(tints.has(style))return tints.get(style);const c=document.createElement('canvas'),im=visualAssets.relics;c.width=im.naturalWidth;c.height=im.naturalHeight;const ctx=c.getContext('2d'),hues={nature:-60,void:110,infernal:170,solar:-140,glacial:0,eclipse:90,carmim:165};if('filter'in ctx)ctx.filter='hue-rotate('+(hues[style]||0)+'deg)';ctx.drawImage(im,0,0);if(!('filter'in ctx)){ctx.globalCompositeOperation='source-atop';ctx.globalAlpha=.55;ctx.fillStyle=STYLES[style]?.color||'#00ffff';ctx.fillRect(0,0,c.width,c.height);}if(tints.size>=3)tints.delete(tints.keys().next().value);tints.set(style,c);return c;}
 

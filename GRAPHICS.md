@@ -36,3 +36,7 @@ Weapon enchants now have distinct stages0/5/10/15/20/25: neutral, gold, blue, cy
 
 ## Alpha0.11
 Atlases adicionais: companions/npcs/sigils/logo-v4; ground/scenery/mobs/presence/frames/weapon-energy-v5. Manto deMagículas em duas passagens, partículas limitadas e energia dearma com emissão por eixo. Molduras9slice futuristas e botõesDOM. Herói menor em paisagem. Interface final desta revisão ainda semQAvisual: falha interna da autorização do navegador.
+
+## Alpha0.12
+
+Referênciasmobile aplicadas à hierarquia, centro livre, ações circulares e central lateral. Ícones próprioscommands-v6; tooltip/nome deação, combo e aviso de evolução funcionais. Mantido motor2,5D. Verdist/DIRECAO-VISUAL.md para limites e decisões.

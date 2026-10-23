@@ -1,4 +1,4 @@
-import {visualAssets,drawCell} from './engine/visual-assets.js?v=11';
+import {visualAssets,drawCell} from './engine/visual-assets.js?v=12';
 const TAU=Math.PI*2,COLORS=['#b5f7ff','#58ffb2','#c384ff','#ffd16c','#65f6ff','#d7a5ff'];
 export function presenceProfile(rank){const r=Math.max(0,Math.min(100,Math.floor(rank||0))),stage=Math.min(5,Math.floor(r/20));return {rank:r,stage,color:COLORS[stage],radius:16+stage*5+r*.06,height:75+r*.5,particles:r?4+Math.floor(r/4):0,layers:r?1+stage:0,shards:stage>=3?stage+2:0};}
 // Persistent world-space mantle, rendered in rear/front passes around the character.

@@ -1,11 +1,11 @@
-import {companionBonuses,magiculaBonuses} from './companions.js?v=11';
-import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=11';
-import {ascensionBonuses} from './ascension.js?v=11';
-import {runeValue} from './runes.js?v=11';
-import {xpNeeded} from './progression.js?v=11';
-import {attributeGains} from './attributes.js?v=11';
+import {companionBonuses,magiculaBonuses} from './companions.js?v=12';
+import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=12';
+import {ascensionBonuses} from './ascension.js?v=12';
+import {runeValue} from './runes.js?v=12';
+import {xpNeeded} from './progression.js?v=12';
+import {attributeGains} from './attributes.js?v=12';
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-import {CLASSES} from './classes.js?v=11';
+import {CLASSES} from './classes.js?v=12';
 export {CLASSES};
 export function stats(p){
  const c=CLASSES[p.classId],lv=p.level-1,g=CLASS_PROFILES[p.classId].growth,growth=attributeGains(p);

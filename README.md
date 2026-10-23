@@ -1,4 +1,4 @@
-# Elyndra — Ascensão das Relíquias · alpha 0.11
+# Elyndra — Ascensão das Relíquias · alpha 0.12
 
 RPG de ação isométrico para navegador, com interface horizontal para toque. Código original em JavaScript/Canvas2D, sem dependências de execução. Referências de organização: inventário com personagem e peças, barra de habilidades, forja com receitas e atributos de equipamento.
 
@@ -68,3 +68,7 @@ Entrada única, animação de ataque das7classes, daikatana de duas mãos com or
 ## Alpha0.11 · combate, jornada e presença
 
 Leia [a especificação atual](dist/GUIA-DE-COMBATE.md). Inclui novas imagens de criaturas/cenário/NPCs/companheiros, molduras futuristas, energia de arma+25, Magículas100, aquisição/evolução de pets e montarias, ganhos reais por nível de relíquia, análise de dano por skill e PvP matemático local. Campanha pós-introdução com12capítulos, recompensa única e navegação por caminhos.66testes passam. A revisão0.11 não teve QA visual final: o navegador de prévia foi bloqueado por erro interno de autorização. Não há benchmark em celular físico.
+
+## Alpha0.12 · referências mobile
+
+[Direção visual e comportamentos](dist/DIRECAO-VISUAL.md): central lateral com ícones originais, ações agrupadas, ataque circular e seis skills,HUD mais transparente, avisos funcionais de evolução e combo real sem bônus de dano.67testes passam. Arte2,5D; não é equivalente a modelos3D das referências. Inspeção visual final permanece indisponível pela falha de autorização da prévia.

@@ -39,3 +39,7 @@ Arte original criada comimage_gen integrado; sem uso de arte dos jogos de refer�
 | frames-v5.webp | custom UV, 4 · Quatro molduras de titânio escuro futuristas, linhas finas cian/ouro/violeta/teal, cantos angulares. Interior e exterior transparentes, sem texto e sem controles desenhados. UV emui-assets.js; aplicação9slice. |
 
 Movimento em tempo real: UV de animação dos personagens existentes; respiração/impacto das criaturas; manto deMagículas traseiro/frontal; partículas ascendentes e fragmentos; emissão de arma por eixo e grau; luz dos portais. As novas folhas de criaturas não são ciclos completos de locomoção: usam deformações/transformações limitadas. Botões e atributos permanecem texto e controles vivos, não uma imagem de interface falsa.
+
+## Alpha0.12
+
+assets/commands-v6.webp: folha4×4original gerada para16sistemas, usada noHUD, central e avisos. Mantida a transparência; somente codificaçãoWebP88. As imagens de referência do jogador foram estudadas, não copiadas para os recursos distribuídos.
