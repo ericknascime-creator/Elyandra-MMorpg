@@ -1,0 +1,4 @@
+// One original raster atlas; tiles and item panels reuse the same downloaded asset.
+export const materials={ready:false,tiles:[]};
+const atlas=new Image();atlas.src='assets/material-atlas-v1.png';atlas.onload=()=>{const half=atlas.naturalWidth/2;materials.tiles=[0,1,2,3].map(n=>{const c=document.createElement('canvas');c.width=c.height=192;c.getContext('2d').drawImage(atlas,(n%2)*half,Math.floor(n/2)*half,half,half,0,0,192,192);return c;});materials.ready=true;};
+export function paintTile(g,type,x,y,tint){const i=type==='grass'?0:type==='path'?1:type==='stone'?2:-1;if(i<0||!materials.ready)return;g.save();g.transform(27/192,13.5/192,-27/192,13.5/192,x,y);g.drawImage(materials.tiles[i],0,0);g.globalAlpha=type==='grass'?.4:.15;g.fillStyle=tint;g.fillRect(0,0,192,192);g.restore();}

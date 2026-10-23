@@ -1,4 +1,4 @@
-# Elyndra — Ascensão das Relíquias · alpha 0.4
+# Elyndra — Ascensão das Relíquias · alpha 0.5
 
 RPG de ação isométrico para navegador, com interface horizontal para toque. Código original em JavaScript/Canvas2D, sem dependências de execução. Referências de organização: inventário com personagem e peças, barra de habilidades, forja com receitas e atributos de equipamento.
 
@@ -23,3 +23,11 @@ Esta é uma alpha **solo, com salvamento no navegador**, não um MMORPG com serv
 ## Validação
 
 `npm test` executa testes de fórmulas, equipamento, progressão, criação e aprimoramento. Interface também verificada em viewports horizontais844×390 e667×375. Para atualizar sem perder o personagem, publique no mesmo domínio e preserve o armazenamento do navegador.
+
+## Revisão visual0.5 e encaixes
+
+Textura original gerada com a ferramenta nativa de imagens (atlas de grama, pedra, basalto e metal). Prompt registrado em `ASSETS.md`. Aplicada no terreno com cache, e na interface. Personagens redesenhados emCanvas com proporção adulta, tecido, placas, armas e efeitos de aprimoramento. Inventário tem filtros Equipáveis e Aumentam poder. Skills usam ícones vetoriais próprios e círculos de conjuração.
+
+A nova solicitação substitui o bônus antigo de2%relativo por uma tabela inspirada noForçaBook oficial doCabal. A correspondência dos graus com níveis é uma adaptação deElyndra, não uma regra deCabal: médio1+, alto100+, altíssimo175+, transcendente250. AMP normal7/7/7/8%; estendido8/9/10/11%. Três slotsAMP estendidos totalizam24/27/30/33%. Dano e taxa críticos possuem totais específicos ao repetir a3ªopção; o cálculo usa o delta do total sem inflar cada encaixe. Arma unificada deRuptor dobra os valores, como uma arma de duas mãos. Valores adicionais nativos e encantamento permanecem separados.
+
+Fonte: https://www.cabal.co.kr/gameInfo/forcebook/장비슬롯확장

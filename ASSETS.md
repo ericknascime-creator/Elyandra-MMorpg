@@ -1,0 +1,7 @@
+# Arte original — alpha0.5
+
+`dist/assets/material-atlas-v1.png` foi criado com a ferramenta nativa de geração de imagens. Nenhum arquivo deCabal foi extraído ou reutilizado. O atlas é usado no terreno e nas superfícies de interface. Personagens, armas, ícones e efeitos são desenhados comCanvas/SVG no código para responderem aos equipamentos e animações.
+
+Prompt final:
+
+Use case: stylized-concept. Asset type: production game terrain texture atlas for an original dark fantasy isometric MMORPG named Elyndra. Create a single square texture atlas, exact 2 by 2 grid with equal square quadrants, no gaps or borders. Top-left: richly detailed mossy forest grass, tiny blades and earth, desaturated dark olive. Top-right: old weathered grey stone paving slabs with narrow cracks and patches of moss, dark warm grey. Bottom-left: ancient dungeon basalt flagstones with thin subtle cyan mineral cracks, deep cool charcoal. Bottom-right: oxidized dark bronze and navy forged metal, fine scratches, subtle hammered finish. Orthographic overhead flat material surfaces with NO perspective, no objects, no lettering, no characters, no UI, no icons, no logos. Hand-painted realistic RPG diffuse textures, rich fine surface detail, controlled low contrast, no strong directional shadows, tiles suitable for repeating at small scale. This is a texture atlas to be used inside the actual playable game, not a screenshot or concept scene.
