@@ -1,0 +1,2 @@
+// Runtime UV extraction preserves generated artwork and provides reusable nine-slice frames.
+const frame=new Image();frame.onload=()=>{const boxes=[[18,14,598,569],[650,14,590,569],[18,665,598,558],[650,665,590,558]];for(const [index,key]of ['default','forge','cosmic','shop'].entries()){const c=document.createElement('canvas');c.width=c.height=512;c.getContext('2d').drawImage(frame,...boxes[index],0,0,512,512);document.documentElement.style.setProperty('--frame-'+key,'url("'+c.toDataURL('image/png')+'")');}};frame.src='assets/frames-v5.webp';

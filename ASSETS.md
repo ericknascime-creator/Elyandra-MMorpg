@@ -19,3 +19,23 @@ Source PNG outputs are kept in the generating workspace; the project ships optim
 
 ### Alpha0.10 generated assets
 Built-in image_gen, four original production briefs: (1)4×3 isometric silver/gold/navy male Ruptor with long heavy curved two-handed daikatana, both hands gripping same hilt, idle/walk/overhead slash; (2)4×6 atlas of archer, assassin, mage, tank, duelist, astral blade with windup/release/followthrough/recovery; (3)4×2 transparent cyan missile, golden arrow, violet impact, gold slash, cyan shockwave, crimson slash, violet rune, lightning impact; (4)wide original twilight citadel/forest/crystal-portal login environment with quiet left interface space. Transparent outputs preserved; ffmpeg used only for WebP encoding. Paths: dist/assets/ruptor-motion-v3.webp, attacks-v3.webp, effects-v3.webp, login-v3.webp. Layout metadata and runtime consumers in dist/engine/visual-assets.js, world.js and visual-garden.css.
+
+## Alpha0.11 · imagens integradas
+
+Arte original criada comimage_gen integrado; sem uso de arte dos jogos de referência. WebP preserva alpha. Registro detalhado emdist/art-manifest.json.
+
+| Arquivo | Consumo funcional |
+|---|---|
+| companions-v4.webp | 3×2 · Três pets: slime astral, raposa lunar e draco; três montarias: lobo de prata, pantera astral e cervo solar. Arte original isométrica detalhada, células iguais com alpha. |
+| npcs-v4.webp | 2×2 · Ilyra guardiã, Borun ferreiro, Selene mercadora e Aeris guardiã de criaturas. Figuras originais de corpo inteiro, isométricas, quadrantes isolados transparentes. |
+| sigils-v4.webp | 4×2 · Seis estágios de núcleos de energia, pluma e essência, ícones de tecnomagia originais com alpha. |
+| logo-v4.webp | single · Logo original ELYNDRA, ASCENSÃO DAS RELÍQUIAS, metal gravado e asas com cristais. Transparente. |
+| frames-v4.webp | custom UV · Primeira geração de molduras ornamentadas. Conservada para histórico, substituída em runtime porframes-v5. |
+| ground-v5.webp | 2×2 · Materiais planos originais para terreno: relva esmeralda, calçamento calcário, piso de masmorra em ardósia e areia. Sem perspectiva, quadrantes opacos. |
+| scenery-v5.webp | 3×2 · Objetos isométricos transparentes: carvalho, salgueiro azul, rocha cristalina, portal, pavilhão e flores. |
+| mobs-v5.webp | 3×2 · Criaturas originais isométricas: lobo blindado, escorpião cristalino, autômato, demônio, espírito e guardião do vazio. Alpha. |
+| presence-v5.webp | 3×2 · Seis mantos de energia de corpo inteiro, centro vazio: branco/cian, verde, violeta, ouro, cian divino e violeta primordial. Alpha e margens para desenhar o herói no centro. |
+| weapon-energy-v5.webp | 3×2 · Seis plumas verticais estreitas de energia viva, sem espada, do brilho branco discreto ao plasma cósmico cian/violeta, filamentos e faíscas. Alpha. Usadas sobre o eixo da arma com animação procedural. |
+| frames-v5.webp | custom UV, 4 · Quatro molduras de titânio escuro futuristas, linhas finas cian/ouro/violeta/teal, cantos angulares. Interior e exterior transparentes, sem texto e sem controles desenhados. UV emui-assets.js; aplicação9slice. |
+
+Movimento em tempo real: UV de animação dos personagens existentes; respiração/impacto das criaturas; manto deMagículas traseiro/frontal; partículas ascendentes e fragmentos; emissão de arma por eixo e grau; luz dos portais. As novas folhas de criaturas não são ciclos completos de locomoção: usam deformações/transformações limitadas. Botões e atributos permanecem texto e controles vivos, não uma imagem de interface falsa.

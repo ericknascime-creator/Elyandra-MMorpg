@@ -1,5 +1,6 @@
-import {drawAscension} from './ascension-art.js?v=10';
-import {CLASSES} from './classes.js?v=10';
+import {drawLivingWeaponEnergy} from './engine/visual-assets.js?v=11';
+import {drawAscension} from './ascension-art.js?v=11';
+import {CLASSES} from './classes.js?v=11';
 const TAU=Math.PI*2;
 export function drawHero(g,id,moving,t,attack,a={}){const kit=CLASSES[id]||{armor:'#405a69',trim:'#b6b7a0',color:'#cbe0d5'},rank=Math.max(0,['D','C','B','A','S','SS','SS+','SSS','SSS+','ULTRA'].indexOf(a.quality||'D')),heavy=['BAS','RUP'].includes(id),mage=id==='ARC',archer=id==='VIG',assassin=id==='ESP',dual=id==='DUE',astral=id==='LAS',npc=id==='NPC';const ink='#08131c',trim=rank>=7?'#e8c78b':kit.trim,steel=rank>=6?'#7498b8':kit.armor,accent=rank>=8?'#9ff7ed':kit.color,skin='#bf977e';const stride=moving?Math.sin(t*9):0,swing=attack?Math.sin(t*22)*.8:0,bob=moving?Math.abs(stride)*1.2:Math.sin(t*1.6)*.45;
 const poly=(pts,fill,stroke=ink,w=.8)=>{g.beginPath();pts.forEach((p,n)=>n?g.lineTo(p[0],p[1]):g.moveTo(p[0],p[1]));g.closePath();if(fill){g.fillStyle=fill;g.fill();}if(stroke){g.strokeStyle=stroke;g.lineWidth=w;g.stroke();}};
@@ -25,7 +26,7 @@ if(secondary){if(id==='BAS'){poly([[-10,-20],[2,-27],[13,-18],[11,8],[1,20],[-10
 else if(archer){g.rotate(-.2);g.beginPath();g.moveTo(-1,-45);g.bezierCurveTo(15,-34,19,-10,1,18);g.strokeStyle=metal(0,15);g.lineWidth=3.3;g.stroke();line(-1,-45,attack?-9:0,-12,'#e0d3b0',.65);line(attack?-9:0,-12,1,18,'#e0d3b0',.65);line(-10,-12,24,-12,'#cad8df',1);poly([[23,-14],[30,-12],[23,-10]],'#e6eff0');for(let n=0;n<3;n++)poly([[8+n,-35+n*10],[13+n,-31+n*10],[9+n,-28+n*10]],trim,null);}
 else if(mage||npc){line(0,13,0,-49,'#342e2a',4);line(-.8,12,-.8,-45,trim,1.1);poly([[0,-61],[8,-49],[5,-39],[-5,-39],[-8,-49]],metal(-7,7));poly([[0,-57],[4,-49],[0,-42],[-4,-49]],accent,trim,.7);oval(0,-49,1.5,2,'#efffff');}
 else if(assassin){blade(23,3.7);}else if(id==='RUP'){g.rotate(.25);blade(64,5);line(-4,-45,3,-46,trim,1);}else if(astral){g.rotate(.15);blade(51,1.7);}else blade(heavy?43:45,3);
-g.shadowBlur=0;g.restore();};
+if(!npc)drawLivingWeaponEnergy(g,0,-(mage?57:archer?44:assassin?30:id==='RUP'?73:50),0,archer?18:0,secondary?(a.secondaryEnchant||0):e,t,attack);g.shadowBlur=0;g.restore();};
 if(a.hasSecondary!==false&&id!=='RUP')weapon(true);if(a.hasWeapon!==false)weapon();
 if(e>=10&&a.hasWeapon!==false)for(let n=0;n<Math.min(8,Math.ceil(e/3));n++){const q=t*1.5+n*2.4;oval(19+Math.cos(q)*8,-54+Math.sin(q)*24,.7+e/35,.7+e/35,energy);}
 if(rank>=6&&a.hasArmor!==false){g.globalAlpha=.5;for(let n=0;n<4;n++){const q=t+n*1.57;oval(Math.sin(q)*14,-49+Math.cos(q)*20,.8,.8,accent);}g.globalAlpha=1;}

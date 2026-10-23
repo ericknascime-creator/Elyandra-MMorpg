@@ -1,4 +1,4 @@
-# Elyndra — Ascensão das Relíquias · alpha 0.6
+# Elyndra — Ascensão das Relíquias · alpha 0.11
 
 RPG de ação isométrico para navegador, com interface horizontal para toque. Código original em JavaScript/Canvas2D, sem dependências de execução. Referências de organização: inventário com personagem e peças, barra de habilidades, forja com receitas e atributos de equipamento.
 
@@ -18,7 +18,7 @@ Campanha: comece no nível1, fale com Ilyra e toque na missão para caminhar. O 
 
 ## Limites reais desta versão
 
-Esta é uma alpha **solo, com salvamento no navegador**, não um MMORPG com servidor. Regiões usam arenas de terreno e cores diferentes; ainda não são12mapas finais produzidos individualmente. DGs de grupo são adaptadas para teste solo. Algumas mecânicas de habilidades ainda são aproximações; Interceptar exige aliado e não funciona no teste solo. Guildas, guerras, leilão entre jogadores, rankings globais, contas, economia segura e compras reais ainda não existem. O catálogo de fantasias, montarias, pets e chefes não equivale à implementação integral desses sistemas. Os gráficos são vetoriais procedurais, não modelos3D finais. Os testes de viewport não substituem teste em aparelhos físicos iOS/Android.
+Esta é uma alpha **solo, com salvamento no navegador**, não um MMORPG com servidor. Regiões usam arenas de terreno e cores diferentes; ainda não são12mapas finais produzidos individualmente. DGs de grupo são adaptadas para teste solo. Algumas mecânicas de habilidades ainda são aproximações; Interceptar exige aliado e não funciona no teste solo. Guildas, guerras, leilão entre jogadores, rankings globais, contas, economia segura e compras reais ainda não existem. Pets, montarias e Magículas possuem aquisição/evolução local e bônus reais. Fantasias não têm ainda todo o sistema final planejado. Gráficos combinam atlases originais gerados, Canvas2D e composição WebGL; não são modelos3D completos. Os testes de viewport não substituem teste em aparelhos físicos iOS/Android.
 
 ## Validação
 
@@ -64,3 +64,7 @@ Canvas scene composition now has an optional WebGL bloom/color compositor, fixed
 
 ## Atualização0.10
 Entrada única, animação de ataque das7classes, daikatana de duas mãos com orçamento2× e migração dos itens existentes, poder v2 com decomposição, cash direto em fabricação/runas/aprimoramento/extensão/relíquias, novos projéteis e impactos.49testes. Alpha solo local; entrada não é autenticação de conta. Consulte BALANCE.md e GRAPHICS.md para coeficientes e limites.
+
+## Alpha0.11 · combate, jornada e presença
+
+Leia [a especificação atual](dist/GUIA-DE-COMBATE.md). Inclui novas imagens de criaturas/cenário/NPCs/companheiros, molduras futuristas, energia de arma+25, Magículas100, aquisição/evolução de pets e montarias, ganhos reais por nível de relíquia, análise de dano por skill e PvP matemático local. Campanha pós-introdução com12capítulos, recompensa única e navegação por caminhos.66testes passam. A revisão0.11 não teve QA visual final: o navegador de prévia foi bloqueado por erro interno de autorização. Não há benchmark em celular físico.

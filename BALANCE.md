@@ -1,3 +1,7 @@
+# Regras atuais: alpha0.11
+
+A especificação vigente é [GUIA-DE-COMBATE](dist/GUIA-DE-COMBATE.md). As seções abaixo são histórico; faixas antigas de50níveis e pesos anteriores não são a regra atual.
+
 # Elyndra 0.7 — Atributos e referência Cabal
 
 ## Referências verificadas em 23/10/2026

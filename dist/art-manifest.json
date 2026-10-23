@@ -1,7 +1,7 @@
 {
-  "version": "0.8",
+  "version": "0.11",
   "mode": "built-in image_gen",
-  "postprocess": "WebP encoding at quality90; original alpha preserved, no creative image edits",
+  "postprocess": "WebP encoding quality88–90, original alpha preserved; technical UV crops only, no creative raster edits",
   "assets": [
     {
       "path": "assets/warrior-atlas-v1.webp",
@@ -18,6 +18,83 @@
     {
       "path": "assets/weapon-atlas-v1.webp",
       "prompt": "Use case: stylized-concept. Asset type: transparent original fantasy MMORPG equipment atlas, square1280x1280, exact2x2equalcell grid. Each cell contains one full vertical greatsword, tip towardtop, hilt towardbottom, centered, entire swordfitswith12%transparentmargin. Same longblade silhouette and proportions, engravedrealistic3Drendered metal, exquisite material detail. TOP LEFT common: dull plain forgediron, wornleather hilt, no glow. TOP RIGHT rare: detailedtemperedsteel, bronze crossguard, tiny emerald gemstone. BOTTOM LEFT legendary: ornate darksilver greatsword, goldsunfiligree, bluecrystal in crossguard, fineetchedsteel, subtle warm luminousedge. BOTTOM RIGHT ultra: advanced astral greatsword with samebasegeometry, translucentcyanwhite cuttingedges, dark engravedmetalcore, intricategoldmounts, cyancrystal. Neutralstudio lighting, physicallybelievable polishedmetal texture. Genuine transparentbackground, no floor,no castshadow,no text, no labels, no gridlines, no logos. No smoky glow outsideweapon outlines so game engine can animate glow separately. Equipmentasset sheet, not UI orposter."
+    },
+    {
+      "path": "assets/companions-v4.webp",
+      "grid": "3×2",
+      "brief": "Três pets: slime astral, raposa lunar e draco; três montarias: lobo de prata, pantera astral e cervo solar. Arte original isométrica detalhada, células iguais com alpha.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/npcs-v4.webp",
+      "grid": "2×2",
+      "brief": "Ilyra guardiã, Borun ferreiro, Selene mercadora e Aeris guardiã de criaturas. Figuras originais de corpo inteiro, isométricas, quadrantes isolados transparentes.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/sigils-v4.webp",
+      "grid": "4×2",
+      "brief": "Seis estágios de núcleos de energia, pluma e essência, ícones de tecnomagia originais com alpha.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/logo-v4.webp",
+      "grid": "single",
+      "brief": "Logo original ELYNDRA, ASCENSÃO DAS RELÍQUIAS, metal gravado e asas com cristais. Transparente.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/frames-v4.webp",
+      "grid": "custom UV",
+      "brief": "Primeira geração de molduras ornamentadas. Conservada para histórico, substituída em runtime porframes-v5.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/ground-v5.webp",
+      "grid": "2×2",
+      "brief": "Materiais planos originais para terreno: relva esmeralda, calçamento calcário, piso de masmorra em ardósia e areia. Sem perspectiva, quadrantes opacos.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/scenery-v5.webp",
+      "grid": "3×2",
+      "brief": "Objetos isométricos transparentes: carvalho, salgueiro azul, rocha cristalina, portal, pavilhão e flores.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/mobs-v5.webp",
+      "grid": "3×2",
+      "brief": "Criaturas originais isométricas: lobo blindado, escorpião cristalino, autômato, demônio, espírito e guardião do vazio. Alpha.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/presence-v5.webp",
+      "grid": "3×2",
+      "brief": "Seis mantos de energia de corpo inteiro, centro vazio: branco/cian, verde, violeta, ouro, cian divino e violeta primordial. Alpha e margens para desenhar o herói no centro.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/weapon-energy-v5.webp",
+      "grid": "3×2",
+      "brief": "Seis plumas verticais estreitas de energia viva, sem espada, do brilho branco discreto ao plasma cósmico cian/violeta, filamentos e faíscas. Alpha. Usadas sobre o eixo da arma com animação procedural.",
+      "generator": "built-in image_gen",
+      "original": true
+    },
+    {
+      "path": "assets/frames-v5.webp",
+      "grid": "custom UV, 4",
+      "brief": "Quatro molduras de titânio escuro futuristas, linhas finas cian/ouro/violeta/teal, cantos angulares. Interior e exterior transparentes, sem texto e sem controles desenhados. UV emui-assets.js; aplicação9slice.",
+      "generator": "built-in image_gen",
+      "original": true
     }
   ],
   "revision09": {
