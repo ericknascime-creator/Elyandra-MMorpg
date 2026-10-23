@@ -46,3 +46,11 @@ Fonte: https://www.cabal.co.kr/gameInfo/forcebook/장비슬롯확장
 - Avisos temporários usam dimensões explícitas e são removidos ao acabar; mensagens vazias ficam ocultas.
 
 Validação: testes das fórmulas, evolução de asas/aura, custos, cash separado, ranking local, acesso a regiões, extensão e encaixes uniformes. QAde interface em844×390 e667×375, com evolução0→10 nos dois sistemas, cash de teste e encontro de chefe final. Isto não substitui teste em aparelhos físicos.
+
+## Alpha0.7 — Base MMORPG e atributos
+
+Asas/aura0–50, hierarquia Comum→Ultra, componentes CSS de Asa Divina flutuante e card de espada Hélion, efeitos Canvas de canalização/impacto/tempestade/trajeto, cooldown radial e fluidosHP/MP. Menu→Relíquias & arena permite observar skills no LAB. Evoluir→Asas/Aura permite visualizar as50evoluções; o botão LAB equipa a prévia somente no laboratório.
+
+Inventário→peça: tentativa com cash ou terceiro slot com compra automática de faltantes e confirmação do preço. Empório lista Extensor Astral por25000cash; aplicação automática cobra500. Laboratório novo concede100000cash e recursos de teste; recarga de cash no LAB tem botão de100000. Pagamentos reais continuam indisponíveis.
+
+Combate e ficha agora separam AF/AM, AMP espada/magia, taxa crítica/limite/excedente, dano crítico, penetração e resistências. Referência oficial Cabal e adaptação por classe documentadas em [BALANCE.md](BALANCE.md). Não é emulação exata das fórmulas do servidor Cabal. São42testesautomatizados. Nenhum teste valida equilíbrio dePvP multiplayer.

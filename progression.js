@@ -1,5 +1,5 @@
 // Local campaign rules from blueprint v0.3, including later FOR/INT/DES changes.
-import {convertCatalogItem} from './equipment.js?v=6';
+import {convertCatalogItem} from './equipment.js?v=7';
 export function xpBase(level){return Math.ceil(100*Math.max(1,level)**1.55);}
 export function xpNeeded(level){return xpBase(level)*(level>=150?2:1);}
 export function advanceXP(player,amount){if(player.testMode||player.level>=250)return 0;player.xp+=Math.max(0,Math.floor(amount));let gained=0;while(player.level<250&&player.xp>=xpNeeded(player.level)){player.xp-=xpNeeded(player.level);player.level++;gained++;}if(player.level===250)player.xp=0;return gained;}
