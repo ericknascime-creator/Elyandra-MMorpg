@@ -60,3 +60,7 @@ Combate e ficha agora separam AF/AM, AMP espada/magia, taxa crítica/limite/exce
 Welcome→**JOGAR NOVA ÁREA GRÁFICA** enters Jardins de Hélion with a Ruptor in a level175 laboratory profile. New original character/creature/scene/equipment atlases, animated poses and circular skill controls. Three wolves awaken Fenrir. Weapon art is shared by inventory and character, with enhancement light. Classic campaign remains separate. See[GRAPHICS.md](GRAPHICS.md) for architecture, validation and limitations; exact art prompts in`dist/art-manifest.json`.
 
 Canvas scene composition now has an optional WebGL bloom/color compositor, fixed-size particles, cached terrain and optimized WebP art. Canvas compatibility target30fps; WebGL target60fps with adaptive reduction. Physical-phone performance and GPU-path execution still require device testing. Browser QA used the fallback because its WebGL context was unavailable.43automatedtests.
+
+
+## Atualização0.10
+Entrada única, animação de ataque das7classes, daikatana de duas mãos com orçamento2× e migração dos itens existentes, poder v2 com decomposição, cash direto em fabricação/runas/aprimoramento/extensão/relíquias, novos projéteis e impactos.49testes. Alpha solo local; entrada não é autenticação de conta. Consulte BALANCE.md e GRAPHICS.md para coeficientes e limites.

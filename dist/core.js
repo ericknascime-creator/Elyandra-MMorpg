@@ -1,16 +1,16 @@
-import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage} from './combat.js?v=8';
-import {ascensionBonuses} from './ascension.js?v=8';
-import {runeValue} from './runes.js?v=8';
-import {xpNeeded} from './progression.js?v=8';
-import {attributeGains} from './attributes.js?v=8';
+import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage} from './combat.js?v=10';
+import {ascensionBonuses} from './ascension.js?v=10';
+import {runeValue} from './runes.js?v=10';
+import {xpNeeded} from './progression.js?v=10';
+import {attributeGains} from './attributes.js?v=10';
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-import {CLASSES} from './classes.js?v=8';
+import {CLASSES} from './classes.js?v=10';
 export {CLASSES};
 export function stats(p){
  const c=CLASSES[p.classId],lv=p.level-1,g=CLASS_PROFILES[p.classId].growth,growth=attributeGains(p);
  let hp=c.hp+lv*g.hp,mp=c.mp+lv*g.mp,af=(p.classId==='ARC'?12:c.atk)+lv*g.af,am=(p.classId==='ARC'?c.atk:p.classId==='LAS'?c.atk*.65:10)+lv*g.am,def=c.def+lv*g.def,critRaw=.05,critd=1.2,maxcrit=.5,acc=1000,haste=0,ampF=0,ampM=0,penF=0,penM=0,critres=0,critdres=0,ampres=0,dr=0,cdr=0,ignoreCritRes=0,ignoreCritdRes=0,ignoreAmpRes=0,evasion=growth.evasion;
  const add=(type,v)=>{switch(type){case 'crit':critRaw+=v;break;case 'critd':critd+=v;break;case 'maxcrit':maxcrit+=v;break;case 'haste':haste+=v;break;case 'ampF':ampF+=v;break;case 'ampM':ampM+=v;break;case 'ampAll':ampF+=v;ampM+=v;break;case 'af':af+=v;break;case 'am':am+=v;break;case 'atk':af+=v;am+=v;break;case 'pen':penF+=v;penM+=v;break;case 'penM':penM+=v;break;case 'hp':hp+=v;break;case 'mana':case 'mp':mp+=v;break;case 'def':def+=v;break;case 'precisao':acc+=v;break;case 'critres':critres+=v;break;case 'critdres':critdres+=v;break;case 'ampres':ampres+=v;break;case 'dr':dr+=v;break;case 'cdr':cdr+=v;break;case 'evasion':evasion+=v;break;case 'ignoreCritRes':ignoreCritRes+=v;break;case 'ignoreCritdRes':ignoreCritdRes+=v;break;case 'ignoreAmpRes':ignoreAmpRes+=v;break;}};
- for(const id of Object.values(p.equipped)){const i=p.bag.find(v=>v.id===id);if(!i)continue;const e=i.enchant||0,b=i.base,typed=b.af!=null||b.am!=null;
+ for(const id of new Set(Object.values(p.equipped))){const i=p.bag.find(v=>v.id===id);if(!i||p.classId==='RUP'&&i.slot==='secondary')continue;const e=i.enchant||0,b=i.base,typed=b.af!=null||b.am!=null;
  if(typed){af+=(b.af||0)*(1+.012*e);am+=(b.am||0)*(1+.012*e);}else {const a=(b.atk||0)*(1+.012*e);if(p.classId==='ARC')am+=a;else if(p.classId==='LAS'){af+=a*.65;am+=a*.35;}else af+=a;}
  def+=(b.def||0)*(1+.012*e);hp+=(b.hp||0)*(1+.008*e);acc+=(b.acc||0)*(1+.006*e);mp+=b.mp||0;
  for(const a of i.options||[])add(a.type,a.value);for(const [n,a] of (i.runes||[]).entries())add(a.type,runeValue(i,a,n));
@@ -21,12 +21,12 @@ export function stats(p){
  maxcrit=clamp(maxcrit,.5,.95);critd=Math.max(1.2,critd);const crit=clamp(critRaw,0,maxcrit);haste=clamp(haste,0,.7);cdr=clamp(cdr,0,.5);
  const result={hp:Math.round(hp),mp:Math.round(mp),af:Math.round(af),am:Math.round(am),def:Math.round(def),crit,critRaw,maxcrit,critd,haste,ampF:Math.max(0,ampF),ampM:Math.max(0,ampM),penF,penM,acc,evasion,critres:clamp(critres,0,.8),critdres,ampres,dr,cdr,ignoreCritRes,ignoreCritdRes,ignoreAmpRes,range:c.range,speed:c.speed,interval:c.interval/(1+haste)};
  const basic=attackProfile(result,p.classId),skill=attackProfile(result,p.classId,p.classId==='LAS'?6:0),skillWeight=p.classId==='VIG'?.12:p.classId==='ARC'?.9:.65,referenceDef=10+.7*p.level**1.35,hit=clamp(.85+(acc-p.level*10)/10000,.65,.99),expected=profile=>profile.atk*(1+crit*(critd-1))*(1-damageReduction(referenceDef,profile.pen)),offense=(expected(basic)*(1-skillWeight)+expected(skill)*(1+skill.amp)*skillWeight)/result.interval*12*hit/.85*(1+skillWeight*(1/(1-cdr)-1)),survival=(def*7+hp*.7+dr*5)/(1-Math.min(.25,evasion/10000))*(1+result.critres*.3+Math.min(.5,ampres)*.2+Math.min(1,critdres)*.1);
- return {...result,atk:p.classId==='LAS'?Math.round(af+am):Math.round(basic.atk),amp:skill.amp,pen:skill.pen,pc:Math.round(offense+survival)};
+ return {...result,atk:p.classId==='LAS'?Math.round(af+am):Math.round(basic.atk),amp:skill.amp,pen:skill.pen,offensePower:Math.round(offense*2),defensePower:Math.round(survival*2),dps:Math.round(offense/12),pc:Math.round(offense*2)+Math.round(survival*2)};
 }
 export const damage=combatDamage;
 export const maxXP=xpNeeded;
 export function rollValue(cap,rng=Math.random){const r=rng();let grade=r<.55?60+Math.floor(rng()*151)/10:r<.85?75.1+Math.floor(rng()*150)/10:r<.98?90.1+Math.floor(rng()*99)/10:100;return Math.round(cap*grade/100*10000)/10000;}
-let serial=0;export function item(classId,level,slot='weapon',quality='D',rng=Math.random){const c=CLASSES[classId];const names={weapon:c.weapons[0],secondary:c.weapons[1],armor:c.torso,head:'Elmo de '+c.name,hands:'Manoplas de '+c.name,legs:'Perneiras de '+c.name,boots:'Botas de '+c.name};const scale=1+(level-1)*.15;return {id:Date.now().toString(36)+'-'+(++serial),name:names[slot],classId,level,slot,quality,enchant:0,slots:quality==='D'?0:1,runes:[],base:slot==='weapon'?{atk:Math.round((classId==='RUP'?37:25)*scale),acc:classId==='RUP'?120:80}:slot==='secondary'?(classId!=='BAS'?{atk:Math.round(12*scale),acc:40}:{def:Math.round(18*scale),hp:Math.round(60*scale)}):{def:Math.round((slot==='armor'?10:4)*scale),hp:Math.round((slot==='armor'?70:25)*scale)},options:quality==='D'?[]:[{type:classId==='VIG'?'critd':'crit',value:rollValue(classId==='VIG'?.10:.04,rng)}]};}
+let serial=0;export function item(classId,level,slot='weapon',quality='D',rng=Math.random){const c=CLASSES[classId];const names={weapon:c.weapons[0],secondary:c.weapons[1],armor:c.torso,head:'Elmo de '+c.name,hands:'Manoplas de '+c.name,legs:'Perneiras de '+c.name,boots:'Botas de '+c.name};const scale=1+(level-1)*.15;return {id:Date.now().toString(36)+'-'+(++serial),name:names[slot],classId,level,slot,quality,weaponBudgetVersion:2,enchant:0,slots:quality==='D'?0:1,runes:[],base:slot==='weapon'?{atk:Math.round((classId==='RUP'?50:25)*scale),acc:classId==='RUP'?120:80}:slot==='secondary'?(classId!=='BAS'?{atk:Math.round(12*scale),acc:40}:{def:Math.round(18*scale),hp:Math.round(60*scale)}):{def:Math.round((slot==='armor'?10:4)*scale),hp:Math.round((slot==='armor'?70:25)*scale)},options:quality==='D'?[]:[{type:classId==='VIG'?'critd':'crit',value:rollValue(classId==='VIG'?.10:classId==='RUP'?.08:.04,rng)}]};}
 export function canExtend(playerLevel,i){return playerLevel>=175&&i.level>=175&&['SS+','SSS','SSS+','ULTRA'].includes(i.quality)&&i.slots===2;}
 export function potionPulse(current,maxAtUse,maxNow,rate){return Math.min(maxNow,current+maxAtUse*rate/5);}
 export function createPlayer(classId,name){const bag=[item(classId,1),...(classId==='RUP'?[]:[item(classId,1,'secondary')]),...['armor','head','hands','legs','boots'].map(slot=>item(classId,1,slot))];return {attributes:{for:0,int:0,des:0},schema:1,name:name.trim().slice(0,18)||'Viajante',classId,level:1,xp:0,gold:5000,progressionVersion:4,materials:{L01:40,E01:10,N01:2,K01:10,P01:10},hp:CLASSES[classId].hp+170+(classId==='BAS'?60:0),mp:CLASSES[classId].mp,x:12,y:14,zone:'coast',bag,equipped:Object.fromEntries(bag.map(i=>[i.slot,i.id])),pots:{hp:6,mp:6},quest:0,kills:0,shards:3,runes:1,buffs:[],dungeonClears:0,killCount:0,playSeconds:0};}

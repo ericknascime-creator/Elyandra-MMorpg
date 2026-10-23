@@ -19,3 +19,7 @@ export function criticalMultiplier(st,target={}){return Math.max(1.2,st.critd-Ma
 export function effectiveAmp(amp,st,target={}){return Math.max(0,amp-Math.max(0,(target.ampres||0)-(st.ignoreAmpRes||0)));}
 export function damageReduction(def,penetration=0){return bounded(Math.max(0,def-penetration)/(1000+Math.max(0,def-penetration)),.003,.95);}
 export function combatDamage(atk,coef,def,critChance=0,critMult=1.2,rng=Math.random,penetration=0,reduction=0){const critical=rng()<critChance;return {value:Math.max(1,Math.round(atk*coef*(critical?critMult:1)*(1-damageReduction(def,penetration))-reduction)),critical};}
+
+export function basicInterval(st,buffs={}){const bonus=(buffs.haste?1.25:1)*(buffs.dance?1.15:1);return Math.max(.18,st.interval/bonus);}
+export function nextBasicCooldown(remaining,interval){return Math.max(-.08,remaining)+interval;}
+export function enchantVisual(rank){const e=Math.max(0,Math.min(25,rank));return {stage:e===25?5:e>=20?4:e>=15?3:e>=10?2:e>=5?1:0,color:e===25?'#baffff':e>=20?'#b06dff':e>=15?'#00e5ff':e>=10?'#72aaff':e>=5?'#ffc46c':'#d8d8d8',motes:e<5?0:Math.min(18,Math.ceil(e*.65)),intensity:e/25};}

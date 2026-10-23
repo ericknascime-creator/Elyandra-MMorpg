@@ -16,3 +16,6 @@ Generated using the built-in image_gen tool. Exact final prompts and asset paths
 - `dist/assets/weapon-atlas-v1.webp`: common/rare/legendary/ultra greatswords, two columns and two rows; shared between inventory and in-world weapon.
 
 Source PNG outputs are kept in the generating workspace; the project ships optimized WebP files. No commercial game textures or character models were copied. User screenshots were visual references for density, materials and scale; not source textures.
+
+### Alpha0.10 generated assets
+Built-in image_gen, four original production briefs: (1)4×3 isometric silver/gold/navy male Ruptor with long heavy curved two-handed daikatana, both hands gripping same hilt, idle/walk/overhead slash; (2)4×6 atlas of archer, assassin, mage, tank, duelist, astral blade with windup/release/followthrough/recovery; (3)4×2 transparent cyan missile, golden arrow, violet impact, gold slash, cyan shockwave, crimson slash, violet rune, lightning impact; (4)wide original twilight citadel/forest/crystal-portal login environment with quiet left interface space. Transparent outputs preserved; ffmpeg used only for WebP encoding. Paths: dist/assets/ruptor-motion-v3.webp, attacks-v3.webp, effects-v3.webp, login-v3.webp. Layout metadata and runtime consumers in dist/engine/visual-assets.js, world.js and visual-garden.css.

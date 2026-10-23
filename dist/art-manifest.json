@@ -19,5 +19,49 @@
       "path": "assets/weapon-atlas-v1.webp",
       "prompt": "Use case: stylized-concept. Asset type: transparent original fantasy MMORPG equipment atlas, square1280x1280, exact2x2equalcell grid. Each cell contains one full vertical greatsword, tip towardtop, hilt towardbottom, centered, entire swordfitswith12%transparentmargin. Same longblade silhouette and proportions, engravedrealistic3Drendered metal, exquisite material detail. TOP LEFT common: dull plain forgediron, wornleather hilt, no glow. TOP RIGHT rare: detailedtemperedsteel, bronze crossguard, tiny emerald gemstone. BOTTOM LEFT legendary: ornate darksilver greatsword, goldsunfiligree, bluecrystal in crossguard, fineetchedsteel, subtle warm luminousedge. BOTTOM RIGHT ultra: advanced astral greatsword with samebasegeometry, translucentcyanwhite cuttingedges, dark engravedmetalcore, intricategoldmounts, cyancrystal. Neutralstudio lighting, physicallybelievable polishedmetal texture. Genuine transparentbackground, no floor,no castshadow,no text, no labels, no gridlines, no logos. No smoky glow outsideweapon outlines so game engine can animate glow separately. Equipmentasset sheet, not UI orposter."
     }
-  ]
+  ],
+  "revision09": {
+    "tool": "built-in image_gen",
+    "assets": {
+      "classes-atlas-v2.webp": "Seven original fully equipped class poses, 4x2 atlas. Weapons integrated into held pose; runtime energy attached to pose transform.",
+      "relics-atlas-v2.webp": "3x2: three wing pairs, two aura rings, original crest.",
+      "arsenal-atlas-v2.webp": "4x3: class weapons, shield, orb, seal, helmet, chest."
+    },
+    "limitations": "Class sprites use one detailed pose with runtime motion, not directional skeletal animation. Base equipped silhouette per class; individual body part removal uses procedural fallback. Not unique raster art for every rarity or catalog item."
+  },
+  "revision010": {
+    "mode": "built-in image_gen",
+    "assets": [
+      {
+        "file": "assets/ruptor-motion-v3.webp",
+        "grid": [
+          4,
+          3
+        ],
+        "use": "Ruptor idle/walk/attack, twohanded daikatana"
+      },
+      {
+        "file": "assets/attacks-v3.webp",
+        "grid": [
+          4,
+          6
+        ],
+        "use": "VIG ESP ARC BAS DUE LAS four attack frames per row"
+      },
+      {
+        "file": "assets/effects-v3.webp",
+        "grid": [
+          4,
+          2
+        ],
+        "use": "projectile impact slash nova storm"
+      },
+      {
+        "file": "assets/login-v3.webp",
+        "use": "unified entrance background"
+      }
+    ],
+    "prompts_document": "ASSETS.md",
+    "limitations": "Mirrored facing, limited frame count. Full directional rigs and individual rarity skins pending."
+  }
 }
