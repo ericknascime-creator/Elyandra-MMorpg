@@ -1,5 +1,5 @@
-import {KITS} from './skills.js?v=14';
-import {resolveStrike,basicInterval} from './combat.js?v=14';
+import {KITS} from './skills.js?v=16';
+import {resolveStrike,basicInterval} from './combat.js?v=16';
 // Bounded offline model. Stationary single targets, no pathing or player decisions.
 export function seededRandom(seed=1){let n=seed>>>0;return ()=>{n=(Math.imul(1664525,n)+1013904223)>>>0;return n/4294967296;};}
 export function simulateDuel(a,b,{seed=1,seconds=90}={}){

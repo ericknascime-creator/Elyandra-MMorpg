@@ -47,3 +47,9 @@ assets/commands-v6.webp: folha4×4original gerada para16sistemas, usada noHUD, c
 ## Alpha0.13
 
 pet-forms-v7:18formas originais,6porpet, mudança de silhueta e materiais. pressure-burst-v7:6quadros de liberação espiritual, centro transparente e corteUVtécnico4px para evitar linhas de divisão. Arte gerada comimage_gen; WebP88preserva alpha. Capturas reais do navegador emdocs/qa, sem composição com imagens geradas.
+
+## Atlas dos reinos —0.16
+
+Arquivo integrado: `dist/assets/realm-landmarks-v16.webp` (derivadoPNG com alfa preservado; WebP88). Gerado pela ferramenta integrada image_gen, modo transparente; sem API/CLI externo. Uso: atlas, fortalezas e marcos no mundo. Quatro células2×2: Bastião da Alvorada, Coroa de Obsidiana, Santuário do Eclipse e Observatório do Infinito.
+
+Prompt de produção: “Use case: stylized-concept. Production isometric fantasy MMORPG environment sprite atlas for original game Elyndra.2by2grid transparent sprite sheet, four separate complete buildings centered in equal square quadrants, no overlap. Consistent orthographic isometric camera, entrances facing lower right, crisp hand-painted realistic3D stone, metal, stained glass and luminous runes. Top left: ivory/gold celestial fortress, three towers, cyan beacon, sun heraldry. Top right: obsidian/silver fortress, purple spires, red windows, moon heraldry. Bottom left: forest sanctuary of roots and pale stone, emerald pool, canopy and lanterns. Bottom right: floating arcane observatory, ivory rings, star crystal, gold astrolabe and blue marble steps. Small stone bases, transparent empty background, no sky/fog/rectangular backdrops/text/UI/characters. Complete architectural silhouettes contained in cells.”

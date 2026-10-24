@@ -1,4 +1,4 @@
-import {ascensionTier,STYLES} from './ascension.js?v=14';
+import {ascensionTier,STYLES} from './ascension.js?v=16';
 // Code-native crystal panels: each feather is a separate moving metallic facet.
 export function divineWings(rank=40,style='mystic'){
  const tier=ascensionTier(rank),c=rank<10?'#ffffff':STYLES[style]?.color||tier.color;

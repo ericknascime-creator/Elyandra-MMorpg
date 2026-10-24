@@ -1,3 +1,4 @@
+import {skillGrowth} from './skill-growth.js?v=16';
 // Cabal-inspired separation of sword/magic offense; coefficients are Elyndra balancing.
 export const CLASS_PROFILES={
  VIG:{growth:{hp:30,mp:3,af:5,am:1,def:2.6},primary:'DES',focus:'Ataque físico · velocidade de ataque · taxa crítica · dano crítico · precisão · penetração. Ampliação atua apenas nas skills, não nos tiros básicos.'},
@@ -48,7 +49,7 @@ export function resolveStrike(st,classId,target={},options={}){
  const critical=!expected&&rng()<chance,criticalFactor=expected?1+chance*(mult-1):critical?mult:1;
  const components=attackComponents(st,classId,index).map(part=>{
  const amp=index===null?0:effectiveAmp(part.amp+ampBonus,st,target),def=target[part.type==='magical'?'defM':'defF']??target.def??0;
- const damage=part.atk*part.weight*coefficient*bonus*(1+amp)*(1-damageReduction(def,part.pen));
+ const damage=part.atk*part.weight*coefficient*bonus*(index===null?1:skillGrowth(st['skillRank'+index]).damage)*(1+amp)*(1-damageReduction(def,part.pen));
  return {...part,amp,damage};});
  let value=components.reduce((sum,c)=>sum+c.damage,0)*criticalFactor;
  value=Math.max(1,value-Math.max(0,target.dr||0));

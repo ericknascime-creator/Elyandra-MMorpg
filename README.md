@@ -1,4 +1,4 @@
-# Elyndra — Ascensão das Relíquias · alpha 0.14
+# Elyndra — Ascensão das Relíquias · alpha 0.16
 
 RPG de ação isométrico para navegador, com interface horizontal para toque. Código original em JavaScript/Canvas2D, sem dependências de execução. Referências de organização: inventário com personagem e peças, barra de habilidades, forja com receitas e atributos de equipamento.
 
@@ -84,3 +84,19 @@ Magículas são presença contínua, sem tecla T, botão de liberação ou indic
 O inspetor coloca aprimoramento e tentativa com cash acima das opções, com arte menor. As opções nativas mostram valor/teto e classificação relativa: Fraco (<75%), Razoável (75–<90%), Bom (90–<100%) e Perfeito (teto exato). Runas mantêm os valores fixos próprios. O catálogo agora tem filtros e seis peças por página; atributos têm edição e prévia lado a lado.
 
 A revisão também separa nomes da escala dos personagens, remove backdrop blur durante a partida para reduzir artefatos de composição em Safari e responde ao pointerdown nas skills. Validação de toque real no iPhone e Android ainda necessária. Veja REVISAO-014.md.
+
+## Revisão 0.15
+
+Evoluir reúne Magículas, habilidades, asas, aura, equipamentos e ressonâncias divinas. As relíquias não exibem mais100marcadores; botões de evolução ficam no topo ao lado de prévia reduzida. Magículas continuam passivas e acessíveis também pelas abas das relíquias.
+
+49skills com20níveis individuais, consumindo ouro e cristais, requisito crescente até250. Cada nível treinado acrescenta2%ao dano da própria skill, até38%; mana até19%mais eficiente; barreiras/amp até19%mais potentes, sem estender stun ou invulnerabilidade. Cada treinamento também concede2HP,4MP e2precisão permanentes. O poder usa os níveis reais das habilidades.
+
+Equipamentos SSS+ deNv215+ eULTRA recebem méritos divinos por parte, sem escalá-los com encantamento ou runas. Até três canais selecionados por personagem, geridos em Evoluir → Ressonâncias divinas. Méritos incluem mobilidade, recarga, resistências, limite crítico e perfuração de resistências; nunca invulnerabilidade. Veja REVISAO-015.md.
+
+## Revisão0.16 — edição do criador
+
+Personagens novos e saves abertos nesta edição recebem perfilGM local automaticamente: nível250,ULTRA perfeito+25,3slots preenchidos,skills20,relíquias/Magículas100 e seis companheiros100. Ouro/cash são repostos em999.999.999; materiais/cristais/runas em1.000.000. OConsoleGM permite restaurar o máximo ou preparar níveis baixos para testar evolução, mantendo recursos livres. Até14personagens ficam salvos neste navegador. Isso não é autenticação administrativa de um servidor.
+
+OAtlas organiza as12regiões existentes em4continentes, com viagens, fortalezas e masmorras. Quatro marcos arquitetônicos originais foram gerados e integrados ao cenário. Habitantes passeiam na praça; monstros patrulham perto de sua origem antes do combate; buffs ativos têm órbitas visíveis. Pet/montaria ficam sob o minimapa. A superfície de rolagem dos menus agora tem recorte, contenção e fundo opaco contra artefatos laterais.
+
+88testes passaram. O navegador confirmou criaçãoGM e rolagem do menu sem overflowhorizontal. Esta alpha continua solo/local, sem pagamentos reais, guerras conectadas ou admin de servidor.

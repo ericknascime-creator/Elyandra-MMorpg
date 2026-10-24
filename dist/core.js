@@ -1,11 +1,14 @@
-import {companionBonuses,magiculaBonuses} from './companions.js?v=14';
-import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=14';
-import {ascensionBonuses} from './ascension.js?v=14';
-import {runeValue} from './runes.js?v=14';
-import {xpNeeded} from './progression.js?v=14';
-import {attributeGains} from './attributes.js?v=14';
+import {divineBonuses} from './divine-merits.js?v=16';
+import {skillRank,skillGrowth} from './skill-growth.js?v=16';
+import {KITS} from './skills.js?v=16';
+import {companionBonuses,magiculaBonuses} from './companions.js?v=16';
+import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=16';
+import {ascensionBonuses} from './ascension.js?v=16';
+import {runeValue} from './runes.js?v=16';
+import {xpNeeded} from './progression.js?v=16';
+import {attributeGains} from './attributes.js?v=16';
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-import {CLASSES} from './classes.js?v=14';
+import {CLASSES} from './classes.js?v=16';
 export {CLASSES};
 export function stats(p){
  const c=CLASSES[p.classId],lv=p.level-1,g=CLASS_PROFILES[p.classId].growth,growth=attributeGains(p);
@@ -16,12 +19,15 @@ export function stats(p){
  def+=(b.def||0)*(1+.012*e);hp+=(b.hp||0)*(1+.008*e);acc+=(b.acc||0)*(1+.006*e);mp+=b.mp||0;
  for(const a of i.options||[])add(a.type,a.value);for(const [n,a] of (i.runes||[]).entries())add(a.type,runeValue(i,a,n));
  }
+ const divine=divineBonuses(p);for(const [k,v] of Object.entries(divine))if(k!=='speedPct')add(k,v);
  af+=growth.physical;am+=growth.magical;def+=growth.def;hp*=1+growth.hpPct;mp=(mp+growth.mp)*(1+growth.mpPct);acc+=growth.accuracy;critRaw+=growth.crit;haste+=growth.haste;critd+=growth.critd;ampM+=growth.magicAmp;
  const wa=ascensionBonuses(p);af*=1+wa.attackPct;am*=1+wa.attackPct;acc+=wa.accuracy;hp*=1+wa.hpPct;def*=1+wa.defensePct;critd+=wa.critd;
  const cb=companionBonuses(p),mb=magiculaBonuses(p);af*=1+cb.attackPct+mb.attackPct;am*=1+cb.attackPct+mb.attackPct;hp*=1+cb.hpPct+mb.hpPct;def*=1+cb.defensePct;mp*=1+cb.mpPct;critd+=cb.critd;ampF+=cb.amp;ampM+=cb.amp;penF+=cb.pen+mb.pen;penM+=cb.pen+mb.pen;acc+=cb.accuracy;const now=Date.now();for(const b of p.buffs||[]){if(b.until<=now)continue;if(b.type==='crit')critRaw+=.03;if(b.type==='critd')critd+=.05;if(b.type==='hp')hp*=1.05;if(b.type==='def')def*=1.05;if(b.type==='fortress')hp*=1.2;}
  maxcrit=clamp(maxcrit,.5,.95);critd=Math.max(1.2,critd);const crit=clamp(critRaw,0,maxcrit);haste=clamp(haste,0,.7);cdr=clamp(cdr,0,.5);
- const result={hp:Math.round(hp),mp:Math.round(mp),af:Math.round(af),am:Math.round(am),def:Math.round(def),crit,critRaw,maxcrit,critd,haste,ampF:Math.max(0,ampF),ampM:Math.max(0,ampM),penF,penM,acc,evasion,critres:clamp(critres,0,.8),critdres,ampres,dr,cdr,ignoreCritRes,ignoreCritdRes,ignoreAmpRes,pressure:mb.pressure,ten:clamp(ten,0,.75),pvp:clamp(pvp,0,.5),range:c.range,speed:c.speed*(1+cb.speed),interval:c.interval/(1+haste)};
- const basic=attackProfile(result,p.classId),skill=attackProfile(result,p.classId,p.classId==='LAS'?6:0),skillWeight=1-CLASS_ROLES[p.classId].basicShare,referenceDef=10+.7*p.level**1.35,hit=clamp(.85+(acc-p.level*10)/10000,.65,.99),expected=(index)=>resolveStrike(result,p.classId,{def:referenceDef,level:p.level},{index,expected:true}).value,offense=(expected(null)*(1-skillWeight)+expected(p.classId==='LAS'?6:0)*skillWeight)/result.interval*12/.85*(1+skillWeight*(1/(1-cdr)-1)),survival=(def*7+hp*.7+dr*5)/(1-mb.pressure)/(1-Math.min(.25,evasion/10000))*(1+result.critres*.3+Math.min(.5,ampres)*.2+Math.min(1,critdres)*.1);
+ const ranks=Array.from({length:7},(_,i)=>skillRank(p,i));const support=KITS[p.classId].map((k,i)=>!k.coef?skillGrowth(ranks[i]).potency-1:0).reduce((a,b)=>a+b,0)/7;
+ const trained=ranks.reduce((sum,r)=>sum+r-1,0);hp+=trained*2;mp+=trained*4;acc+=trained*2;
+ const result={...Object.fromEntries(ranks.map((r,i)=>['skillRank'+i,r])),hp:Math.round(hp),mp:Math.round(mp),af:Math.round(af),am:Math.round(am),def:Math.round(def),crit,critRaw,maxcrit,critd,haste,ampF:Math.max(0,ampF),ampM:Math.max(0,ampM),penF,penM,acc,evasion,critres:clamp(critres,0,.8),critdres,ampres,dr,cdr,ignoreCritRes,ignoreCritdRes,ignoreAmpRes,pressure:mb.pressure,ten:clamp(ten,0,.75),pvp:clamp(pvp,0,.5),range:c.range,speed:c.speed*(1+cb.speed+divine.speedPct),interval:c.interval/(1+haste)};
+ const basic=attackProfile(result,p.classId),skill=attackProfile(result,p.classId,p.classId==='LAS'?6:0),skillWeight=1-CLASS_ROLES[p.classId].basicShare,referenceDef=10+.7*p.level**1.35,hit=clamp(.85+(acc-p.level*10)/10000,.65,.99),expected=(index)=>resolveStrike(result,p.classId,{def:referenceDef,level:p.level},{index,expected:true}).value,offense=(1+divine.speedPct*.5)*(expected(null)*(1-skillWeight)+(KITS[p.classId].map((k,i)=>k.coef?expected(i):null).filter(v=>v!==null).reduce((a,b)=>a+b,0)/Math.max(1,KITS[p.classId].filter(k=>k.coef).length))*skillWeight)/result.interval*12/.85*(1+skillWeight*(1/(1-cdr)-1)),survival=(def*7+hp*.7+dr*5)/(1-mb.pressure)/(1-Math.min(.25,evasion/10000))*(1+result.critres*.3+Math.min(.5,ampres)*.2+Math.min(1,critdres)*.1);
  return {...result,atk:p.classId==='LAS'?Math.round(af+am):Math.round(basic.atk),amp:skill.amp,pen:skill.pen,offensePower:Math.round(offense*2),defensePower:Math.round(survival*2),dps:Math.round(offense/12),pc:Math.round(offense*2)+Math.round(survival*2)};
 }
 export const damage=combatDamage;

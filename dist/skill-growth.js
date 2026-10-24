@@ -1,0 +1,5 @@
+export const SKILL_UNLOCK=[1,10,25,45,70,8,130];
+export function skillRank(p,index){return Math.max(1,Math.min(20,Math.floor(Number(p.skillRanks?.[index])||1)));}
+export function skillGrowth(rank){const r=Math.max(1,Math.min(20,Math.floor(Number(rank)||1)));return {damage:1+(r-1)*.02,potency:1+(r-1)*.01,mana:1-(r-1)*.01};}
+export function skillUpgradeQuote(p,index){if(!Number.isInteger(index)||index<0||index>6)return {ok:false,reason:'Habilidade inválida.'};const rank=skillRank(p,index),next=rank+1,level=Math.ceil(SKILL_UNLOCK[index]+(250-SKILL_UNLOCK[index])*(next-1)/19),gold=100*rank*rank*(index===6?3:1),crystals=Math.ceil(rank/3);return {ok:rank<20&&p.level>=level,rank,next,level,gold,crystals,reason:rank>=20?'Nível máximo':p.level<level?'Requer personagem Nv'+level:''};}
+export function upgradeSkill(p,index,inCombat=false){const q=skillUpgradeQuote(p,index);if(inCombat)return {ok:false,reason:'Saia de combate para treinar.'};if(!q.ok)return q;if(p.gold<q.gold||p.shards<q.crystals)return {ok:false,reason:'Ouro ou cristais insuficientes.'};p.skillRanks||={};p.skillRanks[index]=q.next;p.gold-=q.gold;p.shards-=q.crystals;return {ok:true,rank:q.next};}

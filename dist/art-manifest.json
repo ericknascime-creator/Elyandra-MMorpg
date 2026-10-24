@@ -1,5 +1,5 @@
 {
-  "version": "0.13",
+  "version": "0.16",
   "mode": "built-in image_gen",
   "postprocess": "WebP encoding quality88–90, original alpha preserved; technical UV crops only, no creative raster edits",
   "assets": [
@@ -161,5 +161,19 @@
     ],
     "prompts_document": "ASSETS.md",
     "limitations": "Mirrored facing, limited frame count. Full directional rigs and individual rarity skins pending."
+  },
+  "revision016": {
+    "asset": "assets/realm-landmarks-v16.webp",
+    "mode": "built-in image_gen",
+    "transparent": true,
+    "grid": [
+      2,
+      2
+    ],
+    "usage": [
+      "world landmarks",
+      "realm atlas"
+    ],
+    "prompt_document": "../ASSETS.md"
   }
 }
