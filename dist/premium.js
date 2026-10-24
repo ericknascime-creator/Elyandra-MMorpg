@@ -1,12 +1,12 @@
-import {ascensionCost,evolveAscension} from './ascension.js?v=16';
-import {enchantPrice,enchant} from './progression.js?v=16';
-import {extendEquipment} from './loadout.js?v=16';
-import {canExtend} from './core.js?v=16';
+import {ascensionCost,evolveAscension} from './ascension.js?v=18';
+import {enchantPrice,enchant} from './progression.js?v=18';
+import {extendEquipment} from './loadout.js?v=18';
+import {canExtend} from './core.js?v=18';
 
 // A quote buys only missing reagents. The original wallet changes once, after validation.
 export function premiumQuote(p,action,item){
   if(action==='wings'||action==='aura'){
-    if((p[action]?.rank||0)>=100)return {ok:false,reason:'Evolução máxima.'};
+    if((p[action]?.rank||0)>=500)return {ok:false,reason:'Evolução máxima.'};
     const c=ascensionCost(p,action);
     if(p.level<c.level)return {ok:false,reason:'Requer nível '+c.level+'.'};
     const missing=Math.max(0,c.count-(p.materials?.[c.material]||0)),cores=Math.max(0,c.cores-(p.materials?.['Núcleo de Cataclismo']||0)),gold=Math.max(0,c.gold-p.gold);
@@ -15,7 +15,7 @@ export function premiumQuote(p,action,item){
   if(!item||!p.bag.includes(item))return {ok:false,reason:'Peça não encontrada.'};
   if(item.classId!==p.classId||p.level<item.level)return {ok:false,reason:'Requer classe e nível da peça.'};
   if(action==='enchant'){
-    if(item.enchant>=25)return {ok:false,reason:'Aprimoramento máximo +25.'};
+    if(item.enchant>=100)return {ok:false,reason:'Aprimoramento máximo +100.'};
     const c=enchantPrice(item.enchant),missing=Math.max(0,c.crystals-p.shards),gold=Math.max(0,c.gold-p.gold);
     return {ok:true,price:Math.ceil(200+missing*100+gold/50),cost:c,missing,gold,summary:`${missing} cristal(is), ${gold.toLocaleString('pt-BR')} ouro faltante + serviço200 cash. Uma tentativa: ${Math.round(c.chance*100)}% de sucesso; garantia normal preservada.`};
   }
@@ -44,8 +44,8 @@ export function premiumApply(p,action,item=null,inCombat=false,rng=Math.random){
   staged.wallet.cash-=q.price;Object.assign(p,staged);return {...out,price:q.price};
 }
 
-import {craft} from './progression.js?v=16';
-import {runeChoices} from './runes.js?v=16';
+import {craft} from './progression.js?v=18';
+import {runeChoices} from './runes.js?v=18';
 export function premiumCraftQuote(p,src){
  if(!src||src.class_id!==p.classId)return {ok:false,reason:'Receita de outra classe.'};
  if(p.level<src.level_min)return {ok:false,reason:'Requer nível '+src.level_min+'.'};

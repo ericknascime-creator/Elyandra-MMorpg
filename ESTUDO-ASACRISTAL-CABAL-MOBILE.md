@@ -1,3 +1,5 @@
+> Documento histórico da0.16. Implementações posteriores e novos limites estão em EXPANSAO-COSMICA-018.md, BALANCEAMENTO-018.md e docs/qa/v018-scope.md. Os itens abaixo marcados como proposta não devem ser interpretados como entrega integral.
+
 # Elyndra — estudo de Asa de Cristal e Cabal para mobile
 
 Versão do estudo:1.0 ·24/10/2026. Base examinada:Crystal Saga clássico daR2Games, referência internacional doAsa de Cristal. Guias consultados têm publicações históricas; servidores brasileiros, privados eCrystal SagaII podem divergir. Este documento não afirma cobrir todos os conteúdos de todas as edições.

@@ -4,6 +4,7 @@ export const CONTINENTS=[
  {name:'Nhal',nation:'Fronteira disputada',subtitle:'Abismos, impérios e mares de cristal',color:'#e29ce8',cell:1,regions:[6,7,8],fortress:'Coroa de Obsidiana'},
  {name:'Asterion',nation:'Território das Origens',subtitle:'Céus partidos e observatórios primordiais',color:'#87d9fa',cell:3,regions:[9,10,11],fortress:'Observatório do Infinito'}
 ];
+CONTINENTS.push({name:'Caelum',nation:'Firmamento disputado',subtitle:'Evolução astral300–700',color:'#87ffdf',cell:3,regions:[12,13,14,15,16],fortress:'Bastião do Zodíaco'},{name:'Eternum',nation:'Domínio das Estrelas',subtitle:'Arcontes, signos e origem750–1000',color:'#f4a0ff',cell:1,regions:[17,18,19,20],fortress:'Trono da Eternidade'});
 export function continentFor(region){return CONTINENTS.find(c=>c.regions.includes(region))||CONTINENTS[0];}
 export function landmarkFor(region){return ['citadelSun','citadelMoon','sanctuary','observatory'][continentFor(region).cell];}
 export function citizenPosition(i,t,isBlocked=()=>false){const home={x:10+i*2,y:15},candidate={x:home.x+Math.sin(t*.16+i)*1.2,y:home.y+Math.sin(t*.1+i)*.45};return isBlocked(candidate.x,candidate.y)?home:candidate;}
