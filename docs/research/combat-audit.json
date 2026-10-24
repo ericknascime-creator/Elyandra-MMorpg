@@ -1,0 +1,309 @@
+{
+  "purpose": "Audit of current alpha0.16; NOT official Crystal Saga/Cabal formulas",
+  "configuration": "Level250, perfectULTRA+25, three sockets, progression100, skill20; same presets as localGM",
+  "limitations": [
+    "Stationary targets; no distance/kiting/line-of-sight",
+    "Duel bot ignores several buffs, utility skills, ultimates and pet AI",
+    "Duel mana costs are base costs, not rank-discounted; not a livePvP validation",
+    "Power is a reference estimate, not an equal-budget balance certificate"
+  ],
+  "rows": [
+    {
+      "classId": "VIG",
+      "name": "Vigia",
+      "power": 1931499,
+      "hp": 47092,
+      "af": 21273,
+      "am": 387,
+      "crit": 0.5,
+      "maxCrit": 0.5,
+      "critMultiplier": 5.435,
+      "swordAmp": 0,
+      "magicAmp": 0,
+      "skill": "Flecha de choque",
+      "expectedSkillDamage": 30410,
+      "plus10ppCritDamage": 473,
+      "plus10ppSwordAmp": 3041,
+      "plus10ppMagicAmp": 0
+    },
+    {
+      "classId": "ESP",
+      "name": "Espectro",
+      "power": 4713101,
+      "hp": 43474,
+      "af": 21076,
+      "am": 387,
+      "crit": 0.5,
+      "maxCrit": 0.5,
+      "critMultiplier": 4.515,
+      "swordAmp": 2.81,
+      "magicAmp": 0.06999999999999999,
+      "skill": "Golpe duplo",
+      "expectedSkillDamage": 122972,
+      "plus10ppCritDamage": 2230,
+      "plus10ppSwordAmp": 3228,
+      "plus10ppMagicAmp": 0
+    },
+    {
+      "classId": "ARC",
+      "name": "Arcanista",
+      "power": 6072462,
+      "hp": 39462,
+      "af": 416,
+      "am": 23682,
+      "crit": 0.5,
+      "maxCrit": 0.5,
+      "critMultiplier": 3.1350000000000002,
+      "swordAmp": 0.06999999999999999,
+      "magicAmp": 3.0300000000000002,
+      "skill": "Lança arcana",
+      "expectedSkillDamage": 241928,
+      "plus10ppCritDamage": 5851,
+      "plus10ppSwordAmp": 0,
+      "plus10ppMagicAmp": 6003
+    },
+    {
+      "classId": "BAS",
+      "name": "Bastião",
+      "power": 1127689,
+      "hp": 79934,
+      "af": 16073,
+      "am": 536,
+      "crit": 0.07500000000000001,
+      "maxCrit": 0.5,
+      "critMultiplier": 3.3150000000000004,
+      "swordAmp": 2.2700000000000005,
+      "magicAmp": 0.06999999999999999,
+      "skill": "Golpe de escudo",
+      "expectedSkillDamage": 22838,
+      "plus10ppCritDamage": 146,
+      "plus10ppSwordAmp": 698,
+      "plus10ppMagicAmp": 0
+    },
+    {
+      "classId": "RUP",
+      "name": "Ruptor",
+      "power": 5450755,
+      "hp": 63570,
+      "af": 27598,
+      "am": 387,
+      "crit": 0.5,
+      "maxCrit": 0.5,
+      "critMultiplier": 3.315000000000001,
+      "swordAmp": 2.87,
+      "magicAmp": 0.06999999999999999,
+      "skill": "Corte sísmico",
+      "expectedSkillDamage": 359376,
+      "plus10ppCritDamage": 8329,
+      "plus10ppSwordAmp": 9286,
+      "plus10ppMagicAmp": 0
+    },
+    {
+      "classId": "DUE",
+      "name": "Duelista",
+      "power": 2175144,
+      "hp": 55731,
+      "af": 21171,
+      "am": 387,
+      "crit": 0.07500000000000001,
+      "maxCrit": 0.5,
+      "critMultiplier": 3.3150000000000004,
+      "swordAmp": 2.81,
+      "magicAmp": 0.06999999999999999,
+      "skill": "Corte cruzado",
+      "expectedSkillDamage": 56079,
+      "plus10ppCritDamage": 358,
+      "plus10ppSwordAmp": 1472,
+      "plus10ppMagicAmp": 0
+    },
+    {
+      "classId": "LAS",
+      "name": "Lâmina Astral",
+      "power": 1464141,
+      "hp": 49277,
+      "af": 13799,
+      "am": 8571,
+      "crit": 0.5,
+      "maxCrit": 0.5,
+      "critMultiplier": 3.2050000000000005,
+      "swordAmp": 1.7100000000000006,
+      "magicAmp": 1.7900000000000007,
+      "skill": "Iaijutsu",
+      "expectedSkillDamage": 69864,
+      "plus10ppCritDamage": 1661,
+      "plus10ppSwordAmp": 2578,
+      "plus10ppMagicAmp": 0
+    }
+  ],
+  "duels": [
+    {
+      "a": "VIG",
+      "b": "ESP",
+      "aWins": 32,
+      "bWins": 18,
+      "draws": 0,
+      "meanSeconds": 3.45
+    },
+    {
+      "a": "VIG",
+      "b": "ARC",
+      "aWins": 29,
+      "bWins": 21,
+      "draws": 0,
+      "meanSeconds": 3.91
+    },
+    {
+      "a": "VIG",
+      "b": "BAS",
+      "aWins": 29,
+      "bWins": 20,
+      "draws": 1,
+      "meanSeconds": 20.3
+    },
+    {
+      "a": "VIG",
+      "b": "RUP",
+      "aWins": 24,
+      "bWins": 26,
+      "draws": 0,
+      "meanSeconds": 5.2
+    },
+    {
+      "a": "VIG",
+      "b": "DUE",
+      "aWins": 29,
+      "bWins": 21,
+      "draws": 0,
+      "meanSeconds": 4.58
+    },
+    {
+      "a": "VIG",
+      "b": "LAS",
+      "aWins": 48,
+      "bWins": 0,
+      "draws": 2,
+      "meanSeconds": 4.87
+    },
+    {
+      "a": "ESP",
+      "b": "ARC",
+      "aWins": 44,
+      "bWins": 6,
+      "draws": 0,
+      "meanSeconds": 2.62
+    },
+    {
+      "a": "ESP",
+      "b": "BAS",
+      "aWins": 50,
+      "bWins": 0,
+      "draws": 0,
+      "meanSeconds": 10.88
+    },
+    {
+      "a": "ESP",
+      "b": "RUP",
+      "aWins": 38,
+      "bWins": 12,
+      "draws": 0,
+      "meanSeconds": 3.46
+    },
+    {
+      "a": "ESP",
+      "b": "DUE",
+      "aWins": 17,
+      "bWins": 33,
+      "draws": 0,
+      "meanSeconds": 2.84
+    },
+    {
+      "a": "ESP",
+      "b": "LAS",
+      "aWins": 50,
+      "bWins": 0,
+      "draws": 0,
+      "meanSeconds": 2.89
+    },
+    {
+      "a": "ARC",
+      "b": "BAS",
+      "aWins": 49,
+      "bWins": 1,
+      "draws": 0,
+      "meanSeconds": 8.62
+    },
+    {
+      "a": "ARC",
+      "b": "RUP",
+      "aWins": 1,
+      "bWins": 49,
+      "draws": 0,
+      "meanSeconds": 3.14
+    },
+    {
+      "a": "ARC",
+      "b": "DUE",
+      "aWins": 5,
+      "bWins": 45,
+      "draws": 0,
+      "meanSeconds": 2.79
+    },
+    {
+      "a": "ARC",
+      "b": "LAS",
+      "aWins": 33,
+      "bWins": 17,
+      "draws": 0,
+      "meanSeconds": 4.72
+    },
+    {
+      "a": "BAS",
+      "b": "RUP",
+      "aWins": 0,
+      "bWins": 50,
+      "draws": 0,
+      "meanSeconds": 8.49
+    },
+    {
+      "a": "BAS",
+      "b": "DUE",
+      "aWins": 0,
+      "bWins": 50,
+      "draws": 0,
+      "meanSeconds": 9.08
+    },
+    {
+      "a": "BAS",
+      "b": "LAS",
+      "aWins": 14,
+      "bWins": 36,
+      "draws": 0,
+      "meanSeconds": 22.35
+    },
+    {
+      "a": "RUP",
+      "b": "DUE",
+      "aWins": 12,
+      "bWins": 38,
+      "draws": 0,
+      "meanSeconds": 2.95
+    },
+    {
+      "a": "RUP",
+      "b": "LAS",
+      "aWins": 50,
+      "bWins": 0,
+      "draws": 0,
+      "meanSeconds": 4.24
+    },
+    {
+      "a": "DUE",
+      "b": "LAS",
+      "aWins": 50,
+      "bWins": 0,
+      "draws": 0,
+      "meanSeconds": 2.3
+    }
+  ],
+  "matches": 1050
+}
