@@ -1,16 +1,16 @@
-import {rotationPower} from './power-model.js?v=18';
-import {cosmicBonuses} from './cosmic-progression.js?v=18';
-import {divineBonuses} from './divine-merits.js?v=18';
-import {skillRank,skillGrowth} from './skill-growth.js?v=18';
-import {KITS} from './skills.js?v=18';
-import {companionBonuses,magiculaBonuses} from './companions.js?v=18';
-import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=18';
-import {ascensionBonuses} from './ascension.js?v=18';
-import {runeValue} from './runes.js?v=18';
-import {xpNeeded} from './progression.js?v=18';
-import {attributeGains} from './attributes.js?v=18';
+import {rotationPower} from './power-model.js?v=21';
+import {cosmicBonuses} from './cosmic-progression.js?v=21';
+import {divineBonuses} from './divine-merits.js?v=21';
+import {skillRank,skillGrowth} from './skill-growth.js?v=21';
+import {KITS} from './skills.js?v=21';
+import {companionBonuses,magiculaBonuses} from './companions.js?v=21';
+import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=21';
+import {ascensionBonuses} from './ascension.js?v=21';
+import {runeValue} from './runes.js?v=21';
+import {xpNeeded} from './progression.js?v=21';
+import {attributeGains} from './attributes.js?v=21';
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-import {CLASSES} from './classes.js?v=18';
+import {CLASSES} from './classes.js?v=21';
 export {CLASSES};
 export function stats(p){
  const c=CLASSES[p.classId],lv=p.level-1,g=CLASS_PROFILES[p.classId].growth,growth=attributeGains(p);

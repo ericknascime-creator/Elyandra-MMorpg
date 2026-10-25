@@ -8,3 +8,8 @@ RUP:{name:'Ruptor',role:'GUERREIRO · IMPACTO',desc:'Uma daikatana longa de duas
 DUE:{name:'Duelista',role:'DUAS ESPADAS · CADÊNCIA',desc:'Espadas complementares. Encadeie cortes e acelere o ritmo para pressionar seu adversário.',hp:450,mp:130,atk:49,def:28,speed:4.6,interval:.85,range:2.8,icon:'✕',color:'#e9cf85',armor:'#9b8756',trim:'#f3dda5',weapons:['Espada do Sol','Espada da Lua'],torso:'Traje das Duas Lâminas',skill1:{name:'Corte cruzado',icon:'✕',coef:1.6,cost:16,cd:5,range:3.3,stun:0,kind:'strike'},skill2:{name:'Ritmo das lâminas',icon:'≋',kind:'haste',cost:20,cd:16,duration:7},defense:{name:'Aparo',kind:'parry',cd:10}},
 LAS:{name:'Lâmina Astral',role:'KATANA · ENERGIA HÍBRIDA',desc:'Katana e selo. Um corte rúnico à distância e energia de eclipse em torno da lâmina.',hp:440,mp:160,atk:53,def:30,speed:4.5,interval:.95,range:3,icon:'☽',color:'#b5bbf4',armor:'#656b9e',trim:'#e1d8ed',weapons:['Katana do Eclipse','Selo dos Dois Céus'],torso:'Vestes do Eclipse',skill1:{name:'Corte rúnico',icon:'☽',coef:1.8,cost:20,cd:7,range:7,stun:.5,kind:'spell'},skill2:{name:'Eclipse',icon:'◉',kind:'nova',coef:1.5,cost:28,cd:14,range:5,stun:.7},defense:{name:'Passo lunar',kind:'blink',cd:10}}
 };
+// New-character roster. Archived IDs remain readable for existing saves and items.
+export const ACTIVE_CLASSES=['VIG','ARC','RUP','LAS'];
+CLASSES.VIG.name='Arqueiro';CLASSES.ARC.name='Mago';CLASSES.RUP.name='Guerreiro';CLASSES.LAS.name='Espadachim';
+CLASSES.LAS.role='KATANA · COMBOS · CONTRA-ATAQUE';
+CLASSES.LAS.desc='Katana e selo rúnico. Encadeie cortes, reposicione-se e use o aparo para abrir sua janela de explosão.';

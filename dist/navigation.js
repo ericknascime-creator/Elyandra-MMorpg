@@ -1,5 +1,5 @@
-// Bounded four-neighbour pathfinding for the 43×43 isometric world.
-export function findPath(start,goal,isBlocked,size=43){
+// Bounded four-neighbour pathfinding for the 65×65 isometric world.
+export function findPath(start,goal,isBlocked,size=65){
  const inside=(x,y)=>x>=0&&y>=0&&x<size&&y<size;
  let gx=Math.round(goal.x),gy=Math.round(goal.y);if(!inside(gx,gy)||isBlocked(gx,gy)){let found=null;for(let r=1;r<=3&&!found;r++)for(let dx=-r;dx<=r&&!found;dx++)for(let dy=-r;dy<=r;dy++)if(inside(gx+dx,gy+dy)&&!isBlocked(gx+dx,gy+dy)){found={x:gx+dx,y:gy+dy};break;}if(!found)return [];gx=found.x;gy=found.y;}
  const sx=Math.round(start.x),sy=Math.round(start.y);if(!inside(sx,sy))return [];const key=(x,y)=>y*size+x,first=key(sx,sy),last=key(gx,gy),parents=new Int32Array(size*size).fill(-1),queue=[first];parents[first]=first;

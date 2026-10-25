@@ -56,3 +56,22 @@ Prompt de produção: “Use case: stylized-concept. Production isometric fantas
 
 ## Alpha0.18 — cosmic atlas
 Built-in image generation, original 3×2 transparent atlas. Final: `dist/assets/cosmic-atlas-v18.webp` (preserved alpha; WebP88). Used by relic/sign panels, high-stage wings/aura, persistent Magículas mantle, evolved drake. Prompt: premium original techno-fantasy game atlas,6 isolated centered assets in equal3×2cells: black-platinum celestial hourglass/cyan starlight/gold orbit; twelve-star cobalt/gold constellation astrolabe; detailed articulated silver wings with violet/cyan tips; circular gold/cyan cosmic sigil; translucent upward plasma mantle with clear center; sapphire armored celestial dragon companion. Crisp sculpted metallic detail, no text, no frames, transparent background. Motion is procedural, not claimed to be a generated animation.
+
+## Revisão visual 0.20 — arte original gerada
+
+Ferramenta: image_gen, geração e edição por referência; conversão para WebP preservando transparência. Referências oficiais de Crystal Saga foram estudadas como direção visual, sem distribuição de capturas como arte do jogo.
+
+- `dist/assets/visual-concept-v20.webp`: prancha de direção, guerreiro com arma de duas mãos, asas emplumadas, arco com energia e magia cristalina; exibida como conceito no ateliê.
+- `dist/assets/feather-wings-v20.webp`: atlas original de seis pares de asas, marfim, verde, ametista, ouro, ciano e violeta; penas detalhadas e centro livre.
+- `dist/assets/fantasy-effects-v20.webp`: pluma de lâmina, trilha de flecha, lança de mana, impacto cristalino, fita e centelha. Regiões UV manuais evitam presumir uma grade perfeita.
+- `dist/assets/fantasy-slash-v20.webp`: corte crescente isolado transparente, ciano/violeta com filamentos dourados.
+- `dist/assets/fantasy-seal-v20.webp`: selo rúnico isolado transparente, seis pétalas ornamentais, ouro/ciano e centro aberto.
+
+Prompts de produção solicitaram fantasia própria, contornos nítidos em escala móvel, ausência de texto e molduras, energia presa à arma, asas de penas e transparência para composição. Crescente e selo foram gerados separadamente após inspeção do atlas. Sem buracos negros ou astros literais. Animação é executada no Canvas; imagens não contêm movimento por si mesmas.
+
+## Revisão 0.21 — supremo e direção narrativa
+
+Built-in image_gen, geração original; conversão para WebP com transparência preservada.
+
+- `dist/assets/visual-concept-v21.webp`: prompt: prancha premium de fantasia para ELYNDRA, porto amplo, santuário, fortaleza, guerreiro de duas mãos; estudos +25/+75/+100 com energia progressiva, arco verde, cajado violeta, daikatana dourada, katana índigo. Sem astros literais ou logos de terceiros. Imagem de conceito, não captura do jogo.
+- `dist/assets/supreme-energy-v21.webp`: prompt: pluma única vertical estreita transparente para arma, filamentos ciano, veios dourados, línguas violetas e centelhas, núcleo controlado, sem arma ou personagem, legível em cerca de20×100px, sem neblina opaca. Composta e animada pelo Canvas, não vídeo.

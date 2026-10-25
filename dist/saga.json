@@ -1,0 +1,295 @@
+{
+  "schemaVersion": 1,
+  "title": "Elyndra — O preço da Origem",
+  "premise": "Seu poder pode libertar os reinos ou alimentar a máquina que os aprisiona. Descubra quem transforma vidas em equipamentos perfeitos e impeça o próximo reinício do mundo.",
+  "acts": [
+    {
+      "id": "act1",
+      "title": "A luz que foi roubada",
+      "level": 1,
+      "region": 0,
+      "story": "O farol não apagou: alguém desviou sua luz para alimentar fortalezas de guerra. Ilyra encontra seu nome em uma lista de pessoas que deveriam ter desaparecido.",
+      "mission": "Investigue os marcos da costa e recupere o registro dos exilados.",
+      "outcome": "Você descobre caravanas mantidas vivas para abastecer a máquina de Aster.",
+      "trophy": "Testemunha de Lúmen",
+      "steps": [
+        {
+          "type": "visit",
+          "text": "Reconheça o Acampamento dos Exilados",
+          "x": 46,
+          "y": 18,
+          "target": 1
+        },
+        {
+          "type": "visit",
+          "text": "Leia o testemunho no Santuário Partido",
+          "x": 54,
+          "y": 43,
+          "target": 1
+        },
+        {
+          "type": "kill",
+          "text": "Elimine os guardiões que bloqueiam a região",
+          "target": 8
+        },
+        {
+          "type": "dungeon",
+          "text": "Recupere a prova em uma masmorra desta região",
+          "target": 1
+        },
+        {
+          "type": "boss",
+          "text": "Vença um chefe Mundial deste patamar",
+          "division": "WORLD",
+          "target": 1
+        }
+      ],
+      "reward": {
+        "gold": 5000,
+        "plumes": 25,
+        "essences": 25
+      }
+    },
+    {
+      "id": "act2",
+      "title": "O preço do juramento",
+      "level": 100,
+      "region": 4,
+      "story": "Borun forjou as correntes que prendem as caravanas. Para libertá-las, ele precisa destruir sua obra, mesmo perdendo a proteção da Aliança Solar.",
+      "mission": "Abra uma rota de fuga pelo bosque e enfrente o comandante da região.",
+      "outcome": "O comboio foge. Solar e Lunar passam a disputar sua lealdade.",
+      "trophy": "Quebra-Correntes",
+      "steps": [
+        {
+          "type": "visit",
+          "text": "Reconheça o Acampamento dos Exilados",
+          "x": 46,
+          "y": 18,
+          "target": 1
+        },
+        {
+          "type": "visit",
+          "text": "Leia o testemunho no Santuário Partido",
+          "x": 54,
+          "y": 43,
+          "target": 1
+        },
+        {
+          "type": "kill",
+          "text": "Elimine os guardiões que bloqueiam a região",
+          "target": 10
+        },
+        {
+          "type": "dungeon",
+          "text": "Recupere a prova em uma masmorra desta região",
+          "target": 1
+        },
+        {
+          "type": "boss",
+          "text": "Vença um chefe Mundial deste patamar",
+          "division": "WORLD",
+          "target": 1
+        }
+      ],
+      "reward": {
+        "gold": 20000,
+        "plumes": 50,
+        "essences": 50
+      }
+    },
+    {
+      "id": "act3",
+      "title": "Duas nações, uma mentira",
+      "level": 250,
+      "region": 11,
+      "story": "Selene prova que as duas coroas compraram a mesma arma. A guerra alimenta o Trono: cada exército acredita estar salvando o mundo.",
+      "mission": "Atravesse o domínio imperial e corte a alimentação do Trono.",
+      "outcome": "O primeiro Trono cai, mas sua fonte desperta acima dos continentes.",
+      "trophy": "Portador da Verdade",
+      "steps": [
+        {
+          "type": "visit",
+          "text": "Reconheça o Acampamento dos Exilados",
+          "x": 46,
+          "y": 18,
+          "target": 1
+        },
+        {
+          "type": "visit",
+          "text": "Leia o testemunho no Santuário Partido",
+          "x": 54,
+          "y": 43,
+          "target": 1
+        },
+        {
+          "type": "kill",
+          "text": "Elimine os guardiões que bloqueiam a região",
+          "target": 12
+        },
+        {
+          "type": "dungeon",
+          "text": "Recupere a prova em uma masmorra desta região",
+          "target": 1
+        },
+        {
+          "type": "boss",
+          "text": "Vença um chefe Cataclismo deste patamar",
+          "division": "CATACLYSM",
+          "target": 1
+        }
+      ],
+      "reward": {
+        "gold": 45000,
+        "plumes": 75,
+        "essences": 75
+      }
+    },
+    {
+      "id": "act4",
+      "title": "O firmamento tem dono",
+      "level": 500,
+      "region": 14,
+      "story": "As forjas celestes consomem memórias para criar armamentos perfeitos. Aeris reconhece a voz da própria irmã dentro de uma dessas lâminas.",
+      "mission": "Recupere as memórias da forja sem entregá-las a outra coroa.",
+      "outcome": "Os artesãos retornam à cidade. Perfeição deixa de justificar o sacrifício de pessoas.",
+      "trophy": "Libertador da Forja",
+      "steps": [
+        {
+          "type": "visit",
+          "text": "Reconheça o Acampamento dos Exilados",
+          "x": 46,
+          "y": 18,
+          "target": 1
+        },
+        {
+          "type": "visit",
+          "text": "Leia o testemunho no Santuário Partido",
+          "x": 54,
+          "y": 43,
+          "target": 1
+        },
+        {
+          "type": "kill",
+          "text": "Elimine os guardiões que bloqueiam a região",
+          "target": 14
+        },
+        {
+          "type": "dungeon",
+          "text": "Recupere a prova em uma masmorra desta região",
+          "target": 1
+        },
+        {
+          "type": "boss",
+          "text": "Vença um chefe Cataclismo deste patamar",
+          "division": "CATACLYSM",
+          "target": 1
+        }
+      ],
+      "reward": {
+        "gold": 80000,
+        "plumes": 100,
+        "essences": 100
+      }
+    },
+    {
+      "id": "act5",
+      "title": "As doze testemunhas",
+      "level": 850,
+      "region": 18,
+      "story": "Os Arcontes não protegem um deus: guardam o contrato que permite reiniciar o mundo. Doze assinaturas precisam ser quebradas antes da última aurora.",
+      "mission": "Desvende os testemunhos e derrote um guardião do pacto.",
+      "outcome": "As constelações revelam o caminho até a origem da máquina.",
+      "trophy": "Rompedor do Pacto",
+      "steps": [
+        {
+          "type": "visit",
+          "text": "Reconheça o Acampamento dos Exilados",
+          "x": 46,
+          "y": 18,
+          "target": 1
+        },
+        {
+          "type": "visit",
+          "text": "Leia o testemunho no Santuário Partido",
+          "x": 54,
+          "y": 43,
+          "target": 1
+        },
+        {
+          "type": "kill",
+          "text": "Elimine os guardiões que bloqueiam a região",
+          "target": 16
+        },
+        {
+          "type": "dungeon",
+          "text": "Recupere a prova em uma masmorra desta região",
+          "target": 1
+        },
+        {
+          "type": "boss",
+          "text": "Vença um chefe Cataclismo deste patamar",
+          "division": "CATACLYSM",
+          "target": 1
+        }
+      ],
+      "reward": {
+        "gold": 125000,
+        "plumes": 125,
+        "essences": 125
+      }
+    },
+    {
+      "id": "act6",
+      "title": "Um mundo sem dono",
+      "level": 1000,
+      "region": 20,
+      "story": "Aster oferece a coroa e o controle sobre todos os reinos. Ilyra pede que você destrua a máquina, mesmo que ninguém volte a ter poder absoluto.",
+      "mission": "Alcance o santuário e vença o Cataclismo da Origem.",
+      "outcome": "Você rompe o ciclo. As fortalezas passam a ser disputadas por mortais: preservar a liberdade torna-se uma responsabilidade contínua.",
+      "trophy": "Guardião de um Mundo Livre",
+      "steps": [
+        {
+          "type": "visit",
+          "text": "Reconheça o Acampamento dos Exilados",
+          "x": 46,
+          "y": 18,
+          "target": 1
+        },
+        {
+          "type": "visit",
+          "text": "Leia o testemunho no Santuário Partido",
+          "x": 54,
+          "y": 43,
+          "target": 1
+        },
+        {
+          "type": "kill",
+          "text": "Elimine os guardiões que bloqueiam a região",
+          "target": 18
+        },
+        {
+          "type": "dungeon",
+          "text": "Recupere a prova em uma masmorra desta região",
+          "target": 1
+        },
+        {
+          "type": "boss",
+          "text": "Vença um chefe Cataclismo deste patamar",
+          "division": "CATACLYSM",
+          "target": 1
+        }
+      ],
+      "reward": {
+        "gold": 180000,
+        "plumes": 150,
+        "essences": 150
+      }
+    }
+  ],
+  "endgame": {
+    "title": "Depois da coroa",
+    "soloGoal": "Concluir os seis atos, obter seis títulos, vencer Cataclismos e aperfeiçoar uma build capaz de enfrentar os desafios finais.",
+    "onlineGoal": "Disputar fortalezas, proteger rotas e conquistar troféus de temporada com sua guilda e nação. Esse objetivo depende do servidor multiplayer e ainda não está ativo.",
+    "cashPurpose": "Acelerar materiais e personalizar sua identidade. Vitória, títulos de campanha e troféus competitivos exigem jogar; não são vendidos. Cash e recursos nesta alpha são simulados."
+  }
+}

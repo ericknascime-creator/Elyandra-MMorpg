@@ -1,4 +1,5 @@
-import {skillGrowth} from './skill-growth.js?v=18';
+import {enchantProfile} from './fantasy-vfx.js?v=21';
+import {skillGrowth} from './skill-growth.js?v=21';
 // Cabal-inspired separation of sword/magic offense; coefficients are Elyndra balancing.
 export const CLASS_PROFILES={
  VIG:{growth:{hp:38,mp:3,af:5,am:1,def:2.6},primary:'DES',focus:'Ataque físico · velocidade de ataque · taxa crítica · dano crítico · precisão · penetração. Ampliação atua apenas nas skills, não nos tiros básicos.'},
@@ -24,7 +25,7 @@ export function combatDamage(atk,coef,def,critChance=0,critMult=1.2,rng=Math.ran
 
 export function basicInterval(st,buffs={}){const bonus=(buffs.haste?1.25:1)*(buffs.dance?1.15:1);return Math.max(.18,st.interval/bonus);}
 export function nextBasicCooldown(remaining,interval){return Math.max(-.08,remaining)+interval;}
-export function enchantVisual(rank){const e=bounded(rank||0,0,100),stage=e===100?5:e>=75?4:e>=50?3:e>=25?2:e>=5?1:0;return {stage,color:['#d8d8d8','#ffc46c','#72aaff','#00e5ff','#b06dff','#d9ffff'][stage],motes:stage?Math.min(24,4+stage*4):0,intensity:e/100};}
+export const enchantVisual=enchantProfile;
 
 // One damage pipeline for live PvE and the offline PvP laboratory. All rates are fractions.
 export const COMBAT_RULES={version:3,pvpDamage:.14,pvpMaxHit:.24,hitMin:.65,hitMax:.99};

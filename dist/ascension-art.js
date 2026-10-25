@@ -1,12 +1,10 @@
-import {STYLES,ascensionTier} from './ascension.js?v=18';
-import {visualAssets,drawCell} from './engine/visual-assets.js?v=18';
+import {drawAuraSeal,drawFeatherWings} from './fantasy-vfx.js?v=21';
+import {STYLES,ascensionTier} from './ascension.js?v=21';
+import {visualAssets,drawCell} from './engine/visual-assets.js?v=21';
 const TAU=Math.PI*2,tints=new Map();
 function relicTexture(style){if(!visualAssets.relics)return null;if(style==='mystic'||!style)return visualAssets.relics;if(tints.has(style))return tints.get(style);const c=document.createElement('canvas'),im=visualAssets.relics;c.width=im.naturalWidth;c.height=im.naturalHeight;const ctx=c.getContext('2d'),hues={nature:-60,void:110,infernal:170,solar:-140,glacial:0,eclipse:90,carmim:165};if('filter'in ctx)ctx.filter='hue-rotate('+(hues[style]||0)+'deg)';ctx.drawImage(im,0,0);if(!('filter'in ctx)){ctx.globalCompositeOperation='source-atop';ctx.globalAlpha=.55;ctx.fillStyle=STYLES[style]?.color||'#00ffff';ctx.fillRect(0,0,c.width,c.height);}if(tints.size>=3)tints.delete(tints.keys().next().value);tints.set(style,c);return c;}
 
 export function drawAscension(g,wings,aura,t){
- if(aura?.rank&&aura.visible!==false){const r=Math.min(500,aura.rank)/5,stage=Math.floor(r/20),c=STYLES[aura.style]?.color||ascensionTier(r*5).color,radius=24+r*.22;
- g.save();g.translate(0,3);const glow=g.createRadialGradient(0,0,3,0,0,radius*1.6);glow.addColorStop(0,c+'44');glow.addColorStop(1,c+'00');g.fillStyle=glow;g.fillRect(-radius*1.6,-radius*.65,radius*3.2,radius*1.3);
- for(let n=0;n<Math.min(5,1+stage);n++){g.save();g.scale(1,.37);g.rotate(t*(n%2?-.035:.022)+n*.7);const size=radius*2*(1+n*.15);g.globalAlpha=.35+n*.04;g.globalCompositeOperation='lighter';if(aura.rank>=300&&visualAssets.cosmic)drawCell(g,visualAssets.cosmic,3,2,3,-size/2,-size/2,size,size);else if(visualAssets.relics)drawCell(g,relicTexture(aura.style),3,2,n%2?4:3,-size/2,-size/2,size,size);else{g.strokeStyle=c;g.beginPath();g.arc(0,0,size/2,0,TAU);g.stroke();}g.restore();}
- g.globalCompositeOperation='lighter';for(let n=0;n<Math.min(22,4+stage*3);n++){const a=t*.08+n*2.399,h=(t*(8+stage)+n*13)%105;g.globalAlpha=(1-h/105)*.65;g.fillStyle=n%3?c:'#fff';g.fillRect(Math.cos(a)*radius,-h,1,2);}g.restore();}
- if(wings?.rank&&wings.visible!==false&&visualAssets.relics){const r=Math.min(500,wings.rank)/5,cell=r<40?0:r<80?1:2,size=90+r*.55;g.save();g.translate(0,-67+Math.sin(t*1.7)*1.3);g.scale(1+Math.sin(t*1.7)*.025,1);g.globalAlpha=.93;if(wings.rank>=300&&visualAssets.cosmic)drawCell(g,visualAssets.cosmic,3,2,2,-size*.6,-size*.58,size*1.2,size);else drawCell(g,relicTexture(wings.style),3,2,cell,-size/2,-size*.48,size,size*.8);g.globalCompositeOperation='lighter';for(let n=0;n<Math.min(14,Math.ceil(r/8));n++){const q=(t*.13+n/14)%1;g.globalAlpha=Math.sin(q*Math.PI)*.65;g.fillStyle=n%2?'#b8ffff':'#fff3bd';g.fillRect((n%2?1:-1)*(15+q*size*.4),-q*35,1.2,1.2);}g.restore();}
+ if(aura?.rank&&aura.visible!==false){const color=STYLES[aura.style]?.color||ascensionTier(aura.rank).color;drawAuraSeal(g,aura.rank,color,t);}
+ if(wings?.rank&&wings.visible!==false){const accent=STYLES[wings.style]?.color||ascensionTier(wings.rank).color;if(!drawFeatherWings(g,wings.rank,t,accent)&&visualAssets.relics){const rank=Math.min(500,wings.rank),cell=rank<200?0:rank<400?1:2,size=100+rank*.10;g.save();g.translate(0,-67);g.globalAlpha=.93;drawCell(g,relicTexture(wings.style),3,2,cell,-size/2,-size*.48,size,size*.8);g.restore();}}
 }

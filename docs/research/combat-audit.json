@@ -1,5 +1,5 @@
 {
-  "version": 18,
+  "version": 20,
   "purpose": "Diagnóstico de Elyndra; fórmulas próprias, não fórmulas proprietárias recuperadas",
   "configuration": "Nv1000, Origem+100, nativos perfeitos por classe, três slots, evoluções500, relíquia590, signos500, alma100, skills20",
   "limitations": [
@@ -11,7 +11,7 @@
   "rows": [
     {
       "classId": "VIG",
-      "name": "Vigia",
+      "name": "Arqueiro",
       "power": 16766364,
       "hp": 325872,
       "af": 137531,
@@ -26,24 +26,8 @@
       "expectedSkillDamage": 488556
     },
     {
-      "classId": "ESP",
-      "name": "Espectro",
-      "power": 17537650,
-      "hp": 349408,
-      "af": 136285,
-      "am": 2341,
-      "crit": 0.6,
-      "maxCrit": 0.6,
-      "critMultiplier": 7.55,
-      "swordAmp": 2.0300000000000007,
-      "magicAmp": 0.39,
-      "dps": 637297,
-      "damageBudget": 0.85,
-      "expectedSkillDamage": 807788
-    },
-    {
       "classId": "ARC",
-      "name": "Arcanista",
+      "name": "Mago",
       "power": 17836591,
       "hp": 444761,
       "af": 2507,
@@ -58,24 +42,8 @@
       "expectedSkillDamage": 1146350
     },
     {
-      "classId": "BAS",
-      "name": "Bastião",
-      "power": 14694681,
-      "hp": 450397,
-      "af": 103483,
-      "am": 3268,
-      "crit": 0.2175,
-      "maxCrit": 0.6,
-      "critMultiplier": 8.379999999999999,
-      "swordAmp": 1.34,
-      "magicAmp": 0.24,
-      "dps": 246923,
-      "damageBudget": 2.2,
-      "expectedSkillDamage": 404280
-    },
-    {
       "classId": "RUP",
-      "name": "Ruptor",
+      "name": "Guerreiro",
       "power": 18445964,
       "hp": 427208,
       "af": 178353,
@@ -90,24 +58,8 @@
       "expectedSkillDamage": 1502768
     },
     {
-      "classId": "DUE",
-      "name": "Duelista",
-      "power": 18637665,
-      "hp": 419464,
-      "af": 136886,
-      "am": 2341,
-      "crit": 0.6,
-      "maxCrit": 0.6,
-      "critMultiplier": 8.17,
-      "swordAmp": 2.0300000000000007,
-      "magicAmp": 0.39,
-      "dps": 622755,
-      "damageBudget": 0.68,
-      "expectedSkillDamage": 744595
-    },
-    {
       "classId": "LAS",
-      "name": "Lâmina Astral",
+      "name": "Espadachim",
       "power": 17564530,
       "hp": 355023,
       "af": 89064,
@@ -128,27 +80,11 @@
       "duels": [
         {
           "a": "VIG",
-          "b": "ESP",
-          "aWins": 35,
-          "bWins": 15,
-          "draws": 0,
-          "meanSeconds": 32.24
-        },
-        {
-          "a": "VIG",
           "b": "ARC",
           "aWins": 36,
           "bWins": 14,
           "draws": 0,
           "meanSeconds": 29.4
-        },
-        {
-          "a": "VIG",
-          "b": "BAS",
-          "aWins": 0,
-          "bWins": 33,
-          "draws": 17,
-          "meanSeconds": 79.65
         },
         {
           "a": "VIG",
@@ -160,67 +96,11 @@
         },
         {
           "a": "VIG",
-          "b": "DUE",
-          "aWins": 48,
-          "bWins": 2,
-          "draws": 0,
-          "meanSeconds": 26.97
-        },
-        {
-          "a": "VIG",
           "b": "LAS",
           "aWins": 49,
           "bWins": 1,
           "draws": 0,
           "meanSeconds": 24.99
-        },
-        {
-          "a": "ESP",
-          "b": "ARC",
-          "aWins": 29,
-          "bWins": 21,
-          "draws": 0,
-          "meanSeconds": 29.95
-        },
-        {
-          "a": "ESP",
-          "b": "BAS",
-          "aWins": 0,
-          "bWins": 31,
-          "draws": 19,
-          "meanSeconds": 81.61
-        },
-        {
-          "a": "ESP",
-          "b": "RUP",
-          "aWins": 47,
-          "bWins": 3,
-          "draws": 0,
-          "meanSeconds": 26.85
-        },
-        {
-          "a": "ESP",
-          "b": "DUE",
-          "aWins": 44,
-          "bWins": 6,
-          "draws": 0,
-          "meanSeconds": 26.72
-        },
-        {
-          "a": "ESP",
-          "b": "LAS",
-          "aWins": 48,
-          "bWins": 2,
-          "draws": 0,
-          "meanSeconds": 24.83
-        },
-        {
-          "a": "ARC",
-          "b": "BAS",
-          "aWins": 0,
-          "bWins": 16,
-          "draws": 34,
-          "meanSeconds": 87.37
         },
         {
           "a": "ARC",
@@ -232,51 +112,11 @@
         },
         {
           "a": "ARC",
-          "b": "DUE",
-          "aWins": 7,
-          "bWins": 43,
-          "draws": 0,
-          "meanSeconds": 30.84
-        },
-        {
-          "a": "ARC",
           "b": "LAS",
           "aWins": 13,
           "bWins": 37,
           "draws": 0,
           "meanSeconds": 32.78
-        },
-        {
-          "a": "BAS",
-          "b": "RUP",
-          "aWins": 12,
-          "bWins": 1,
-          "draws": 37,
-          "meanSeconds": 87.57
-        },
-        {
-          "a": "BAS",
-          "b": "DUE",
-          "aWins": 19,
-          "bWins": 0,
-          "draws": 31,
-          "meanSeconds": 86.31
-        },
-        {
-          "a": "BAS",
-          "b": "LAS",
-          "aWins": 23,
-          "bWins": 2,
-          "draws": 25,
-          "meanSeconds": 85.1
-        },
-        {
-          "a": "RUP",
-          "b": "DUE",
-          "aWins": 48,
-          "bWins": 2,
-          "draws": 0,
-          "meanSeconds": 30.54
         },
         {
           "a": "RUP",
@@ -285,14 +125,6 @@
           "bWins": 10,
           "draws": 0,
           "meanSeconds": 36.73
-        },
-        {
-          "a": "DUE",
-          "b": "LAS",
-          "aWins": 5,
-          "bWins": 45,
-          "draws": 0,
-          "meanSeconds": 31.03
         }
       ]
     },
@@ -301,27 +133,11 @@
       "duels": [
         {
           "a": "VIG",
-          "b": "ESP",
-          "aWins": 50,
-          "bWins": 0,
-          "draws": 0,
-          "meanSeconds": 23.93
-        },
-        {
-          "a": "VIG",
           "b": "ARC",
           "aWins": 48,
           "bWins": 2,
           "draws": 0,
           "meanSeconds": 26.85
-        },
-        {
-          "a": "VIG",
-          "b": "BAS",
-          "aWins": 32,
-          "bWins": 3,
-          "draws": 15,
-          "meanSeconds": 80.91
         },
         {
           "a": "VIG",
@@ -333,67 +149,11 @@
         },
         {
           "a": "VIG",
-          "b": "DUE",
-          "aWins": 50,
-          "bWins": 0,
-          "draws": 0,
-          "meanSeconds": 23.19
-        },
-        {
-          "a": "VIG",
           "b": "LAS",
           "aWins": 50,
           "bWins": 0,
           "draws": 0,
           "meanSeconds": 21.94
-        },
-        {
-          "a": "ESP",
-          "b": "ARC",
-          "aWins": 46,
-          "bWins": 4,
-          "draws": 0,
-          "meanSeconds": 28.17
-        },
-        {
-          "a": "ESP",
-          "b": "BAS",
-          "aWins": 24,
-          "bWins": 9,
-          "draws": 17,
-          "meanSeconds": 82.66
-        },
-        {
-          "a": "ESP",
-          "b": "RUP",
-          "aWins": 50,
-          "bWins": 0,
-          "draws": 0,
-          "meanSeconds": 23.85
-        },
-        {
-          "a": "ESP",
-          "b": "DUE",
-          "aWins": 50,
-          "bWins": 0,
-          "draws": 0,
-          "meanSeconds": 23.8
-        },
-        {
-          "a": "ESP",
-          "b": "LAS",
-          "aWins": 50,
-          "bWins": 0,
-          "draws": 0,
-          "meanSeconds": 21.71
-        },
-        {
-          "a": "ARC",
-          "b": "BAS",
-          "aWins": 17,
-          "bWins": 0,
-          "draws": 33,
-          "meanSeconds": 86.55
         },
         {
           "a": "ARC",
@@ -405,51 +165,11 @@
         },
         {
           "a": "ARC",
-          "b": "DUE",
-          "aWins": 42,
-          "bWins": 7,
-          "draws": 1,
-          "meanSeconds": 34.02
-        },
-        {
-          "a": "ARC",
           "b": "LAS",
           "aWins": 44,
           "bWins": 6,
           "draws": 0,
           "meanSeconds": 32.84
-        },
-        {
-          "a": "BAS",
-          "b": "RUP",
-          "aWins": 30,
-          "bWins": 0,
-          "draws": 20,
-          "meanSeconds": 83.81
-        },
-        {
-          "a": "BAS",
-          "b": "DUE",
-          "aWins": 27,
-          "bWins": 0,
-          "draws": 23,
-          "meanSeconds": 80.78
-        },
-        {
-          "a": "BAS",
-          "b": "LAS",
-          "aWins": 40,
-          "bWins": 0,
-          "draws": 10,
-          "meanSeconds": 78.68
-        },
-        {
-          "a": "RUP",
-          "b": "DUE",
-          "aWins": 50,
-          "bWins": 0,
-          "draws": 0,
-          "meanSeconds": 27.29
         },
         {
           "a": "RUP",
@@ -458,14 +178,6 @@
           "bWins": 0,
           "draws": 0,
           "meanSeconds": 26.88
-        },
-        {
-          "a": "DUE",
-          "b": "LAS",
-          "aWins": 49,
-          "bWins": 1,
-          "draws": 0,
-          "meanSeconds": 34.86
         }
       ]
     },
@@ -474,27 +186,11 @@
       "duels": [
         {
           "a": "VIG",
-          "b": "ESP",
-          "aWins": 29,
-          "bWins": 21,
-          "draws": 0,
-          "meanSeconds": 32.01
-        },
-        {
-          "a": "VIG",
           "b": "ARC",
           "aWins": 34,
           "bWins": 16,
           "draws": 0,
           "meanSeconds": 28.97
-        },
-        {
-          "a": "VIG",
-          "b": "BAS",
-          "aWins": 0,
-          "bWins": 32,
-          "draws": 18,
-          "meanSeconds": 78.14
         },
         {
           "a": "VIG",
@@ -506,67 +202,11 @@
         },
         {
           "a": "VIG",
-          "b": "DUE",
-          "aWins": 48,
-          "bWins": 2,
-          "draws": 0,
-          "meanSeconds": 26.66
-        },
-        {
-          "a": "VIG",
           "b": "LAS",
           "aWins": 49,
           "bWins": 1,
           "draws": 0,
           "meanSeconds": 25.13
-        },
-        {
-          "a": "ESP",
-          "b": "ARC",
-          "aWins": 30,
-          "bWins": 20,
-          "draws": 0,
-          "meanSeconds": 30.6
-        },
-        {
-          "a": "ESP",
-          "b": "BAS",
-          "aWins": 1,
-          "bWins": 35,
-          "draws": 14,
-          "meanSeconds": 80.47
-        },
-        {
-          "a": "ESP",
-          "b": "RUP",
-          "aWins": 49,
-          "bWins": 1,
-          "draws": 0,
-          "meanSeconds": 27.42
-        },
-        {
-          "a": "ESP",
-          "b": "DUE",
-          "aWins": 45,
-          "bWins": 5,
-          "draws": 0,
-          "meanSeconds": 26.59
-        },
-        {
-          "a": "ESP",
-          "b": "LAS",
-          "aWins": 49,
-          "bWins": 1,
-          "draws": 0,
-          "meanSeconds": 24.76
-        },
-        {
-          "a": "ARC",
-          "b": "BAS",
-          "aWins": 0,
-          "bWins": 16,
-          "draws": 34,
-          "meanSeconds": 87.72
         },
         {
           "a": "ARC",
@@ -578,51 +218,11 @@
         },
         {
           "a": "ARC",
-          "b": "DUE",
-          "aWins": 6,
-          "bWins": 44,
-          "draws": 0,
-          "meanSeconds": 31.32
-        },
-        {
-          "a": "ARC",
           "b": "LAS",
           "aWins": 14,
           "bWins": 36,
           "draws": 0,
           "meanSeconds": 32.53
-        },
-        {
-          "a": "BAS",
-          "b": "RUP",
-          "aWins": 16,
-          "bWins": 0,
-          "draws": 34,
-          "meanSeconds": 87.71
-        },
-        {
-          "a": "BAS",
-          "b": "DUE",
-          "aWins": 15,
-          "bWins": 0,
-          "draws": 35,
-          "meanSeconds": 87.58
-        },
-        {
-          "a": "BAS",
-          "b": "LAS",
-          "aWins": 23,
-          "bWins": 0,
-          "draws": 27,
-          "meanSeconds": 85.91
-        },
-        {
-          "a": "RUP",
-          "b": "DUE",
-          "aWins": 48,
-          "bWins": 2,
-          "draws": 0,
-          "meanSeconds": 30.41
         },
         {
           "a": "RUP",
@@ -631,17 +231,9 @@
           "bWins": 11,
           "draws": 0,
           "meanSeconds": 35.14
-        },
-        {
-          "a": "DUE",
-          "b": "LAS",
-          "aWins": 5,
-          "bWins": 45,
-          "draws": 0,
-          "meanSeconds": 30.8
         }
       ]
     }
   ],
-  "matches": 3150
+  "matches": 900
 }
