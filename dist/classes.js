@@ -13,3 +13,5 @@ export const ACTIVE_CLASSES=['VIG','ARC','RUP','LAS'];
 CLASSES.VIG.name='Arqueiro';CLASSES.ARC.name='Mago';CLASSES.RUP.name='Guerreiro';CLASSES.LAS.name='Espadachim';
 CLASSES.LAS.role='KATANA · COMBOS · CONTRA-ATAQUE';
 CLASSES.LAS.desc='Katana e selo rúnico. Encadeie cortes, reposicione-se e use o aparo para abrir sua janela de explosão.';
+
+CLASSES.VIG.range=16;CLASSES.VIG.skill1.range=17;

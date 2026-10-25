@@ -1,9 +1,9 @@
-import {initCosmic} from './cosmic-progression.js?v=22';
+import {initCosmic} from './cosmic-progression.js?v=23';
 // Local development privileges only: never an authentication/authorization role.
-import {convertCatalogItem} from './equipment.js?v=22';
-import {COMPANIONS} from './companions.js?v=22';
-import {CASH_PRODUCTS} from './ascension.js?v=22';
-import {runeValue} from './runes.js?v=22';
+import {convertCatalogItem} from './equipment.js?v=23';
+import {COMPANIONS} from './companions.js?v=23';
+import {CASH_PRODUCTS} from './ascension.js?v=23';
+import {runeValue} from './runes.js?v=23';
 export const GM_BUILD=true,GM_RESERVE=999999999;
 export function refillGM(p){if(p.localRole!=='gm')return;p.gold=GM_RESERVE;p.wallet||={};p.wallet.cash=GM_RESERVE;p.shards=1000000;p.runes=1000000;p.pots={hp:9999,mp:9999};for(const key of Object.keys(p.materials||{}))p.materials[key]=1000000;}
 export function provisionGM(p,content,force=false){if(!content?.items)return false;if(p.gmBuild===18&&!force){refillGM(p);return false;}p.localRole='gm';p.gmBuild=18;p.testMode=true;p.level=1000;p.xp=0;p.wallet||={};p.materials||={};p.companions||={};p.companions.owned=Object.fromEntries(COMPANIONS.map(d=>[d.id,{rank:500}]));p.companions.pet=p.classId==='VIG'?'fox':'drake';p.companions.mount='panther';p.companions.mounted=false;p.magicula={rank:500};p.wings={rank:500,style:'mystic',visible:true};p.aura={rank:500,style:'mystic',visible:true};p.skillRanks=Object.fromEntries(Array.from({length:7},(_,i)=>[i,20]));p.appearances=[...new Set([...(p.appearances||[]),...CASH_PRODUCTS.filter(x=>x.kind==='appearance').map(x=>x.id)])];p.attributes=p.classId==='ARC'?{for:50,int:1125,des:70}:p.classId==='VIG'||p.classId==='ESP'?{for:200,int:0,des:1045}:p.classId==='LAS'?{for:415,int:415,des:415}:{for:975,int:0,des:270};

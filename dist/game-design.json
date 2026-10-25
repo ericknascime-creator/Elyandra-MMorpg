@@ -17,7 +17,7 @@
       "def": 25,
       "speed": 4.6,
       "interval": 1,
-      "range": 11,
+      "range": 16,
       "icon": "➶",
       "color": "#8fca9e",
       "armor": "#427a62",
@@ -33,7 +33,7 @@
         "coef": 1.2,
         "cost": 15,
         "cd": 8,
-        "range": 12,
+        "range": 17,
         "stun": 1,
         "kind": "shot"
       },
@@ -331,7 +331,7 @@
         "coef": 1.2,
         "cd": 18,
         "cost": 15,
-        "range": 12,
+        "range": 17,
         "stun": 1
       },
       {
@@ -349,7 +349,7 @@
         "coef": 0,
         "cd": 20,
         "cost": 15,
-        "range": 12,
+        "range": 17,
         "duration": 8
       },
       {

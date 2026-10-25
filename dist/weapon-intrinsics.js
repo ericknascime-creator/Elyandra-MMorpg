@@ -1,0 +1,3 @@
+// Fixed craftsmanship is separate from random options and never multiplied by enchantment.
+export function weaponIntrinsics(item,classId=item.classId){if(!['weapon','secondary'].includes(item.slot))return{crit:0,critd:0};const tiers={B:[.01,.02],A:[.02,.04],S:[.025,.06],SS:[.03,.08],'SS+':[.04,.10],SSS:[.05,.12],'SSS+':[.06,.15],ULTRA:[.08,.18]},[crit,critd]=tiers[item.quality]||[0,0],budget=classId==='RUP'&&item.slot==='weapon'?1.5:item.slot==='secondary'?.5:1;return{crit:crit*budget,critd:critd*budget};}
+export function itemBaseValues(i){return{atk:i.base.af!=null||i.base.am!=null?(i.base.af||0)+(i.base.am||0):i.base.atk||0,...Object.fromEntries(Object.entries(i.base).filter(([k])=>!['af','am','atk'].includes(k)))};}

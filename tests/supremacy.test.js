@@ -1,8 +1,8 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {referenceHours,amplifyBonuses,buyTraining,trainingQuote} from '../dist/supremacy.js?v=22';
-import {powerScore,POWER_WEIGHTS} from '../dist/power-score.js?v=22';
-import {stats,createPlayer} from '../dist/core.js?v=22';
-import {dungeonReward,xpNeeded,advanceXP} from '../dist/progression.js?v=22';
+import {referenceHours,amplifyBonuses,buyTraining,trainingQuote} from '../dist/supremacy.js?v=23';
+import {powerScore,POWER_WEIGHTS} from '../dist/power-score.js?v=23';
+import {stats,createPlayer} from '../dist/core.js?v=23';
+import {dungeonReward,xpNeeded,advanceXP} from '../dist/progression.js?v=23';
 test('35-year reference is explicit, progressive and sums to target with100 initial hours',()=>{const total=100+Array.from({length:400},(_,i)=>referenceHours(600+i)).reduce((a,b)=>a+b,0);assert(Math.abs(total-35*365.25*2)<1e-7);assert.equal(referenceHours(600),6);assert(referenceHours(999)>referenceHours(900));assert.equal(referenceHours(1000),0);});
 test('advanced bonuses scale4.5 after600; movement speed does not multiply',()=>{assert.equal(amplifyBonuses({level:599},{critd:.1}).critd,.1);const b=amplifyBonuses({level:600},{critd:.1,speed:.25});assert.equal(b.critd,.45);assert.equal(b.speed,.25);});
 test('critical damage gets identical calibrated credit in all four classes; incompatible amp gets none',()=>{const deltas=[];for(const c of ['VIG','ARC','RUP','LAS']){const st=stats(createPlayer(c,'T')),base=powerScore(st,c,1);deltas.push(powerScore({...st,critd:st.critd+.28},c,1)-base);if(c!=='LAS'){const wrong=c==='ARC'?'ampF':'ampM';assert.equal(powerScore({...st,[wrong]:5},c,1),base);}}assert(Math.max(...deltas)-Math.min(...deltas)<=1);assert(Math.abs(deltas[0]-POWER_WEIGHTS.critd*.28)<1);});

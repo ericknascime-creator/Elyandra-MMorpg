@@ -1,18 +1,19 @@
-import {powerScore} from './power-score.js?v=22';
-import {SUPREMACY,amplifyBonuses,ultraMerits} from './supremacy.js?v=22';
-import {rotationPower} from './power-model.js?v=22';
-import {cosmicBonuses} from './cosmic-progression.js?v=22';
-import {divineBonuses} from './divine-merits.js?v=22';
-import {skillRank,skillGrowth} from './skill-growth.js?v=22';
-import {KITS} from './skills.js?v=22';
-import {companionBonuses,magiculaBonuses} from './companions.js?v=22';
-import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=22';
-import {ascensionBonuses} from './ascension.js?v=22';
-import {runeValue} from './runes.js?v=22';
-import {xpNeeded} from './progression.js?v=22';
-import {attributeGains} from './attributes.js?v=22';
+import {weaponIntrinsics} from './weapon-intrinsics.js?v=23';
+import {powerScore} from './power-score.js?v=23';
+import {SUPREMACY,amplifyBonuses,ultraMerits} from './supremacy.js?v=23';
+import {rotationPower} from './power-model.js?v=23';
+import {cosmicBonuses} from './cosmic-progression.js?v=23';
+import {divineBonuses} from './divine-merits.js?v=23';
+import {skillRank,skillGrowth} from './skill-growth.js?v=23';
+import {KITS} from './skills.js?v=23';
+import {companionBonuses,magiculaBonuses} from './companions.js?v=23';
+import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=23';
+import {ascensionBonuses} from './ascension.js?v=23';
+import {runeValue} from './runes.js?v=23';
+import {xpNeeded} from './progression.js?v=23';
+import {attributeGains} from './attributes.js?v=23';
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-import {CLASSES} from './classes.js?v=22';
+import {CLASSES} from './classes.js?v=23';
 export {CLASSES};
 export function stats(p){
  const c=CLASSES[p.classId],lv=p.level-1,g=CLASS_PROFILES[p.classId].growth,growth=attributeGains(p);
@@ -21,7 +22,7 @@ export function stats(p){
  for(const id of new Set(Object.values(p.equipped))){const i=p.bag.find(v=>v.id===id);if(!i||p.classId==='RUP'&&i.slot==='secondary')continue;const e=clamp(i.enchant||0,0,100),b=Object.fromEntries(Object.entries(i.base).map(([k,v])=>[k,v*(i.quality==='ULTRA'?SUPREMACY.ultraBase:1)])),typed=b.af!=null||b.am!=null;
  if(typed){const a=((b.af||0)+(b.am||0))*(1+.012*e);if(p.classId==='ARC')am+=a;else if(p.classId==='LAS'){af+=a*.65;am+=a*.35;}else af+=a;}else {const a=(b.atk||0)*(1+.012*e);if(p.classId==='ARC')am+=a;else if(p.classId==='LAS'){af+=a*.65;am+=a*.35;}else af+=a;}
  def+=(b.def||0)*(1+.012*e);hp+=(b.hp||0)*(1+.008*e);acc+=(b.acc||0)*(1+.006*e);mp+=b.mp||0;
- for(const [k,v]of Object.entries(ultraMerits(i)))add(k,v);for(const a of i.options||[])add(a.type,a.value);for(const [n,a] of (i.runes||[]).entries())add(a.type,runeValue(i,a,n));
+ for(const [k,v]of Object.entries(weaponIntrinsics(i,p.classId)))add(k,v);for(const [k,v]of Object.entries(ultraMerits(i)))add(k,v);for(const a of i.options||[])add(a.type,a.value);for(const [n,a] of (i.runes||[]).entries())add(a.type,runeValue(i,a,n));
  }
  for(const [k,v]of Object.entries(amplifyBonuses(p,cosmicBonuses(p))))add(k,v);
  const divine=divineBonuses(p);for(const [k,v] of Object.entries(divine))if(k!=='speedPct')add(k,v);

@@ -19,3 +19,5 @@ KITS.ARC[4]=spec('Cometa prismático','spell',1.7,8,20,12,{cast:.45});
 KITS.RUP[3]=spec('Fúria estelar','strike',1.8,11,18,4);
 KITS.LAS[3]=spec('Corte lunar','dash',1.6,9,15,6);
 KITS.BAS[2]=spec('Interceptação celeste','dash',1.5,12,18,6,{stun:.4});
+
+for(const skill of KITS.VIG)if(['shot','mark'].includes(skill.kind))skill.range=17;

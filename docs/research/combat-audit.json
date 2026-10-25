@@ -1,5 +1,5 @@
 {
-  "version": 22,
+  "version": 23,
   "purpose": "Diagnóstico de Elyndra; fórmulas próprias, não fórmulas proprietárias recuperadas",
   "configuration": "Nv1000, Origem+100, nativos perfeitos por classe, três slots, evoluções500, relíquia590, signos500, alma100, skills20",
   "limitations": [
@@ -12,66 +12,66 @@
     {
       "classId": "VIG",
       "name": "Arqueiro",
-      "power": 25122807,
+      "power": 25064143,
       "hp": 2683733,
       "af": 1523636,
       "am": 11293,
       "crit": 0.85,
       "maxCrit": 0.85,
-      "critMultiplier": 14.944999999999999,
+      "critMultiplier": 14.854999999999999,
       "swordAmp": 0.36,
       "magicAmp": 0.36,
-      "dps": 72658723,
+      "dps": 72226272,
       "damageBudget": 1.7,
-      "expectedSkillDamage": 74006982
+      "expectedSkillDamage": 73566507
     },
     {
       "classId": "ARC",
       "name": "Mago",
-      "power": 26530931,
+      "power": 26472268,
       "hp": 3406486,
       "af": 12093,
       "am": 1595056,
       "crit": 0.85,
       "maxCrit": 0.85,
-      "critMultiplier": 11.949999999999998,
+      "critMultiplier": 11.859999999999998,
       "swordAmp": 1.9349999999999998,
       "magicAmp": 4.4750000000000005,
-      "dps": 112236495,
+      "dps": 111403501,
       "damageBudget": 0.6,
-      "expectedSkillDamage": 154487515
+      "expectedSkillDamage": 153340942
     },
     {
       "classId": "RUP",
       "name": "Guerreiro",
-      "power": 29273637,
+      "power": 29332301,
       "hp": 3579314,
       "af": 1982199,
       "am": 11293,
       "crit": 0.85,
       "maxCrit": 0.85,
-      "critMultiplier": 12.839999999999998,
+      "critMultiplier": 12.929999999999998,
       "swordAmp": 3.455,
       "magicAmp": 1.755,
-      "dps": 103347181,
+      "dps": 104061756,
       "damageBudget": 0.65,
-      "expectedSkillDamage": 216256880
+      "expectedSkillDamage": 217752148
     },
     {
       "classId": "LAS",
       "name": "Espadachim",
-      "power": 26254196,
+      "power": 26195533,
       "hp": 3009874,
       "af": 1555187,
       "am": 1555187,
       "crit": 0.85,
       "maxCrit": 0.85,
-      "critMultiplier": 10.62,
+      "critMultiplier": 10.53,
       "swordAmp": 3.3950000000000005,
       "magicAmp": 3.1849999999999996,
-      "dps": 192369289,
+      "dps": 190765687,
       "damageBudget": 1.55,
-      "expectedSkillDamage": 317829795
+      "expectedSkillDamage": 315180347
     }
   ],
   "scenarios": [
@@ -81,34 +81,34 @@
         {
           "a": "VIG",
           "b": "ARC",
-          "aWins": 36,
-          "bWins": 14,
+          "aWins": 43,
+          "bWins": 7,
           "draws": 0,
-          "meanSeconds": 10.88
+          "meanSeconds": 11.25
         },
         {
           "a": "VIG",
           "b": "RUP",
-          "aWins": 47,
-          "bWins": 3,
+          "aWins": 46,
+          "bWins": 4,
           "draws": 0,
-          "meanSeconds": 11.69
+          "meanSeconds": 11.67
         },
         {
           "a": "VIG",
           "b": "LAS",
-          "aWins": 25,
-          "bWins": 25,
+          "aWins": 26,
+          "bWins": 24,
           "draws": 0,
-          "meanSeconds": 9.74
+          "meanSeconds": 9.77
         },
         {
           "a": "ARC",
           "b": "RUP",
-          "aWins": 9,
-          "bWins": 41,
+          "aWins": 8,
+          "bWins": 42,
           "draws": 0,
-          "meanSeconds": 11.26
+          "meanSeconds": 11.25
         },
         {
           "a": "ARC",
@@ -121,10 +121,10 @@
         {
           "a": "RUP",
           "b": "LAS",
-          "aWins": 9,
-          "bWins": 41,
+          "aWins": 10,
+          "bWins": 40,
           "draws": 0,
-          "meanSeconds": 11.37
+          "meanSeconds": 11.43
         }
       ]
     },
@@ -134,10 +134,10 @@
         {
           "a": "VIG",
           "b": "ARC",
-          "aWins": 44,
-          "bWins": 5,
-          "draws": 1,
-          "meanSeconds": 10.11
+          "aWins": 43,
+          "bWins": 7,
+          "draws": 0,
+          "meanSeconds": 10.03
         },
         {
           "a": "VIG",
@@ -145,7 +145,7 @@
           "aWins": 50,
           "bWins": 0,
           "draws": 0,
-          "meanSeconds": 10.25
+          "meanSeconds": 10.31
         },
         {
           "a": "VIG",
@@ -153,7 +153,7 @@
           "aWins": 39,
           "bWins": 10,
           "draws": 1,
-          "meanSeconds": 9.3
+          "meanSeconds": 9.35
         },
         {
           "a": "ARC",
@@ -161,23 +161,23 @@
           "aWins": 23,
           "bWins": 27,
           "draws": 0,
-          "meanSeconds": 12.32
+          "meanSeconds": 12.28
         },
         {
           "a": "ARC",
           "b": "LAS",
-          "aWins": 17,
-          "bWins": 33,
+          "aWins": 16,
+          "bWins": 34,
           "draws": 0,
-          "meanSeconds": 10.2
+          "meanSeconds": 10.24
         },
         {
           "a": "RUP",
           "b": "LAS",
-          "aWins": 31,
-          "bWins": 17,
+          "aWins": 32,
+          "bWins": 16,
           "draws": 2,
-          "meanSeconds": 11.64
+          "meanSeconds": 11.63
         }
       ]
     },
@@ -187,18 +187,18 @@
         {
           "a": "VIG",
           "b": "ARC",
-          "aWins": 38,
-          "bWins": 11,
-          "draws": 1,
-          "meanSeconds": 11.02
+          "aWins": 41,
+          "bWins": 9,
+          "draws": 0,
+          "meanSeconds": 11.17
         },
         {
           "a": "VIG",
           "b": "RUP",
-          "aWins": 48,
-          "bWins": 2,
+          "aWins": 47,
+          "bWins": 3,
           "draws": 0,
-          "meanSeconds": 11.78
+          "meanSeconds": 11.75
         },
         {
           "a": "VIG",
@@ -206,7 +206,7 @@
           "aWins": 23,
           "bWins": 27,
           "draws": 0,
-          "meanSeconds": 9.66
+          "meanSeconds": 9.68
         },
         {
           "a": "ARC",
@@ -214,7 +214,7 @@
           "aWins": 9,
           "bWins": 41,
           "draws": 0,
-          "meanSeconds": 11.43
+          "meanSeconds": 11.36
         },
         {
           "a": "ARC",
@@ -222,15 +222,15 @@
           "aWins": 0,
           "bWins": 50,
           "draws": 0,
-          "meanSeconds": 7.69
+          "meanSeconds": 7.72
         },
         {
           "a": "RUP",
           "b": "LAS",
           "aWins": 14,
-          "bWins": 36,
-          "draws": 0,
-          "meanSeconds": 11.45
+          "bWins": 34,
+          "draws": 2,
+          "meanSeconds": 11.49
         }
       ]
     }

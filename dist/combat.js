@@ -1,5 +1,5 @@
-import {enchantProfile} from './fantasy-vfx.js?v=22';
-import {skillGrowth} from './skill-growth.js?v=22';
+import {enchantProfile} from './fantasy-vfx.js?v=23';
+import {skillGrowth} from './skill-growth.js?v=23';
 // Cabal-inspired separation of sword/magic offense; coefficients are Elyndra balancing.
 export const CLASS_PROFILES={
  VIG:{growth:{hp:38,mp:3,af:5,am:1,def:2.6},primary:'DES',focus:'Ataque físico · velocidade de ataque · taxa crítica · dano crítico · precisão · penetração. Ampliação atua apenas nas skills, não nos tiros básicos.'},
