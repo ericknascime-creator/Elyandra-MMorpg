@@ -1,18 +1,18 @@
-import {drawSkillBlueprint,renderFantasyEffect} from './skill-blueprints.js?v=21';
-import {landmarkFor,citizenPosition,drawStatusEnergy,continentFor} from './realms.js?v=21';
-import {terrain as regionTerrain,blocked as regionBlocked} from './world-layout.js?v=21';
-import {drawModernScenery,drawModernMob,drawAtmosphere} from './environment-art.js?v=21';
-import {drawPresence} from './presence.js?v=21';
-import {drawCompanion,drawMagicula} from './companion-art.js?v=21';
-import {GPUCompositor} from './engine/gpu.js?v=21';
-import {visualAssets,drawScenery,paintGardenTile,drawWarriorSprite,drawWolfSprite,drawClassSprite,drawCell} from './engine/visual-assets.js?v=21';
-import {ParticlePool,drawBladeTrail,drawGreatsword} from './engine/vfx.js?v=21';
-import {drawAscension} from './ascension-art.js?v=21';
-import {drawMob} from './mob-art.js?v=21';
-import {materials,paintTile} from './materials.js?v=21';
-import {drawHero} from './hero-art.js?v=21';
-import {appearanceFor} from './loadout.js?v=21';
-import {clamp,CLASSES} from './core.js?v=21';
+import {drawSkillBlueprint,renderFantasyEffect} from './skill-blueprints.js?v=22';
+import {landmarkFor,citizenPosition,drawStatusEnergy,continentFor} from './realms.js?v=22';
+import {terrain as regionTerrain,blocked as regionBlocked} from './world-layout.js?v=22';
+import {drawModernScenery,drawModernMob,drawAtmosphere} from './environment-art.js?v=22';
+import {drawPresence} from './presence.js?v=22';
+import {drawCompanion,drawMagicula} from './companion-art.js?v=22';
+import {GPUCompositor} from './engine/gpu.js?v=22';
+import {visualAssets,drawScenery,paintGardenTile,drawWarriorSprite,drawWolfSprite,drawClassSprite,drawCell} from './engine/visual-assets.js?v=22';
+import {ParticlePool,drawBladeTrail,drawGreatsword} from './engine/vfx.js?v=22';
+import {drawAscension} from './ascension-art.js?v=22';
+import {drawMob} from './mob-art.js?v=22';
+import {materials,paintTile} from './materials.js?v=22';
+import {drawHero} from './hero-art.js?v=22';
+import {appearanceFor} from './loadout.js?v=22';
+import {clamp,CLASSES} from './core.js?v=22';
 const TAU=Math.PI*2;
 export const npc={x:12,y:12,name:'Ilyra',role:'Guardiã do farol'};
 export const portal={x:28,y:9};
@@ -28,7 +28,7 @@ resize(){this.w=innerWidth;this.h=innerHeight;this.dpr=Math.min(devicePixelRatio
 project(x,y,z=0){return {x:this.w*.5+(x-y-this.cam.x+this.cam.y)*this.tw/2,y:this.h*.57+(x+y-this.cam.x-this.cam.y)*this.th/2-z*this.zoom};}
 unproject(sx,sy){const xx=(sx-this.w*.5)*2/this.tw+this.cam.x-this.cam.y,yy=(sy-this.h*.57)*2/this.th+this.cam.x+this.cam.y;return {x:(xx+yy)/2,y:(yy-xx)/2};}
 floor(zone){const key=zone+':'+(this.region||0)+':'+materials.ready+':'+this.slice+':'+!!visualAssets.terrain+':'+!!visualAssets.ground;if(this.layers.has(key))return this.layers.get(key);const c=document.createElement('canvas');c.width=3700;c.height=1900;const g=c.getContext('2d');g.fillStyle=zone==='dungeon'?'#14232b':'#28484e';g.fillRect(0,0,c.width,c.height);const ox=1850,oy=50;let count=0;
-for(let sum=0;sum<=128;sum++)for(let x=Math.max(0,sum-64);x<=Math.min(64,sum);x++){const y=sum-x,t=terrain(x,y,zone),n=seeded(x*31+y*173),px=ox+(x-y)*27,py=oy+(x+y)*13.5;const grassPalettes=[['#52694b','#4c6448','#566e50'],['#9b8053','#8d714b','#ad8a56'],['#b5a079','#c2ab83','#b99e73'],['#b7ccca','#a7c1c0','#c4d3cf'],['#53645f','#5a6c68','#647875'],['#697479','#727c80','#67727a'],['#4e4b63','#44455c','#59516c'],['#8b9292','#929c95','#7d9091'],['#7faaa9','#85b6b2','#8aaca4'],['#646a8f','#72769b','#626986'],['#a39b7f','#b0a28a','#9c9983'],['#b1c1c4','#c2cece','#aabac3']];const colors=t==='grass'?(grassPalettes[(this.region||0)%12]):t==='path'?['#9b9071','#a39778','#978a6e']:t==='water'?['#375d62','#365c60','#33585f']:t==='sand'?['#afa17f']:t==='stone'?['#3b464b','#3e4b50','#38464d']:['#14232b'];g.fillStyle=colors[Math.floor(n*colors.length)];g.beginPath();g.moveTo(px,py);g.lineTo(px+27,py+13.5);g.lineTo(px,py+27);g.lineTo(px-27,py+13.5);g.closePath();g.fill();if(!(this.slice&&paintGardenTile(g,t,px,py)))paintTile(g,t,px,py,colors[Math.floor(n*colors.length)],this.region||0);if((this.region||0)>0&&['grass','path','sand'].includes(t)){g.globalAlpha=.28;g.fillStyle=colors[0];g.beginPath();g.moveTo(px,py);g.lineTo(px+27,py+13.5);g.lineTo(px,py+27);g.lineTo(px-27,py+13.5);g.closePath();g.fill();g.globalAlpha=1;}count++;if(t==='grass'&&n>.8){g.strokeStyle='#88986a99';g.beginPath();g.moveTo(px,py+16);g.lineTo(px+2,py+11);g.moveTo(px+4,py+18);g.lineTo(px+6,py+15);g.stroke();}if(t==='water'&&n>.65){g.strokeStyle='#8bafa044';g.beginPath();g.moveTo(px-7,py+15);g.lineTo(px+8,py+15);g.stroke();}}
+for(let sum=0;sum<=128;sum++)for(let x=Math.max(0,sum-64);x<=Math.min(64,sum);x++){const y=sum-x,t=terrain(x,y,zone),n=seeded(x*31+y*173),px=ox+(x-y)*27,py=oy+(x+y)*13.5;const grassPalettes=[['#52694b','#4c6448','#566e50'],['#9b8053','#8d714b','#ad8a56'],['#b5a079','#c2ab83','#b99e73'],['#b7ccca','#a7c1c0','#c4d3cf'],['#53645f','#5a6c68','#647875'],['#697479','#727c80','#67727a'],['#4e4b63','#44455c','#59516c'],['#8b9292','#929c95','#7d9091'],['#7faaa9','#85b6b2','#8aaca4'],['#646a8f','#72769b','#626986'],['#a39b7f','#b0a28a','#9c9983'],['#b1c1c4','#c2cece','#aabac3']];const colors=t==='grass'?(grassPalettes[(this.region||0)%12]):t==='path'?['#9b9071','#a39778','#978a6e']:t==='water'?['#375d62','#365c60','#33585f']:t==='sand'?['#afa17f']:t==='stone'?['#3b464b','#3e4b50','#38464d']:['#14232b'];g.fillStyle=colors[Math.floor(n*colors.length)];g.beginPath();g.moveTo(px,py);g.lineTo(px+27,py+13.5);g.lineTo(px,py+27);g.lineTo(px-27,py+13.5);g.closePath();g.fill();if(!(this.slice&&paintGardenTile(g,t,px,py)))paintTile(g,t,px,py,colors[Math.floor(n*colors.length)],this.region||0);if((this.region||0)>0&&['grass','path','sand'].includes(t)){g.globalAlpha=.28;g.fillStyle=colors[0];g.beginPath();g.moveTo(px,py);g.lineTo(px+27,py+13.5);g.lineTo(px,py+27);g.lineTo(px-27,py+13.5);g.closePath();g.fill();g.globalAlpha=1;}count++;if(t==='path'&&x>=33&&x<=41&&Math.abs(y-18)<2){g.save();g.strokeStyle='#5c493b';g.lineWidth=1;for(let slat=-14;slat<=14;slat+=7){g.beginPath();g.moveTo(px-19+slat*.35,py+13+slat*.5);g.lineTo(px+19+slat*.35,py+13-slat*.5);g.stroke();}g.restore();}if(t==='path'&&n>.4){g.fillStyle='#d6d1b32b';for(let chip=0;chip<3;chip++)g.fillRect(px-10+seeded(x*17+y+chip)*20,py+7+seeded(y*13+x+chip)*12,2,1);}if(t==='grass'&&n>.8){g.strokeStyle='#88986a99';g.beginPath();g.moveTo(px,py+16);g.lineTo(px+2,py+11);g.moveTo(px+4,py+18);g.lineTo(px+6,py+15);g.stroke();}if(t==='water'){g.fillStyle=n>.5?'#406c7233':'#234a5433';g.beginPath();g.ellipse(px,py+14,18,5,0,0,TAU);g.fill();}if(t==='water'&&n>.65){g.strokeStyle='#8bafa044';g.beginPath();g.moveTo(px-7,py+15);g.lineTo(px+8,py+15);g.stroke();}}
 const layer={canvas:c,ox,oy,tiles:count};this.layers.clear();this.layers.set(key,layer);this.drawnTiles+=count;return layer;}
 sprite(o){const key=o.kind+':'+(o.seed||0);if(this.sprites.has(key))return this.sprites.get(key);const c=document.createElement('canvas');c.width=200;c.height=240;const prevG=this.g,prevProject=this.project,prevZoom=this.zoom;this.g=c.getContext('2d');this.project=()=>({x:100,y:210});this.zoom=1;this.object(o,{player:null});this.g=prevG;this.project=prevProject;this.zoom=prevZoom;this.sprites.set(key,c);return c;}
 

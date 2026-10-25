@@ -1,6 +1,6 @@
-import {KITS} from './skills.js?v=21';
-import {resolveStrike,basicInterval} from './combat.js?v=21';
-import {skillGrowth} from './skill-growth.js?v=21';
+import {KITS} from './skills.js?v=22';
+import {resolveStrike,basicInterval} from './combat.js?v=22';
+import {skillGrowth} from './skill-growth.js?v=22';
 export function seededRandom(seed=1){let n=seed>>>0;return()=>{n=(Math.imul(1664525,n)+1013904223)>>>0;return n/4294967296;};}
 // Deterministic 1D diagnostic, not a multiplayer server or a human-player balance certificate.
 export function simulateDuel(a,b,{seed=1,seconds=90,movement=true,qualityA=1,qualityB=1}={}){

@@ -1,7 +1,7 @@
-import {ascensionCost,evolveAscension} from './ascension.js?v=21';
-import {enchantPrice,enchant} from './progression.js?v=21';
-import {extendEquipment} from './loadout.js?v=21';
-import {canExtend} from './core.js?v=21';
+import {ascensionCost,evolveAscension} from './ascension.js?v=22';
+import {enchantPrice,enchant} from './progression.js?v=22';
+import {extendEquipment} from './loadout.js?v=22';
+import {canExtend} from './core.js?v=22';
 
 // A quote buys only missing reagents. The original wallet changes once, after validation.
 export function premiumQuote(p,action,item){
@@ -44,13 +44,13 @@ export function premiumApply(p,action,item=null,inCombat=false,rng=Math.random){
   staged.wallet.cash-=q.price;Object.assign(p,staged);return {...out,price:q.price};
 }
 
-import {craft} from './progression.js?v=21';
-import {runeChoices} from './runes.js?v=21';
+import {craft} from './progression.js?v=22';
+import {runeChoices} from './runes.js?v=22';
 export function premiumCraftQuote(p,src){
  if(!src||src.class_id!==p.classId)return {ok:false,reason:'Receita de outra classe.'};
  if(p.level<src.level_min)return {ok:false,reason:'Requer nível '+src.level_min+'.'};
  if(p.bag.length>=80)return {ok:false,reason:'Mochila cheia.'};
- const lines=Object.entries(src.recipe_components||{}).map(([key,need])=>{const have=key==='gold'?p.gold:p.materials?.[key]||0,missing=Math.max(0,need-have),unit=key==='gold'?.02:key.startsWith('L')?8:key.startsWith('E')?24:key.startsWith('N')?150:key.startsWith('K')?100:key.startsWith('P')?250:25000;return {key,missing,price:Math.ceil(missing*unit)};});
+ const lines=Object.entries(src.recipe_components||{}).map(([key,need])=>{const have=key==='gold'?p.gold:p.materials?.[key]||0,missing=Math.max(0,need-have),unit=key==='Núcleo Soberano'?50000:key==='gold'?.02:key.startsWith('L')?8:key.startsWith('E')?24:key.startsWith('N')?150:key.startsWith('K')?100:key.startsWith('P')?250:25000;return {key,missing,price:Math.ceil(missing*unit)};});
  return {ok:true,price:500+lines.reduce((s,l)=>s+l.price,0),lines,summary:'Compra somente materiais faltantes +500 cash de fabricação. Opções e valores continuam aleatórios; não garante perfeição.'};
 }
 export function premiumCraftApply(p,src,inCombat=false){if(inCombat)return {ok:false,reason:'Saia de combate para fabricar.'};const q=premiumCraftQuote(p,src);if(!q.ok)return q;if((p.wallet?.cash||0)<q.price)return {ok:false,reason:'Cash insuficiente.'};const staged=structuredClone(p);staged.materials||={};for(const l of q.lines){if(l.key==='gold')staged.gold+=l.missing;else staged.materials[l.key]=(staged.materials[l.key]||0)+l.missing;}const out=craft(staged,src);if(!out.ok)return out;staged.wallet.cash-=q.price;Object.assign(p,staged);return {...out,price:q.price};}

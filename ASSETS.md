@@ -75,3 +75,10 @@ Built-in image_gen, geração original; conversão para WebP com transparência 
 
 - `dist/assets/visual-concept-v21.webp`: prompt: prancha premium de fantasia para ELYNDRA, porto amplo, santuário, fortaleza, guerreiro de duas mãos; estudos +25/+75/+100 com energia progressiva, arco verde, cajado violeta, daikatana dourada, katana índigo. Sem astros literais ou logos de terceiros. Imagem de conceito, não captura do jogo.
 - `dist/assets/supreme-energy-v21.webp`: prompt: pluma única vertical estreita transparente para arma, filamentos ciano, veios dourados, línguas violetas e centelhas, núcleo controlado, sem arma ou personagem, legível em cerca de20×100px, sem neblina opaca. Composta e animada pelo Canvas, não vídeo.
+
+## Revisão0.22 — ULTRA exclusivo
+
+Built-in image_gen. Arte original gerada antes da integração; conversões para WebP preservaram alpha.
+- `dist/assets/ultra-concept-v22.webp`: prompt de quatro colunas, armaduras completas agressivas e elegantes, Arqueiro esmeralda/ouro, Mago ametista/obsidiana, Guerreiro leão preto/ouro com duas mãos, Espadachim índigo/prata; armas e secundárias combinando.
+- `dist/assets/ultra-weapons-concept-v22.webp`: edição preservando armaduras aprovadas e elaborando somente armas e estudos inferiores: arco articulado, cajado de tríplice coroa e orbe, daikatana monumental e katana com runas e selo. Exibida como conceito e utilizada nos recortes de ícones de armasULTRA.
+- `dist/assets/ultra-classes-v22.webp`: atlas4×4 transparente, quatro poses por classe, editado com a segunda referência de armas. Sem asas ou chão incorporados. Transições e efeitos executados no Canvas; não é modelo3D nem animação esquelética. A primeira versão intermediária não foi incorporada ao jogo.

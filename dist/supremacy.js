@@ -1,0 +1,8 @@
+// Late-game parameters are independent of visual enchantment; cash is simulated.
+export const SUPREMACY={ultraBase:2.7,advancedBonuses:4.5,unlock:600,years:35,hoursPerDay:2,referenceXPPerHour:34.9,cashPerHour:500};
+const count=400,sum=Array.from({length:count},(_,i)=>(i/399)**3).reduce((a,b)=>a+b,0);
+export function referenceHours(level){const total=SUPREMACY.years*365.25*SUPREMACY.hoursPerDay-100,curve=(total-6*count)/(6*sum);return level<SUPREMACY.unlock?100/599:level>=1000?0:6*(1+curve*((level-600)/399)**3);}
+export function trainingQuote(p){if(p.level<600||p.level>=1000)return{ok:false,reason:'Treinamento soberano: níveis600–999.'};const hours=referenceHours(p.level),price=Math.ceil(hours*SUPREMACY.cashPerHour),xp=Math.ceil(Math.ceil(100*p.level**1.55)*hours*SUPREMACY.referenceXPPerHour);return{ok:true,hours,days:hours/2,price,xp};}
+export function buyTraining(p){const q=trainingQuote(p);if(!q.ok)return q;if(p.testMode)return{ok:false,reason:'GM já está no máximo. Use a estimativa.'};if((p.wallet?.cash||0)<q.price)return{ok:false,reason:'Cash insuficiente.'};p.wallet.cash-=q.price;return{ok:true,xp:q.xp,price:q.price};}
+export function amplifyBonuses(p,bonuses){if(p.level<600)return bonuses;return Object.fromEntries(Object.entries(bonuses).map(([k,v])=>[k,k==='speed'?v:v*SUPREMACY.advancedBonuses]));}
+export function ultraMerits(item){if(item.quality!=='ULTRA')return{};const weapon=['weapon','secondary'].includes(item.slot);return weapon?{critd:.18,pen:260,ignoreAmpRes:.015,ignoreCritRes:.01}:{dr:75,critdres:.04,ampres:.025,ten:.012};}

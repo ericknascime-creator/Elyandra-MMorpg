@@ -1110,5 +1110,34 @@
       "particles": 22,
       "emission": 1
     }
-  ]
+  ],
+  "powerWeights": {
+    "atk": 4.9988,
+    "hp": 0.4999,
+    "def": 36.1182,
+    "crit": 679509.5159,
+    "critd": 90867.8061,
+    "amp": 194679.0156,
+    "haste": 119683.2782,
+    "pen": 350.9834,
+    "acc": 62.3059,
+    "dr": 107.8315,
+    "cdr": 332207.0291,
+    "critres": 461580.3655,
+    "critdres": 133969.9275,
+    "ampres": 302727.3645,
+    "ten": 100000,
+    "pvp": 250000,
+    "ignoreAmpRes": 194679.0156,
+    "ignoreCritRes": 679509.5159
+  },
+  "supremacy": {
+    "ultraBase": 2.7,
+    "advancedBonuses": 4.5,
+    "unlock": 600,
+    "years": 35,
+    "hoursPerDay": 2,
+    "referenceXPPerHour": 34.9,
+    "cashPerHour": 500
+  }
 }
