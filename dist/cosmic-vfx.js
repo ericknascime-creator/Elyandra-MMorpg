@@ -1,5 +1,5 @@
 // Compatibility API preserves existing purchases; presentation is fantasy energy.
-import {FANTASY_STYLES,fantasyProfile,drawFantasyPresence} from './fantasy-vfx.js?v=24';
+import {FANTASY_STYLES,fantasyProfile,drawFantasyPresence} from './fantasy-vfx.js?v=25';
 export const COSMIC_STYLES=FANTASY_STYLES;
 export const cosmicProfile=fantasyProfile;
 export function initCosmicStyle(p){p.magicula||={rank:0};p.cosmicStyles||=['blackhole'];if(p.localRole==='gm')p.cosmicStyles=COSMIC_STYLES.map(d=>d.id);if(!COSMIC_STYLES.some(d=>d.id===p.magicula.style))p.magicula.style='blackhole';}

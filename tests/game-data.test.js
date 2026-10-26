@@ -1,9 +1,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {applyGameDesign,validateGameDesign,loadGameDesign} from '../dist/game-data.js?v=24';
-import {CLASS_PROFILES} from '../dist/combat.js?v=24';
-import {ACTIVE_CLASSES,CLASSES} from '../dist/classes.js?v=24';
+import {applyGameDesign,validateGameDesign,loadGameDesign} from '../dist/game-data.js?v=25';
+import {CLASS_PROFILES} from '../dist/combat.js?v=25';
+import {ACTIVE_CLASSES,CLASSES} from '../dist/classes.js?v=25';
 const data=JSON.parse(readFileSync(new URL('../dist/game-design.json',import.meta.url)));
 test('JSON changes the growth registry used by combat, preserving archived classes',()=>{const edit=structuredClone(data);edit.classProfiles.ARC.growth.am=9;applyGameDesign(edit);assert.equal(CLASS_PROFILES.ARC.growth.am,9);assert.equal(ACTIVE_CLASSES.length,4);assert.ok(CLASSES.ESP);applyGameDesign(data);});
 test('invalid JSON is rejected before any registry mutation',()=>{const edit=structuredClone(data);edit.classes.VIG.hp=900;edit.combat.hitMin=2;assert.throws(()=>applyGameDesign(edit));assert.equal(CLASSES.VIG.hp,data.classes.VIG.hp);});

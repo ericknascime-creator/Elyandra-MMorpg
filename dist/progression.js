@@ -1,6 +1,6 @@
-import {referenceHours,SUPREMACY} from './supremacy.js?v=24';
+import {referenceHours,SUPREMACY} from './supremacy.js?v=25';
 // Local campaign rules from blueprint v0.3, including later FOR/INT/DES changes.
-import {convertCatalogItem} from './equipment.js?v=24';
+import {convertCatalogItem} from './equipment.js?v=25';
 export function xpBase(level){return Math.ceil(100*Math.max(1,level)**1.55);}
 export function xpNeeded(level){return Math.ceil(xpBase(level)*(level>=600?referenceHours(level)*SUPREMACY.referenceXPPerHour:level>=150?2:1));}
 export function advanceXP(player,amount){if(player.testMode||player.level>=1000)return 0;player.xp+=Math.max(0,Math.floor(amount));let gained=0;while(player.level<1000&&player.xp>=xpNeeded(player.level)){player.xp-=xpNeeded(player.level);player.level++;gained++;}if(player.level===1000)player.xp=0;return gained;}

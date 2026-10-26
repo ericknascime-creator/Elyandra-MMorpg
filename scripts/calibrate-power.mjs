@@ -1,6 +1,6 @@
 import {writeFileSync,readFileSync} from 'node:fs';
-import {rotationPower} from '../dist/power-model.js?v=24';
-import {resolveStrike,damageReduction} from '../dist/combat.js?v=24';
+import {rotationPower} from '../dist/power-model.js?v=25';
+import {resolveStrike,damageReduction} from '../dist/combat.js?v=25';
 const classes=['VIG','ARC','RUP','LAS'];
 const reference={hp:1000000,mp:100000,af:100000,am:100000,def:20000,critRaw:.5,crit:.5,maxcrit:.85,critd:4,haste:.5,interval:.8,ampF:1,ampM:1,penF:6000,penM:6000,acc:1500,evasion:1000,critres:.15,critdres:.3,ampres:.2,dr:400,cdr:.1,ten:.1,pvp:.1,ignoreAmpRes:.05,ignoreCritRes:.05};for(let i=0;i<7;i++)reference['skillRank'+i]=20;
 const metric=(st,id)=>{const offense=rotationPower({...st,critRaw:Math.max(0,st.critRaw-Math.max(0,.15-st.ignoreCritRes)),ampF:Math.max(0,st.ampF-Math.max(0,.2-st.ignoreAmpRes)),ampM:Math.max(0,st.ampM-Math.max(0,.2-st.ignoreAmpRes))},id).dps;const incoming=(1-damageReduction(st.def,6000))*(1+Math.max(0,.5-st.critres)*(Math.max(1.2,2.5-st.critdres)-1))*(1+Math.max(0,1-st.ampres));const ehp=st.hp/Math.max(.01,incoming-st.dr/30000);return Math.sqrt(offense*ehp);};

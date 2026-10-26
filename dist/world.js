@@ -1,18 +1,18 @@
-import {drawSkillBlueprint,renderFantasyEffect} from './skill-blueprints.js?v=24';
-import {landmarkFor,citizenPosition,drawStatusEnergy,continentFor} from './realms.js?v=24';
-import {terrain as regionTerrain,blocked as regionBlocked} from './world-layout.js?v=24';
-import {drawModernScenery,drawModernMob,drawAtmosphere} from './environment-art.js?v=24';
-import {drawPresence} from './presence.js?v=24';
-import {drawCompanion,drawMagicula} from './companion-art.js?v=24';
-import {GPUCompositor} from './engine/gpu.js?v=24';
-import {visualAssets,drawScenery,paintGardenTile,drawWarriorSprite,drawWolfSprite,drawClassSprite,drawCell} from './engine/visual-assets.js?v=24';
-import {ParticlePool,drawBladeTrail,drawGreatsword} from './engine/vfx.js?v=24';
-import {drawAscension} from './ascension-art.js?v=24';
-import {drawMob} from './mob-art.js?v=24';
-import {materials,paintTile} from './materials.js?v=24';
-import {drawHero} from './hero-art.js?v=24';
-import {appearanceFor} from './loadout.js?v=24';
-import {clamp,CLASSES} from './core.js?v=24';
+import {drawSkillBlueprint,renderFantasyEffect} from './skill-blueprints.js?v=25';
+import {landmarkFor,citizenPosition,drawStatusEnergy,continentFor} from './realms.js?v=25';
+import {terrain as regionTerrain,blocked as regionBlocked} from './world-layout.js?v=25';
+import {drawModernScenery,drawModernMob,drawAtmosphere} from './environment-art.js?v=25';
+import {drawPresence} from './presence.js?v=25';
+import {drawCompanion,drawMagicula} from './companion-art.js?v=25';
+import {GPUCompositor} from './engine/gpu.js?v=25';
+import {visualAssets,drawScenery,paintGardenTile,drawWarriorSprite,drawWolfSprite,drawClassSprite,drawCell} from './engine/visual-assets.js?v=25';
+import {ParticlePool,drawBladeTrail,drawGreatsword} from './engine/vfx.js?v=25';
+import {drawAscension} from './ascension-art.js?v=25';
+import {drawMob} from './mob-art.js?v=25';
+import {materials,paintTile} from './materials.js?v=25';
+import {drawHero} from './hero-art.js?v=25';
+import {appearanceFor} from './loadout.js?v=25';
+import {clamp,CLASSES} from './core.js?v=25';
 const TAU=Math.PI*2;
 export const npc={x:12,y:12,name:'Ilyra',role:'Guardiã do farol'};
 export const portal={x:28,y:9};
@@ -43,6 +43,7 @@ for(const o of decor){const v=this.project(o.x,o.y);if(v.x< -110||v.x>this.w+110
 if(zone==='coast')for(const mark of [{x:46,y:18,name:'ACAMPAMENTO DOS EXILADOS'},{x:54,y:43,name:'SANTUÁRIO PARTIDO'},{x:59,y:54,name:'FORTALEZA DO LIMIAR'}]){const v=this.project(mark.x,mark.y);if(v.x>-100&&v.x<this.w+100&&v.y>0&&v.y<this.h)this.label(mark.name,v.x,v.y-76*this.zoom,'#ecd6a1',9);}
 for(const e of state.enemies){if(e.hp<=0&&e.deadTimer<=0)continue;const v=this.project(e.x,e.y);if(v.x< -65||v.x>this.w+65||v.y< -60||v.y>this.h+90)continue;this.object({...e,kind:'enemy',ref:e},state);}
 for(const o of state.loot||[])this.object({...o,kind:'loot'},state);
+state.visibleBots=[];const partyIds=new Set(p?.society?.party||[]);for(const b of (state.bots||[]).slice().sort((a,b)=>Number(partyIds.has(b.id))-Number(partyIds.has(a.id))||Math.hypot(a.x-(p?.x||0),a.y-(p?.y||0))-Math.hypot(b.x-(p?.x||0),b.y-(p?.y||0)))){if(state.visibleBots.length>=12)break;if((b.region||0)!==(p?.region||0)||(b.zone||'coast')!==zone)continue;const v=this.project(b.x,b.y);if(v.x<0||v.x>this.w||v.y<25||v.y>this.h-25)continue;state.visibleBots.push(b);g.save();g.translate(v.x,v.y);g.scale(this.zoom*this.heroScale*.86,this.zoom*this.heroScale*.86);const appearance=b.appearance||(b.appearance=appearanceFor(b.player));this.human(b.classId,b.moving,this.time,(b.attackAnim||0)>0,{...appearance,attackProgress:1-(b.attackAnim||0)/.5});g.restore();g.save();g.textAlign='center';g.font='8px system-ui';g.fillStyle=partyIds.has(b.id)?'#8bffcf':b.profile==='free'?'#c3dce9':'#ffdd88';g.strokeStyle='#071018';g.lineWidth=3;const name=b.name+(b.profile==='free'?' [IA]':' [IA · VIP]');g.strokeText(name,v.x,v.y-65*this.zoom*this.heroScale);g.fillText(name,v.x,v.y-65*this.zoom*this.heroScale);g.restore();}
 // Foreground player pass guarantees the playable character is never hidden by trees or roofs.
 if(p){g.save();g.translate(hero.x,hero.y);g.scale(this.heroScale,this.heroScale);g.translate(-hero.x,-hero.y);this.object({...p,kind:'player'},state);g.restore();}
 if(p?.companions?.pet){this.petFollow||={x:p.x-1,y:p.y+1};this.petFollow.x+=(p.x-1-this.petFollow.x)*Math.min(1,dt*5);this.petFollow.y+=(p.y+1-this.petFollow.y)*Math.min(1,dt*5);const pet=this.project(this.petFollow.x,this.petFollow.y);g.save();g.translate(pet.x,pet.y);g.scale(this.zoom*.78,this.zoom*.78);drawCompanion(g,p,'pet',this.time,state.moving);g.restore();}for(const fx of state.effects){if(renderFantasyEffect(g,fx,(x,y,z=0)=>this.project(x,y,z),this.time,this.quality==='economy')){g.globalAlpha=1;g.shadowBlur=0;continue;}const v=this.project(fx.x,fx.y),k=fx.life/fx.max;g.globalAlpha=k;if(this.slice&&!this.seenFX.has(fx)){this.seenFX.add(fx);if(['impact','nova','slash','ascend'].includes(fx.type))this.particles.burst(v.x,v.y-20,fx.color||'#ffc35b',fx.type==='nova'?32:12,fx.type==='nova'?1.5:1);}if(fx.type==='classSkill'){const a=this.project(fx.x,fx.y),b=this.project(fx.target?.hp>0?fx.target.x:(fx.tx??fx.x),fx.target?.hp>0?fx.target.y:(fx.ty??fx.y));drawSkillBlueprint(g,fx,a,b,this.time);}

@@ -1,4 +1,4 @@
-import {stamp,glint} from './fantasy-vfx.js?v=24';
+import {stamp,glint} from './fantasy-vfx.js?v=25';
 const TAU=Math.PI*2;
 export const CLASS_VFX={VIG:{color:'#73ffc0',shape:'arrow'},ESP:{color:'#d68bff',shape:'daggers'},ARC:{color:'#89dbff',shape:'lance'},BAS:{color:'#ffd37a',shape:'shield'},RUP:{color:'#ffab73',shape:'quake'},DUE:{color:'#a5f8ff',shape:'cross'},LAS:{color:'#c39bff',shape:'crescent'}};
 export function skillBlueprint(classId,index,skill){const style=CLASS_VFX[classId];return{...style,classId,index,kind:skill.kind,damage:skill.coef>0,name:skill.name,windup:skill.cast||.12,flight:['shot','spell','dispel','rune'].includes(skill.kind),duration:index===6?1.2:.7,rays:Math.min(16,6+index),radius:index===6?80:32+index*4,impact:skill.coef>0?'dano após trajetória':'suporte no personagem',stun:skill.stun||0};}

@@ -1,11 +1,11 @@
-import {SUPREMACY} from './supremacy.js?v=24';
-import {POWER_WEIGHTS} from './power-score.js?v=24';
+import {SUPREMACY} from './supremacy.js?v=25';
+import {POWER_WEIGHTS} from './power-score.js?v=25';
 // Parameters are JSON; behavior and rendering remain ordinary JavaScript modules.
-import {CLASSES,ACTIVE_CLASSES} from './classes.js?v=24';
-import {KITS,PASSIVE_OPTIONS} from './skills.js?v=24';
-import {CLASS_PROFILES,CLASS_DAMAGE,COMBAT_RULES} from './combat.js?v=24';
-import {ATTRIBUTE_SCALE} from './attributes.js?v=24';
-import {FANTASY_STYLES,ENCHANT_STAGES} from './fantasy-vfx.js?v=24';
+import {CLASSES,ACTIVE_CLASSES} from './classes.js?v=25';
+import {KITS,PASSIVE_OPTIONS} from './skills.js?v=25';
+import {CLASS_PROFILES,CLASS_DAMAGE,COMBAT_RULES} from './combat.js?v=25';
+import {ATTRIBUTE_SCALE} from './attributes.js?v=25';
+import {FANTASY_STYLES,ENCHANT_STAGES} from './fantasy-vfx.js?v=25';
 const targets={supremacy:SUPREMACY,powerWeights:POWER_WEIGHTS,activeClasses:ACTIVE_CLASSES,classes:CLASSES,skills:KITS,passives:PASSIVE_OPTIONS,classProfiles:CLASS_PROFILES,classDamage:CLASS_DAMAGE,attributeScale:ATTRIBUTE_SCALE,combat:COMBAT_RULES,presenceStyles:FANTASY_STYLES,enchantmentStages:ENCHANT_STAGES};
 const baseline=JSON.parse(JSON.stringify({schemaVersion:1,...targets}));
 function check(value,model,path){
@@ -30,4 +30,4 @@ export function validateGameDesign(data){
  return JSON.parse(JSON.stringify(data));
 }
 export function applyGameDesign(data){const clean=validateGameDesign(data);for(const [key,target] of Object.entries(targets)){if(Array.isArray(target))target.splice(0,target.length,...clean[key]);else Object.assign(target,clean[key]);}return clean;}
-export async function loadGameDesign(fetcher=fetch){const response=await fetcher('game-design.json?v=24');if(!response.ok)throw Error('Design indisponível');return applyGameDesign(await response.json());}
+export async function loadGameDesign(fetcher=fetch){const response=await fetcher('game-design.json?v=25');if(!response.ok)throw Error('Design indisponível');return applyGameDesign(await response.json());}
