@@ -1,4 +1,4 @@
-import {drawEnchantedEdge,glint} from './fantasy-vfx.js?v=23';
+import {drawEnchantedEdge,glint} from './fantasy-vfx.js?v=24';
 export const ULTRA_ROWS={VIG:0,ARC:1,RUP:2,LAS:3};
 export const ULTRA_PATHS={
  VIG:[[[30,-91],[44,-65],[39,-31],[22,0]],[[38,-119],[44,-86],[38,-40]],[[38,-119],[44,-86],[38,-40]],[[30,-91],[44,-65],[39,-31],[22,0]]],

@@ -82,3 +82,7 @@ Built-in image_gen. Arte original gerada antes da integração; conversões para
 - `dist/assets/ultra-concept-v22.webp`: prompt de quatro colunas, armaduras completas agressivas e elegantes, Arqueiro esmeralda/ouro, Mago ametista/obsidiana, Guerreiro leão preto/ouro com duas mãos, Espadachim índigo/prata; armas e secundárias combinando.
 - `dist/assets/ultra-weapons-concept-v22.webp`: edição preservando armaduras aprovadas e elaborando somente armas e estudos inferiores: arco articulado, cajado de tríplice coroa e orbe, daikatana monumental e katana com runas e selo. Exibida como conceito e utilizada nos recortes de ícones de armasULTRA.
 - `dist/assets/ultra-classes-v22.webp`: atlas4×4 transparente, quatro poses por classe, editado com a segunda referência de armas. Sem asas ou chão incorporados. Transições e efeitos executados no Canvas; não é modelo3D nem animação esquelética. A primeira versão intermediária não foi incorporada ao jogo.
+
+
+## v24 · Jornada ilustrada
+`dist/assets/journey-chapters-v24.webp` — imagem original gerada com ferramenta integrada image_gen (stylized-concept), seis cenas em grade 3×2: farol saqueado, floresta das correntes, coroas opostas, forjas celestes, doze testemunhas, trono livre. Pintura detalhada azul/latão/ciano, sem texto ou marcas. Fonte: `exec-9941a2cb-f410-425c-bdbc-a60122c32af5.png`. Atlas1536×1024; WebP qualidade88. Usada nos cartões e cabeçalhos da Jornada; não representa mapas 3D implementados.

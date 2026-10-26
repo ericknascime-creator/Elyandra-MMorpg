@@ -1,6 +1,6 @@
-import {presenceIcon} from './fantasy-vfx.js?v=23';
-import {COSMIC_STYLES,cosmicStyleQuote} from './cosmic-vfx.js?v=23';
-import {petForm,FORM_LEVELS} from './pet-forms.js?v=23';
+import {presenceIcon} from './fantasy-vfx.js?v=24';
+import {COSMIC_STYLES,cosmicStyleQuote} from './cosmic-vfx.js?v=24';
+import {petForm,FORM_LEVELS} from './pet-forms.js?v=24';
 export function growthMarkup(v){const {kind,isMagic,defs,selected,owned,rank,q,cost,current,next,delta,activePower=0,art,bonuses,energy,testMode,catalog,player={magicula:{style:'blackhole'}}}=v,isPet=kind==='pet',form=isPet?petForm(selected.id,rank||1):null;
 const tabs=`<div class="panelTabs growthTabs">${[['magicula','Magículas'],['pet','Pets'],['mount','Montarias']].map(([k,n])=>`<button data-growth-tab="${k}" class="${k===kind?'selected':''}">${n}</button>`).join('')}</div>`;
 if(catalog)return `<div class="growthCompact">${tabs}<button class="textlink" id="growthCatalog">← Voltar ao equipado</button><div class="companionCards">${defs.map(d=>`<button data-companion-select="${d.id}">${art(d,'catalogue')}<b>${d.name}</b><small>${d.owned?'Nv'+d.rank:'Nv'+d.minLevel+' · '+d.cash.toLocaleString('pt-BR')+' cash'}</small></button>`).join('')}</div></div>`;

@@ -1,5 +1,5 @@
-import {SKILL_UNLOCK,skillRank} from './skill-growth.js?v=23';
-import {skillArt} from './skill-art.js?v=23';
+import {SKILL_UNLOCK,skillRank} from './skill-growth.js?v=24';
+import {skillArt} from './skill-art.js?v=24';
 export const TALENT_NODES=[[22,19],[75,16],[128,19],[22,76],[75,72],[128,76],[75,132]];
 export const TALENT_EDGES=[[0,1],[1,2],[0,3],[1,4],[2,5],[3,6],[4,6],[5,6]];
 export function skillTreeMarkup(kit,classId,p,selected){return `<nav class="skillTree" aria-label="Árvore de habilidades"><div class="treeHeading"><small>DOMÍNIO DA CLASSE</small><b>Habilidades ativas</b></div><div class="talentWeb"><svg class="talentLinks" viewBox="0 0 150 155" aria-hidden="true">${TALENT_EDGES.map(([a,b])=>`<path d="M${TALENT_NODES[a].join(' ')} L${TALENT_NODES[b].join(' ')}" class="${p.level>=Math.max(SKILL_UNLOCK[a],SKILL_UNLOCK[b])?'unlocked':''}"/>`).join('')}</svg>${kit.map((k,n)=>`<button class="talentNode ${selected===n?'selected':''} ${p.level<SKILL_UNLOCK[n]?'locked':''}" data-train-select="${n}" style="--node-x:${TALENT_NODES[n][0]/150*100}%;--node-y:${TALENT_NODES[n][1]/155*100}%" aria-label="${k.name}, nível${skillRank(p,n)}, acesso no nível${SKILL_UNLOCK[n]}" title="${k.name}">${skillArt(k,classId,n===6)}<b>${p.level<SKILL_UNLOCK[n]?'Nv'+SKILL_UNLOCK[n]:skillRank(p,n)+'/20'}</b><small>${k.name}</small></button>`).join('')}</div><p class="treeLegend">Toque no núcleo para ver, treinar ou equipar. As linhas organizam os caminhos; o acesso depende do nível mostrado.</p></nav>`;}
