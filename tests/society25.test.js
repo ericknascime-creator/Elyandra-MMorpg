@@ -1,7 +1,7 @@
 import test from 'node:test';import assert from 'node:assert/strict';
-import {createSociety,inviteBot,simulateBotDay,simulateDays,cohortReport,buyVip,vipState,applyVipReward,botReply,tickFollowers} from '../dist/bot-society.js?v=25';
-import {createMatch,arenaAction,tickMatch} from '../dist/bot-arena.js?v=25';
-import {stats} from '../dist/core.js?v=25';
+import {createSociety,inviteBot,simulateBotDay,simulateDays,cohortReport,buyVip,vipState,applyVipReward,botReply,tickFollowers} from '../dist/bot-society.js?v=26';
+import {createMatch,arenaAction,tickMatch} from '../dist/bot-arena.js?v=26';
+import {stats} from '../dist/core.js?v=26';
 test('exactly50 persistent bots with all four classes and 30/12/8 cohorts',()=>{const w=createSociety();assert.equal(w.bots.length,50);assert.equal(new Set(w.bots.map(b=>b.name)).size,50);assert.equal(new Set(w.bots.map(b=>b.classId)).size,4);assert.deepEqual(cohortReport(w).map(r=>r.count),[30,12,8]);assert.ok(w.bots.every(b=>Number.isFinite(stats(b.player).pc)));});
 test('party caps at four bots and removal reopens the slot',()=>{const w=createSociety();for(let i=0;i<4;i++)assert.equal(inviteBot(w,'bot-'+i).ok,true);assert.equal(inviteBot(w,'bot-4').ok,false);assert.equal(inviteBot(w,'bot-0').removed,true);assert.equal(inviteBot(w,'bot-4').ok,true);});
 test('VIP upgrade consumes exact difference once and never grants raw combat stats',()=>{const p={gold:0,wallet:{cash:100000},materials:{}};assert.equal(vipState(p).level,0);assert.equal(buyVip(p,1).price,10000);assert.equal(buyVip(p,2).price,40000);assert.equal(p.wallet.cash,50000);assert.equal(buyVip(p,1).ok,false);assert.equal(buyVip(p,4).ok,false);assert.equal(p.vip.spent,50000);for(let i=0;i<10;i++)applyVipReward(p,{gold:100},false);assert.equal(p.gold,100);assert.equal(p.materials['Fragmento de Magícula'],0+Math.floor(1));const old=p.gold;applyVipReward(p,{gold:1000},true);assert.equal(p.gold,old);});

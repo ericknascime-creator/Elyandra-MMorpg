@@ -1,22 +1,23 @@
-import {weaponIntrinsics} from './weapon-intrinsics.js?v=25';
-import {powerScore} from './power-score.js?v=25';
-import {SUPREMACY,amplifyBonuses,ultraMerits} from './supremacy.js?v=25';
-import {rotationPower} from './power-model.js?v=25';
-import {cosmicBonuses} from './cosmic-progression.js?v=25';
-import {divineBonuses} from './divine-merits.js?v=25';
-import {skillRank,skillGrowth} from './skill-growth.js?v=25';
-import {KITS} from './skills.js?v=25';
-import {companionBonuses,magiculaBonuses} from './companions.js?v=25';
-import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=25';
-import {ascensionBonuses} from './ascension.js?v=25';
-import {runeValue} from './runes.js?v=25';
-import {xpNeeded} from './progression.js?v=25';
-import {attributeGains} from './attributes.js?v=25';
+import {rebirthBonuses} from './rebirth.js?v=26';
+import {weaponIntrinsics} from './weapon-intrinsics.js?v=26';
+import {powerScore} from './power-score.js?v=26';
+import {SUPREMACY,amplifyBonuses,ultraMerits} from './supremacy.js?v=26';
+import {rotationPower} from './power-model.js?v=26';
+import {cosmicBonuses} from './cosmic-progression.js?v=26';
+import {divineBonuses} from './divine-merits.js?v=26';
+import {skillRank,skillGrowth} from './skill-growth.js?v=26';
+import {KITS} from './skills.js?v=26';
+import {companionBonuses,magiculaBonuses} from './companions.js?v=26';
+import {CLASS_PROFILES,attackProfile,damageReduction,combatDamage,CLASS_ROLES,resolveStrike} from './combat.js?v=26';
+import {ascensionBonuses} from './ascension.js?v=26';
+import {runeValue} from './runes.js?v=26';
+import {xpNeeded} from './progression.js?v=26';
+import {attributeGains} from './attributes.js?v=26';
 export const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-import {CLASSES} from './classes.js?v=25';
+import {CLASSES} from './classes.js?v=26';
 export {CLASSES};
 export function stats(p){
- const c=CLASSES[p.classId],lv=p.level-1,g=CLASS_PROFILES[p.classId].growth,growth=attributeGains(p);
+ const c=CLASSES[p.classId],lv=p.level-1+(p.rebirth?.bankedLevels||0),g=CLASS_PROFILES[p.classId].growth,growth=attributeGains(p);
  let hp=c.hp+lv*g.hp,mp=c.mp+lv*g.mp,af=(p.classId==='ARC'?12:c.atk)+lv*g.af,am=(p.classId==='ARC'?c.atk:p.classId==='LAS'?c.atk*.65:10)+lv*g.am,def=c.def+lv*g.def,critRaw=.05,critd=1.2,maxcrit=.5,acc=1000,haste=0,ampF=0,ampM=0,penF=0,penM=0,critres=0,critdres=0,ampres=0,dr=0,cdr=0,ten=0,pvp=0,ignoreCritRes=0,ignoreCritdRes=0,ignoreAmpRes=0,evasion=growth.evasion;
  const add=(type,v)=>{switch(type){case 'ten':ten+=v;break;case 'pvp':pvp+=v;break;case 'crit':critRaw+=v;break;case 'critd':critd+=v;break;case 'maxcrit':maxcrit+=v;break;case 'haste':haste+=v;break;case 'ampF':ampF+=v;break;case 'ampM':ampM+=v;break;case 'ampAll':ampF+=v;ampM+=v;break;case 'af':af+=v;break;case 'am':am+=v;break;case 'atk':if(p.classId==='ARC')am+=v;else if(p.classId==='LAS'){af+=v*.65;am+=v*.35;}else af+=v;break;case 'pen':penF+=v;penM+=v;break;case 'penF':penF+=v;break;case 'penM':penM+=v;break;case 'hp':hp+=v;break;case 'mana':case 'mp':mp+=v;break;case 'def':def+=v;break;case 'precisao':acc+=v;break;case 'critres':critres+=v;break;case 'critdres':critdres+=v;break;case 'ampres':ampres+=v;break;case 'dr':dr+=v;break;case 'cdr':cdr+=v;break;case 'evasion':evasion+=v;break;case 'ignoreCritRes':ignoreCritRes+=v;break;case 'ignoreCritdRes':ignoreCritdRes+=v;break;case 'ignoreAmpRes':ignoreAmpRes+=v;break;}};
  for(const id of new Set(Object.values(p.equipped))){const i=p.bag.find(v=>v.id===id);if(!i||p.classId==='RUP'&&i.slot==='secondary')continue;const e=clamp(i.enchant||0,0,100),b=Object.fromEntries(Object.entries(i.base).map(([k,v])=>[k,v*(i.quality==='ULTRA'?SUPREMACY.ultraBase:1)])),typed=b.af!=null||b.am!=null;
@@ -24,6 +25,7 @@ export function stats(p){
  def+=(b.def||0)*(1+.012*e);hp+=(b.hp||0)*(1+.008*e);acc+=(b.acc||0)*(1+.006*e);mp+=b.mp||0;
  for(const [k,v]of Object.entries(weaponIntrinsics(i,p.classId)))add(k,v);for(const [k,v]of Object.entries(ultraMerits(i)))add(k,v);for(const a of i.options||[])add(a.type,a.value);for(const [n,a] of (i.runes||[]).entries())add(a.type,runeValue(i,a,n));
  }
+ for(const [k,v]of Object.entries(rebirthBonuses(p)))add(k,v);
  for(const [k,v]of Object.entries(amplifyBonuses(p,cosmicBonuses(p))))add(k,v);
  const divine=divineBonuses(p);for(const [k,v] of Object.entries(divine))if(k!=='speedPct')add(k,v);
  af+=growth.physical;am+=growth.magical;def+=growth.def;hp*=1+growth.hpPct;mp=(mp+growth.mp)*(1+growth.mpPct);acc+=growth.accuracy;critRaw+=growth.crit;haste+=growth.haste;critd+=growth.critd;ampM+=growth.magicAmp;
@@ -36,7 +38,7 @@ export function stats(p){
  const result={...Object.fromEntries(ranks.map((r,i)=>['skillRank'+i,r])),hp:Math.round(hp),mp:Math.round(mp),af:Math.round(p.classId==='LAS'?unifiedAttack:af),am:Math.round(p.classId==='LAS'?unifiedAttack:am),def:Math.round(def),crit,critRaw,maxcrit,critd,haste,ampF:Math.max(0,ampF),ampM:Math.max(0,ampM),penF,penM,acc,evasion,critres:clamp(critres,0,.8),critdres,ampres,dr,cdr,ignoreCritRes,ignoreCritdRes,ignoreAmpRes,pressure:Math.min(.35,mb.pressure),ten:clamp(ten,0,.6),pvp:clamp(pvp,0,.5),range:c.range,speed:c.speed*(1+cb.speed+divine.speedPct),interval:c.interval/(1+haste)};
  const basic=attackProfile(result,p.classId),skill=attackProfile(result,p.classId,p.classId==='LAS'?6:0),rotation=rotationPower(result,p.classId),offense=rotation.dps*12*(1+divine.speedPct*.5),survival=(def*7+hp*.7+dr*5)/(1-Math.min(.35,mb.pressure))/(1-Math.min(.25,evasion/10000))*(1+result.critres*.3+Math.min(.5,ampres)*.2+Math.min(1,critdres)*.1);
 
- return {...result,atk:Math.round(unifiedAttack),amp:skill.amp,pen:skill.pen,offensePower:Math.round(offense*2),defensePower:Math.round(survival*2),dps:Math.round(offense/12),pc:powerScore(result,p.classId,p.level)};
+ return {...result,atk:Math.round(unifiedAttack),amp:skill.amp,pen:skill.pen,offensePower:Math.round(offense*2),defensePower:Math.round(survival*2),dps:Math.round(offense/12),pc:powerScore(result,p.classId,p.level+(p.rebirth?.bankedLevels||0))};
 }
 export const damage=combatDamage;
 export const maxXP=xpNeeded;

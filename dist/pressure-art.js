@@ -1,5 +1,5 @@
-import {visualAssets,drawCell} from './engine/visual-assets.js?v=25';
-import {pressureProfile} from './pressure-rules.js?v=25';
+import {visualAssets,drawCell} from './engine/visual-assets.js?v=26';
+import {pressureProfile} from './pressure-rules.js?v=26';
 // Screen-sized display, deliberately outside the smaller character transform.
 export function drawPressureRelease(g,rank,elapsed,economy=false){const p=pressureProfile(rank);if(!p.rank||elapsed<0||elapsed>=p.duration)return;const q=elapsed/p.duration,envelope=Math.sin(Math.PI*q),radius=p.radius*(.45+q*.8),color=p.stage>=4?'#b8faff':p.stage>=2?'#c5a7ff':'#83e8ff';g.save();g.globalCompositeOperation='lighter';
  if(visualAssets.pressureBurst){const frame=Math.min(5,Math.floor(q*6));g.globalAlpha=envelope*(.34+p.stage*.035);const atlas=visualAssets.pressureBurst,cw=atlas.naturalWidth/3,ch=atlas.naturalHeight/2;g.drawImage(atlas,(frame%3)*cw+4,Math.floor(frame/3)*ch+4,cw-8,ch-8,-p.radius*.9,-p.height,p.radius*1.8,p.height+25);}

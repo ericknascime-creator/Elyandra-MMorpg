@@ -1,5 +1,5 @@
-import {KITS} from './skills.js?v=25';
-import {resolveStrike} from './combat.js?v=25';
+import {KITS} from './skills.js?v=26';
+import {resolveStrike} from './combat.js?v=26';
 // A common target and a time budget, independent of player level and UI labels.
 export function rotationPower(st,classId){const target={def:6500,level:1000,acc:2000},window=15,kit=KITS[classId];let time=0,damage=0;
  for(const [index,k]of kit.entries()){if(!k.coef||index===6)continue;const uses=window/Math.max(.5,k.cd*(1-st.cdr)),duration=(k.cast||0)+.4;time+=uses*duration;damage+=uses*resolveStrike(st,classId,target,{index,coefficient:k.coef*(k.kind==='storm'?3:1),expected:true}).value;}

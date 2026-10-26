@@ -1,0 +1,10 @@
+export const REBIRTH_LEVEL=999;
+export const REBIRTH_POINTS=500;
+export const REBIRTH_PER_STACK={hp:1000,atk:100,def:40,pen:25,critd:.005,haste:.001};
+export function rebirthCount(p){return Math.max(0,Math.floor(p.rebirth?.count||0));}
+export function ensureRebirth(p){p.rebirth||={count:0,bankedLevelPoints:0,bankedLevels:0,maxLevel:p.level,quest:null,history:[]};const r=p.rebirth;r.count=rebirthCount(p);r.bankedLevelPoints=Math.max(0,Math.floor(r.bankedLevelPoints||0));r.maxLevel=Math.max(r.maxLevel||1,p.level);r.history||=[];if(p.level>=REBIRTH_LEVEL&&!r.quest)r.quest={kills:0,required:3};return r;}
+export function rebirthBonuses(p){const n=rebirthCount(p);return Object.fromEntries(Object.entries(REBIRTH_PER_STACK).map(([k,v])=>[k,v*n]));}
+export function recordRebirthKill(p,e){const r=ensureRebirth(p);if(p.level<REBIRTH_LEVEL||!r.quest||e.training||e.level<950)return false;r.quest.kills=Math.min(r.quest.required,r.quest.kills+1);return r.quest.kills===r.quest.required;}
+export function rebirthQuote(p){const r=ensureRebirth(p);return{ok:p.level>=REBIRTH_LEVEL&&r.quest?.kills>=3,count:r.count,next:r.count+1,points:REBIRTH_POINTS,reason:p.level<REBIRTH_LEVEL?'Requer nível999.':(r.quest?.kills||0)<3?'Derrote3 inimigos de nível950 ou superior.':'Retorne à Ilyra e confirme o renascimento.'};}
+export function completeRebirth(p,now=Date.now()){const q=rebirthQuote(p);if(!q.ok)return{ok:false,reason:q.reason};if(p.zone!=='coast'||Math.hypot(p.x-12,p.y-12)>4)return{ok:false,reason:'Aproxime-se de Ilyra para renascer.'};const r=p.rebirth;r.bankedLevelPoints+=(Math.max(1,p.level)-1)*5;r.bankedLevels=(r.bankedLevels||0)+p.level-1;r.maxLevel=Math.max(r.maxLevel,p.level);r.count++;r.history.push({count:r.count,at:now,fromLevel:p.level});r.history=r.history.slice(-20);r.quest=null;r.notified=false;p.level=1;p.xp=0;p.testMode=false;p.hp=null;p.mp=null;return{ok:true,count:r.count,points:REBIRTH_POINTS};}
+export function equipmentLevel(p){return Math.max(p.level,p.rebirth?.maxLevel||p.level);}

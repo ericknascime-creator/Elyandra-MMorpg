@@ -86,3 +86,7 @@ Built-in image_gen. Arte original gerada antes da integração; conversões para
 
 ## v24 · Jornada ilustrada
 `dist/assets/journey-chapters-v24.webp` — imagem original gerada com ferramenta integrada image_gen (stylized-concept), seis cenas em grade 3×2: farol saqueado, floresta das correntes, coroas opostas, forjas celestes, doze testemunhas, trono livre. Pintura detalhada azul/latão/ciano, sem texto ou marcas. Fonte: `exec-9941a2cb-f410-425c-bdbc-a60122c32af5.png`. Atlas1536×1024; WebP qualidade88. Usada nos cartões e cabeçalhos da Jornada; não representa mapas 3D implementados.
+
+
+## v26 · Santuário do Renascimento
+`dist/assets/rebirth-sanctum-v26.webp`: ilustração original criada com image_gen integrado (stylized-concept). Portal de marfim, metal azul e filigranas douradas em catedral celestial, fênix de energia ciano à esquerda, área escura à direita para sobreposição de HTML legível. Sem texto ou marcas. Fonte: `exec-37d33525-7bcd-41d2-9bc5-7533d9ae7807.png`;1536×1024, WebP88. Consumida no painel de Renascimento e na textura discreta das janelas. Não é um novo mapa3D.

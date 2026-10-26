@@ -1,6 +1,6 @@
-import {weaponIntrinsics,itemBaseValues} from './weapon-intrinsics.js?v=25';
-import {divineMerit,divineSlots} from './divine-merits.js?v=25';
-import {affixQuality,nativePerfect,ROLL_GRADES} from './affix-quality.js?v=25';
+import {weaponIntrinsics,itemBaseValues} from './weapon-intrinsics.js?v=26';
+import {divineMerit,divineSlots} from './divine-merits.js?v=26';
+import {affixQuality,nativePerfect,ROLL_GRADES} from './affix-quality.js?v=26';
 export function inspectorMarkup(v){const {item:i,player:p,equipped,price,delta,upgrade,art,valueText,optName,runeValue,canExtend,catalog}=v,esc=t=>String(t).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const intrinsic=weaponIntrinsics(i,p.classId);const merit=divineMerit(i),attuned=divineSlots(p).includes(i.slot);
 const affixes=(i.options||[]).map(a=>{const q=affixQuality(i,a,catalog);return `<div class="rollRow" data-roll-grade="${q.key}" style="--roll-color:${q.color}"><span class="rollName">${optName(a.type)}</span><strong>+${valueText(a.type,a.value)}${q.cap?`<small> / ${valueText(a.type,q.cap)}</small>`:''}</strong><span class="rollBadge">${q.label}${q.percent!==null?' · '+q.percent.toFixed(2)+'% do teto':''}</span><i class="rollMeter"><b style="width:${Math.min(100,q.percent||0)}%"></b></i></div>`;}).join('');
